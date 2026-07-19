@@ -1,0 +1,31 @@
+.planning/research/FEATURES.md
+  s_4624dbc9a78f6f::t_08ceb8d4689a32 1-239
+.planning/research/STACK.md
+  s_4624dbc9a78f6f::t_697141e05f103c 1-5,7-182,185-186,189-209
+  s_4624dbc9a78f6f::t_309600faacd539 6,183-184,187-188
+.planning/research/SUMMARY.md
+  s_4624dbc9a78f6f::t_c74631864597c2 1-327
+.planning/research/ARCHITECTURE.md
+  s_4624dbc9a78f6f::t_8b22fd0e25b675 1-441
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.34-trip",
+  "base_commit_sha": "12c065b1c700eb69450018fb4a9367814e94227d",
+  "prompts": {},
+  "humans": {
+    "h_ef89019d348f77": {
+      "author": "zhaorongwang <zhaorongwang@trip.com>"
+    }
+  },
+  "sessions": {
+    "s_4624dbc9a78f6f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f7a57-7ff4-7e52-9bdb-e34f3160f85d",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "zhaorongwang <zhaorongwang@trip.com>"
+    }
+  }
+}
