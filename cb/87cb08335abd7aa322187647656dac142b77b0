@@ -1,0 +1,12 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.34-trip",
+  "base_commit_sha": "cb87cb08335abd7aa322187647656dac142b77b0",
+  "prompts": {},
+  "humans": {
+    "h_ef89019d348f77": {
+      "author": "zhaorongwang <zhaorongwang@trip.com>"
+    }
+  }
+}
