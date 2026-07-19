@@ -21,19 +21,22 @@
 ## 本地准备
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -e '.[dev]'
+conda env create -f environment.yml
+conda activate LearnClaudeCode
+uv pip install --python "$CONDA_PREFIX/bin/python" -r requirements.lock
+uv pip install --python "$CONDA_PREFIX/bin/python" --no-deps -e .
 cp .env.example .env
 ```
 
-在 `.env` 中填写模型配置。`.env` 已被 Git 忽略。
+Conda 负责独立的 Python 3.12 环境，`uv` 根据 `requirements.lock` 快速安装精确版本的 Python 依赖，并以 editable 模式安装当前项目。这里使用 `uv pip install` 而不是 `uv pip sync`，避免后者删除 Conda 管理但未列入 Python 依赖锁的基础包。项目已配置清华 PyPI 镜像；在 `.env` 中填写模型配置，`.env` 已被 Git 忽略。
+
+以后进入项目先运行 `conda activate LearnClaudeCode`。依赖发生变化时，先重新生成 `requirements.lock`，再同步环境。
 
 ## 验证基线
 
 ```bash
 python -m mini_claude_code
-python -m unittest discover -s tests -v
+pytest -q
 ```
 
 ## 章节完成协议
@@ -41,4 +44,3 @@ python -m unittest discover -s tests -v
 ```text
 本章导读 → 阅读与讨论 → 实现 → 测试/演示 → 个人观点 → 单章提交 → 飞书子文档
 ```
-
