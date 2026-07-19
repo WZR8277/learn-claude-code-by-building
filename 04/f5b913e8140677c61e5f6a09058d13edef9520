@@ -1,0 +1,38 @@
+.planning/codebase/ARCHITECTURE.md
+  s_4624dbc9a78f6f::t_005ec73ff7b859 1-8,16-196
+  s_4624dbc9a78f6f::t_00387576c326e5 9-15
+.planning/codebase/TESTING.md
+  s_4624dbc9a78f6f::t_e63eb05ec978ee 1-160
+.planning/codebase/CONVENTIONS.md
+  s_4624dbc9a78f6f::t_e63eb05ec978ee 1-102
+.planning/codebase/STRUCTURE.md
+  s_4624dbc9a78f6f::t_005ec73ff7b859 1-171
+.planning/codebase/INTEGRATIONS.md
+  s_4624dbc9a78f6f::t_fd1f17594e5e38 1-88
+.planning/codebase/CONCERNS.md
+  s_4624dbc9a78f6f::t_3c6f66618570fb 1-125,127-131,133-137,139-194
+  s_4624dbc9a78f6f::t_6af5c1c27474f8 126,132,138
+.planning/codebase/STACK.md
+  s_4624dbc9a78f6f::t_fd1f17594e5e38 1-83
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.34-trip",
+  "base_commit_sha": "04f5b913e8140677c61e5f6a09058d13edef9520",
+  "prompts": {},
+  "humans": {
+    "h_ef89019d348f77": {
+      "author": "zhaorongwang <zhaorongwang@trip.com>"
+    }
+  },
+  "sessions": {
+    "s_4624dbc9a78f6f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f7a57-7ff4-7e52-9bdb-e34f3160f85d",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "zhaorongwang <zhaorongwang@trip.com>"
+    }
+  }
+}
