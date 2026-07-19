@@ -82,16 +82,46 @@
 
 ## Traceability
 
-Roadmap 创建时填充；每项 v1 需求必须映射到且只映射到一个阶段。
+每项 v1 需求映射到且只映射到一个阶段。跨章节证据要求由 Phase 20 的完整性审计负责验收，但其约束适用于每个章节的完成门槛。
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
+| LOOP-01 | Phase 1 | Pending |
+| TOOL-01 | Phase 2 | Pending |
+| SAFE-01 | Phase 3 | Pending |
+| HOOK-01 | Phase 4 | Pending |
+| TODO-01 | Phase 5 | Pending |
+| SUBA-01 | Phase 6 | Pending |
+| SKIL-01 | Phase 7 | Pending |
+| CTXT-01 | Phase 8 | Pending |
+| MEM-01 | Phase 9 | Pending |
+| PROM-01 | Phase 10 | Pending |
+| RECV-01 | Phase 11 | Pending |
+| TASK-01 | Phase 12 | Pending |
+| BGND-01 | Phase 13 | Pending |
+| CRON-01 | Phase 14 | Pending |
+| TEAM-01 | Phase 15 | Pending |
+| PROT-01 | Phase 16 | Pending |
+| AUTO-01 | Phase 17 | Pending |
+| WTRE-01 | Phase 18 | Pending |
+| MCP-01 | Phase 19 | Pending |
+| COMP-01 | Phase 20 | Pending |
+| EXPL-01 | Phase 20 | Pending |
+| EVID-01 | Phase 20 | Pending |
+| EVID-02 | Phase 20 | Pending |
+| EVID-03 | Phase 20 | Pending |
+| EVID-04 | Phase 20 | Pending |
+| EVID-05 | Phase 20 | Pending |
+| DOCS-01 | Phase 20 | Pending |
+| DOCS-02 | Phase 20 | Pending |
+| DOCS-03 | Phase 20 | Pending |
 
 **Coverage:**
 - v1 requirements: 29 total
-- Mapped to phases: 0
-- Unmapped: 29 ⚠️
+- Mapped to phases: 29
+- Unmapped: 0 ✓
+- Duplicate mappings: 0 ✓
 
 ---
 *Requirements defined: 2026-07-19*
-*Last updated: 2026-07-19 after initial scope confirmation (A1 B1 C1 D1 E1 F1)*
+*Last updated: 2026-07-19 after roadmap traceability mapping*
