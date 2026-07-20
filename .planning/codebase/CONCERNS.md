@@ -143,9 +143,9 @@
 ## Missing Critical Features
 
 **Core agent loop:**
-- Problem: Historical note: before s01, the repository explicitly remained at `s00`; `main()` only printed that the Agent Loop comes in `s01`. s01 has since replaced this with the first Agent Loop implementation.
-- Blocks: Model interaction, turn state, stopping conditions, tool calling, error recovery, and every end-to-end coding-agent workflow.
-- Files: `README.md`, `src/mini_claude_code/cli.py`
+- Status: Resolved for s01. The repository now has the first Agent Loop implementation, offline loop tests, commit `b8a21aa`, and tag `s01-agent-loop`.
+- Remaining concern: s02 must expand tool registration and guarded dispatch without prematurely implementing permission prompts or hooks.
+- Files: `src/mini_claude_code/cli.py`, `src/mini_claude_code/loop.py`, `src/mini_claude_code/tool.py`, `tests/test_s01_agent_loop.py`
 
 **Configuration contract:**
 - Problem: An environment example and dotenv dependency exist, but there is no configuration loader, schema, validation, startup diagnostic, or documented variable contract in executable code.

@@ -1,6 +1,6 @@
 # Testing Patterns
 
-**Analysis Date:** 2026-07-19
+**Analysis Date:** 2026-07-21
 
 ## Test Framework
 
@@ -14,9 +14,9 @@
 
 **Run Commands:**
 ```bash
-python -m unittest discover -s tests -v  # Run all tests (documented baseline)
-python -m unittest tests.test_smoke -v   # Run the current smoke module
-python -m pytest                         # Optional pytest-compatible run after installing .[dev]
+conda run -n LearnClaudeCode pytest -q
+python -m pytest
+python -m unittest discover -s tests -v
 ```
 
 No watch-mode or coverage command is configured in `pyproject.toml`, `README.md`, or the repository root.
@@ -24,7 +24,7 @@ No watch-mode or coverage command is configured in `pyproject.toml`, `README.md`
 ## Test File Organization
 
 **Location:**
-- Keep tests in the top-level `tests/` directory, separate from `src/mini_claude_code/`. The only suite is `tests/test_smoke.py`.
+- Keep tests in the top-level `tests/` directory, separate from `src/mini_claude_code/`.
 - Mirror the application responsibility in the test filename as the package expands; the current repository groups package-version and CLI-entry-point baseline checks together as smoke tests in `tests/test_smoke.py`.
 
 **Naming:**
@@ -34,7 +34,8 @@ No watch-mode or coverage command is configured in `pyproject.toml`, `README.md`
 **Structure:**
 ```text
 tests/
-└── test_smoke.py     # Package metadata and CLI-entry-point baseline
+├── test_smoke.py          # Package metadata and CLI-entry-point baseline
+└── test_s01_agent_loop.py # Offline fake-client Agent Loop tests
 ```
 
 Future chapter tests belong under `tests/` and should remain discoverable by `python -m unittest discover -s tests -v`, the command documented in `README.md`.
@@ -74,19 +75,19 @@ This is the actual pattern in `tests/test_smoke.py`.
 
 ## Mocking
 
-**Framework:** Not detected
+**Framework:** `unittest.mock` for environment patching and fake injected clients where useful.
 
 **Patterns:**
 ```python
-# No mocks exist in the current suite. Directly invoke deterministic code.
-def test_cli_entry_point_runs(self) -> None:
-    main()
+# s01 uses fake clients and injected tool runners to avoid live model calls.
+with patch.dict(os.environ, {"MODEL_ID": "test-model"}):
+    agent_loop(messages, client=fake_client, tool_runner=fake_runner)
 ```
 
 The direct-call pattern is from `tests/test_smoke.py`.
 
 **What to Mock:**
-- No current code requires mocks. As external model calls are introduced through dependencies declared in `pyproject.toml`, mock or fake the network/client boundary so automated tests remain safe, deterministic, and credential-free.
+- Fake the network/client boundary so automated tests remain safe, deterministic, and credential-free.
 - Patch objects at the location used by the code under test, and keep the boundary narrow; add concrete patterns to this document once the implementation establishes them.
 - Capture stdout when the exact CLI message becomes a contract instead of mocking `main()` itself.
 
@@ -129,8 +130,8 @@ The example command is not currently available from declared dependencies becaus
 - Keep deterministic mechanism tests fast and isolated under `tests/`, using `unittest.TestCase` until the repository adopts a different explicit convention.
 
 **Integration Tests:**
-- The lightweight CLI smoke check in `tests/test_smoke.py` imports `main()` from `src/mini_claude_code/cli.py` and verifies it completes without an exception.
-- No subprocess, console-script installation, model API, filesystem, or multi-module integration test exists.
+- The lightweight CLI smoke check imports `main()` and verifies it completes without an exception under captured stdin.
+- `tests/test_s01_agent_loop.py` verifies the multi-module s01 loop without a live model API.
 - Add safe, reproducible runtime evidence for each chapter in `learning/sXX-short-name/evidence.md` in addition to automated tests, as required by `AGENTS.md`.
 
 **E2E Tests:**
@@ -157,4 +158,4 @@ No current implementation exposes an error contract and `tests/test_smoke.py` co
 
 ---
 
-*Testing analysis: 2026-07-19*
+*Testing analysis: 2026-07-21*

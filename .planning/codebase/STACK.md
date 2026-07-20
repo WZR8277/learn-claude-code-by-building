@@ -1,6 +1,6 @@
 # Technology Stack
 
-**Analysis Date:** 2026-07-19
+**Analysis Date:** 2026-07-21
 
 ## Languages
 
@@ -15,19 +15,19 @@
 
 **Environment:**
 - CPython 3.11 or newer, as required by `pyproject.toml`.
-- The inspected development machine provides CPython 3.12.2; code must still remain compatible with the declared 3.11 floor.
+- The active learning environment is the Conda environment `LearnClaudeCode` with Python 3.12.
 - The package uses a `src` layout and therefore must be installed before importing `mini_claude_code`, or invoked with `src` on `PYTHONPATH`; see `pyproject.toml` and `src/mini_claude_code/`.
 
 **Package Manager:**
-- pip - Installation instructions use `python -m pip install -e '.[dev]'` in `README.md`.
+- Conda + uv - Installation instructions use `environment.yml`, `requirements.lock`, and `uv pip install --python "$CONDA_PREFIX/bin/python"`.
 - Build backend: `setuptools.build_meta`, with `setuptools>=68`, in `pyproject.toml`.
-- Lockfile: missing; `pyproject.toml` specifies lower bounds rather than reproducible resolved versions.
+- Lockfile: `requirements.lock` is present for Python dependencies.
 
 ## Frameworks
 
 **Core:**
 - No application framework is active. The executable is a plain Python package with `main()` in `src/mini_claude_code/cli.py`.
-- Anthropic Python SDK 0.25.0+ is declared in `pyproject.toml` for the future model-facing agent harness, but no source file imports or calls it yet.
+- Anthropic Python SDK is used by `src/mini_claude_code/loop.py` for the s01 Agent Loop.
 
 **Testing:**
 - Python `unittest` standard library - Current test classes and assertions in `tests/test_smoke.py`.
@@ -43,7 +43,7 @@
 
 **Critical:**
 - `anthropic>=0.25.0` - Planned provider SDK for the coding-agent model loop; declared in `pyproject.toml` but not yet used by `src/mini_claude_code/`.
-- `python-dotenv>=1.0.0` - Planned local environment-file loader; declared in `pyproject.toml` but not yet imported by `src/mini_claude_code/`.
+- `python-dotenv` - Used by `src/mini_claude_code/cli.py` to load local `.env`.
 - `pyyaml>=6.0` - Planned YAML parser; declared in `pyproject.toml` but not yet imported by `src/mini_claude_code/`.
 
 **Infrastructure:**
@@ -55,7 +55,7 @@
 **Environment:**
 - Local model configuration is intended to live in an ignored `.env`, as documented by `README.md` and `.gitignore`.
 - `.env.example` exists as the checked-in configuration template; its secret-sensitive contents are intentionally not included in this analysis.
-- No environment-loading or configuration-validation code exists in `src/mini_claude_code/`; add explicit loading and validation when the first provider call is implemented.
+- `.env` loading exists in `src/mini_claude_code/cli.py`; provider API keys must still remain local and uncommitted.
 - Never commit `.env`, API keys, or access tokens, per `AGENTS.md` and `.gitignore`.
 
 **Build:**
@@ -63,13 +63,13 @@
 - `[tool.setuptools.packages.find] where = ["src"]` establishes the package discovery root.
 - `[project.scripts]` exposes `mini-claude-code` as `mini_claude_code.cli:main`.
 - `src/mini_claude_code/__main__.py` enables `python -m mini_claude_code`.
-- No `requirements.txt`, `setup.py`, `setup.cfg`, lockfile, container definition, or CI build file is detected.
+- No `setup.py`, `setup.cfg`, container definition, or CI build file is detected.
 
 ## Platform Requirements
 
 **Development:**
-- Install Python 3.11+ and create a virtual environment following `README.md`.
-- Run `python -m pip install -e '.[dev]'` from the repository root so the `src`-layout package is importable.
+- Install Conda and uv, then create/activate `LearnClaudeCode` following `README.md`.
+- Install locked dependencies with `uv pip install --python "$CONDA_PREFIX/bin/python" -r requirements.lock` and the package with `uv pip install --python "$CONDA_PREFIX/bin/python" --no-deps -e .`.
 - The documented `python -m unittest discover -s tests -v` command fails in a clean, non-installed checkout because `mini_claude_code` is not on the import path; installation is a prerequisite.
 - The baseline CLI has no OS-specific implementation in `src/mini_claude_code/cli.py`.
 
@@ -80,4 +80,4 @@
 
 ---
 
-*Stack analysis: 2026-07-19*
+*Stack analysis: 2026-07-21*

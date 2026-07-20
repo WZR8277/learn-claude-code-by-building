@@ -13,6 +13,14 @@ This repository is a chapter-by-chapter reconstruction of the core harness mecha
 - Do not copy the upstream implementation verbatim; understand it, then implement and explain it independently.
 - Never commit secrets, API keys, access tokens, or `.env`.
 
+## Cross-computer and GSD workflow
+
+- Before starting or closing any chapter, fetch remote tags and use the newest remote `sXX-*` tag as the source of truth for completed chapters.
+- Read `.planning/STATE.md`, `.planning/PROJECT.md`, `.planning/CROSS_COMPUTER_SYNC.md`, `.planning/FEISHU_SYNC.md`, and `.planning/CODING_WORKFLOW.md` when restoring context.
+- From `s02` onward, Codex implements the chapter delta after discussion; the learner reviews the PyCharm diff, asks questions, and confirms before final commit/tag/archive.
+- Code written by Codex should keep methods clear, module/file splits reasonable, and Chinese comments focused on important Agent harness concepts.
+- Before updating Feishu, ask whether the user is at home or company, then choose the matching parent wiki from `.planning/FEISHU_SYNC.md`.
+
 ## Skill restrictions
 
 - This is an Agent-related learning project. Do not invoke or rely on any skill whose name starts with `trn-`.
@@ -28,4 +36,3 @@ This repository is a chapter-by-chapter reconstruction of the core harness mecha
 5. The learner's personal reflection is captured.
 6. The chapter has one focused commit and one matching tag.
 7. The Feishu chapter document records the explanation, reflection, tests, and commit evidence.
-

@@ -1,7 +1,7 @@
-<!-- refreshed: 2026-07-19 -->
+<!-- refreshed: 2026-07-21 -->
 # Architecture
 
-**Analysis Date:** 2026-07-19
+**Analysis Date:** 2026-07-21
 
 ## System Overview
 
@@ -20,12 +20,12 @@
                                │
                                ▼
 ┌──────────────────────────────────────────────────────────┐
-│                     Standard output                          │
-│          Baseline status text; no agent runtime yet          │
+│                 Agent Loop and tool boundary                 │
+│   model call -> tool_use -> local bash -> tool_result -> stop │
 └──────────────────────────────────────────────────────────┘
 ```
 
-The repository is at the `s00` bootstrap stage documented in `README.md`; it provides a package and invocation shell but does not yet contain the agent loop, model client, tools, session state, or configuration loading implied by its declared dependencies in `pyproject.toml`.
+The repository has completed `s01-agent-loop`. It now contains a minimal synchronous model/tool feedback loop, a single bash tool, `.env` loading at the CLI boundary, and offline fake-client tests for `tool_use`/`tool_result` correlation. The next phase is `s02 Tool Use`, which should expand tool registration and guarded dispatch without prebuilding permissions or hooks.
 
 ## Component Responsibilities
 
@@ -33,9 +33,11 @@ The repository is at the `s00` bootstrap stage documented in `README.md`; it pro
 |-----------|----------------|------|
 | Package metadata | Identifies the evolving harness package and exposes its current version | `src/mini_claude_code/__init__.py` |
 | Module launcher | Supports `python -m mini_claude_code` and delegates immediately to the CLI | `src/mini_claude_code/__main__.py` |
-| CLI boundary | Owns the single public `main()` callable and current stdout response | `src/mini_claude_code/cli.py` |
+| CLI boundary | Owns `.env` loading, terminal input/output, readline setup, and the single public `main()` callable | `src/mini_claude_code/cli.py` |
+| Agent loop | Calls the model, appends assistant content, executes requested tools, and appends correlated `tool_result` blocks | `src/mini_claude_code/loop.py` |
+| Tool boundary | Defines the teaching `bash` tool and bounded subprocess execution helper | `src/mini_claude_code/tool.py` |
 | Installed command mapping | Maps the `mini-claude-code` console command to the same `main()` callable | `pyproject.toml` |
-| Baseline verification | Exercises package import, version exposure, and callable CLI entry | `tests/test_smoke.py` |
+| Baseline verification | Exercises package import, version exposure, callable CLI entry, and s01 loop behavior | `tests/test_smoke.py`, `tests/test_s01_agent_loop.py` |
 | Learning records | Defines the per-chapter documentation contract that accompanies code evolution | `learning/README.md` |
 
 ## Pattern Overview
@@ -45,7 +47,7 @@ The repository is at the `s00` bootstrap stage documented in `README.md`; it pro
 **Key Characteristics:**
 - Both supported shell entry paths converge on `mini_claude_code.cli:main`, keeping invocation-specific code outside the evolving implementation.
 - The package uses a `src/` layout, so application imports resolve from `src/mini_claude_code/` after installation or an equivalent test-path setup.
-- Runtime behavior is currently stateless and synchronous: one function writes one line to standard output and returns `None`.
+- Runtime behavior is synchronous and conversation-history based: CLI input appends user messages, the agent loop appends assistant content and tool results, and control returns when the model does not request a tool.
 - Production code evolves in place under `src/mini_claude_code/`; chapter history belongs in adjacent records under `learning/sXX-*/` rather than copied source snapshots.
 
 ## Layers
@@ -60,9 +62,23 @@ The repository is at the `s00` bootstrap stage documented in `README.md`; it pro
 **CLI/Application Boundary:**
 - Purpose: Provide the stable public callable into which each chapter's harness behavior can be integrated.
 - Location: `src/mini_claude_code/cli.py`
-- Contains: `main()`, currently a baseline status print only.
-- Depends on: Python's built-in `print`; no internal service layer exists yet.
+- Contains: `main()`, `.env` loading, interactive prompt handling, and final text block printing.
+- Depends on: `python-dotenv`, `src/mini_claude_code/loop.py`, and standard terminal I/O.
 - Used by: `src/mini_claude_code/__main__.py`, the console script in `pyproject.toml`, and `tests/test_smoke.py`.
+
+**Agent Loop Layer:**
+- Purpose: Maintain the minimal model/tool loop introduced in s01.
+- Location: `src/mini_claude_code/loop.py`
+- Contains: `agent_loop(messages, client=None, tool_runner=run_bash)`, the system prompt, model call, stop condition, and tool-result construction.
+- Depends on: Anthropic-compatible client interface and `src/mini_claude_code/tool.py`.
+- Used by: `src/mini_claude_code/cli.py` and `tests/test_s01_agent_loop.py`.
+
+**Tool Layer:**
+- Purpose: Provide the current teaching tool surface for local command execution.
+- Location: `src/mini_claude_code/tool.py`
+- Contains: `TOOLS` and `run_bash(command)`.
+- Depends on: `subprocess` and `os`.
+- Used by: `src/mini_claude_code/loop.py`.
 
 **Package Metadata Layer:**
 - Purpose: Mark the directory as an importable package and expose the runtime version.
@@ -89,15 +105,16 @@ The repository is at the `s00` bootstrap stage documented in `README.md`; it pro
 
 ### Primary Request Path
 
-1. `python -m mini_claude_code` loads the package module launcher and imports `main` (`src/mini_claude_code/__main__.py:1`).
-2. The module guard invokes the shared callable (`src/mini_claude_code/__main__.py:4`).
-3. `main()` emits the `s00` readiness message to standard output and returns implicitly (`src/mini_claude_code/cli.py:4`).
+1. `python -m mini_claude_code` loads the package module launcher and imports `main`.
+2. The module guard invokes the shared callable.
+3. `main()` loads `.env`, starts the interactive prompt, appends user messages to `history`, and calls `agent_loop(history)`.
+4. `agent_loop()` calls the model. If the response requests tools, it executes each `tool_use` through the current tool runner and appends matching `tool_result` blocks. If the response does not request tools, it returns to the CLI.
 
 ### Installed Console-Script Path
 
 1. Package installation registers `mini-claude-code` against `mini_claude_code.cli:main` (`pyproject.toml:20`).
 2. The generated launcher imports and calls `main()` directly; `src/mini_claude_code/__main__.py` is bypassed.
-3. `main()` writes the same readiness message to standard output (`src/mini_claude_code/cli.py:5`).
+3. `main()` runs the same CLI and Agent Loop path as module execution.
 
 ### Baseline Test Flow
 
@@ -106,7 +123,9 @@ The repository is at the `s00` bootstrap stage documented in `README.md`; it pro
 3. One test directly calls `main()`, exercising the CLI boundary without spawning a subprocess (`tests/test_smoke.py:11`).
 
 **State Management:**
-- No runtime state store, conversation history, configuration object, cache, or module-level mutable singleton is present. The only package-level datum is immutable version text in `src/mini_claude_code/__init__.py`.
+- Conversation state is an in-memory `history` list owned by the CLI for the current process.
+- Model configuration is loaded from ignored `.env` into environment variables.
+- No persistent runtime state, cache, task store, permission database, or memory system exists yet.
 
 ## Key Abstractions
 
@@ -149,12 +168,12 @@ The repository is at the `s00` bootstrap stage documented in `README.md`; it pro
 
 ## Architectural Constraints
 
-- **Threading:** Execution is single-threaded and synchronous; no async functions, worker threads, subprocesses, or task scheduler exist in `src/mini_claude_code/`.
-- **Global state:** `src/mini_claude_code/__init__.py` exposes only the immutable `__version__` string. Do not introduce shared mutable conversation or tool state at import time.
-- **Circular imports:** None detected. Dependency direction is one-way from `src/mini_claude_code/__main__.py` to `src/mini_claude_code/cli.py`; `cli.py` imports no application module.
+- **Threading:** Execution is single-threaded and synchronous. `run_bash` uses bounded subprocess execution; no async functions, worker threads, or task scheduler exist yet.
+- **Global state:** Avoid creating provider clients or mutable conversation state at import time. s01 keeps client creation inside `agent_loop()` for testability and `.env` ordering.
+- **Circular imports:** Keep launchers thin. Dependency direction is `__main__.py -> cli.py -> loop.py -> tool.py`.
 - **Stable command target:** Keep `mini_claude_code.cli:main` valid because `pyproject.toml`, `src/mini_claude_code/__main__.py`, and `tests/test_smoke.py` all depend on it.
 - **Chapter evolution:** Modify the single package under `src/mini_claude_code/` and add corresponding records under `learning/sXX-short-name/`; do not create parallel implementation snapshots. This contract is explicit in `AGENTS.md` and `README.md`.
-- **Current stage:** Treat model access, environment loading, YAML configuration, tool dispatch, and agent-loop boundaries as absent until their chapter introduces them; their packages being declared in `pyproject.toml` does not establish architecture by itself.
+- **Current stage:** s01 has introduced model access, environment loading, one bash tool, and the Agent Loop. s02 should expand tool dispatch and registry behavior only.
 
 ## Anti-Patterns
 
@@ -178,19 +197,19 @@ The repository is at the `s00` bootstrap stage documented in `README.md`; it pro
 
 ## Error Handling
 
-**Strategy:** No explicit error-handling strategy exists because the current runtime performs no fallible I/O beyond a direct stdout write.
+**Strategy:** s01 uses teaching-level error handling: CLI exit on EOF/interrupt, bounded bash timeout, and tool failures returned as text content. Later chapters will make errors more structured.
 
 **Patterns:**
-- `src/mini_claude_code/cli.py` does not catch exceptions; future unexpected failures therefore propagate to the launcher and produce a non-zero process failure naturally.
+- `src/mini_claude_code/cli.py` catches `EOFError`, `KeyboardInterrupt`, and pytest stdin `OSError` to end the prompt loop.
 - `src/mini_claude_code/__main__.py` does not translate return values into exit codes; `main()` currently returns `None`.
 - Add exception translation at the CLI boundary only when a chapter defines recoverable domain errors; keep reusable internal functions independent of process exits.
 
 ## Cross-Cutting Concerns
 
 **Logging:** Not detected. `src/mini_claude_code/cli.py` uses `print()` for user-facing baseline output, not structured diagnostics.
-**Validation:** Not applicable at `s00`; there are no arguments, configuration values, prompts, or external responses to validate.
-**Authentication:** Not implemented. `README.md` references local environment configuration, but runtime code in `src/mini_claude_code/` does not load or consume credentials.
+**Validation:** Minimal validation exists for blocked dangerous bash substrings. s02 should replace this with clearer tool registration and guarded dispatch behavior.
+**Authentication:** The Anthropic-compatible SDK reads `ANTHROPIC_API_KEY` from environment after `.env` loading. Secrets remain outside Git and Feishu.
 
 ---
 
-*Architecture analysis: 2026-07-19*
+*Architecture analysis: 2026-07-21*

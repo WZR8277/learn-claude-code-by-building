@@ -65,7 +65,7 @@
 - **Documentation timing**: 只有在观点、验证和提交齐备后才创建该章飞书子文档 — 防止文档与实际成果脱节
 - **Secrets**: `.env`、API key、token 等敏感信息不得进入 Git 或飞书章节文档 — 保证凭据安全
 - **Skill policy**: 本项目及所有子代理不得调用或依赖任何名称以 `trn-` 开头的技能 — 遵守全局和项目级 Agent 项目限制
-- **Dirty worktree**: 初始化前已存在的 `src/mini_claude_code/cli.py` 未提交修改必须保留并单独确认归属 — 不把用户工作误纳入规划提交
+- **Clean handoff**: 每章开始和结束都检查 `git status --short --branch`，确认没有未解释的用户改动或跨电脑同步遗漏
 
 ## Key Decisions
 

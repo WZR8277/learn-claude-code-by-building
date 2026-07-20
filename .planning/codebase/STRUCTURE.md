@@ -1,6 +1,6 @@
 # Codebase Structure
 
-**Analysis Date:** 2026-07-19
+**Analysis Date:** 2026-07-21
 
 ## Directory Layout
 
@@ -15,9 +15,12 @@ learn-claude-code-by-building/
 │   └── mini_claude_code/           # Canonical, continuously evolving Python package
 │       ├── __init__.py              # Package marker and runtime version export
 │       ├── __main__.py              # `python -m` launcher shim
-│       └── cli.py                   # Shared command-line/application entry point
+│       ├── cli.py                   # Shared command-line/application entry point
+│       ├── loop.py                  # s01 Agent Loop protocol
+│       └── tool.py                  # current teaching bash tool
 ├── tests/
-│   └── test_smoke.py               # Baseline package and CLI smoke tests
+│   ├── test_smoke.py               # Baseline package and CLI smoke tests
+│   └── test_s01_agent_loop.py      # Offline s01 tool loop tests
 ├── .gitignore                         # Local environment and generated-artifact exclusions
 ├── AGENTS.md                         # Repository workflow and chapter completion rules
 ├── README.md                         # Project overview, setup, and baseline commands
@@ -30,14 +33,14 @@ Generated `__pycache__/` directories may appear beneath `src/mini_claude_code/` 
 
 **`src/mini_claude_code/`:**
 - Purpose: Hold the sole canonical coding-agent harness implementation as it evolves chapter by chapter.
-- Contains: Python package metadata, invocation adapters, and all future runtime modules.
-- Key files: `src/mini_claude_code/__init__.py`, `src/mini_claude_code/__main__.py`, `src/mini_claude_code/cli.py`
+- Contains: Python package metadata, invocation adapters, current Agent Loop modules, and future runtime modules.
+- Key files: `src/mini_claude_code/__init__.py`, `src/mini_claude_code/__main__.py`, `src/mini_claude_code/cli.py`, `src/mini_claude_code/loop.py`, `src/mini_claude_code/tool.py`
 - Placement rule: Add production behavior here; do not introduce per-chapter source copies elsewhere.
 
 **`tests/`:**
 - Purpose: Verify the active package implementation from the consumer-facing import boundary.
 - Contains: Python test modules using standard test discovery naming.
-- Key files: `tests/test_smoke.py`
+- Key files: `tests/test_smoke.py`, `tests/test_s01_agent_loop.py`
 - Placement rule: Add tests for new chapter behavior here, named `test_<subject>.py`; retain `tests/test_smoke.py` for baseline package/entry-point coverage.
 
 **`learning/`:**
@@ -62,6 +65,8 @@ Generated `__pycache__/` directories may appear beneath `src/mini_claude_code/` 
 
 **Entry Points:**
 - `src/mini_claude_code/cli.py`: Defines the shared `main()` application/CLI callable.
+- `src/mini_claude_code/loop.py`: Defines the s01 model/tool loop.
+- `src/mini_claude_code/tool.py`: Defines the current bash tool schema and runner.
 - `src/mini_claude_code/__main__.py`: Adapts `python -m mini_claude_code` to `main()`.
 - `pyproject.toml`: Registers the installed `mini-claude-code` command as `mini_claude_code.cli:main`.
 - `tests/test_smoke.py`: Provides a direct test-runner guard in addition to discovery-based execution.
@@ -71,10 +76,11 @@ Generated `__pycache__/` directories may appear beneath `src/mini_claude_code/` 
 - `.gitignore`: Excludes local environments, environment configuration, Python caches, test caches, build outputs, and package metadata.
 - `AGENTS.md`: Defines the chapter workflow, definition of done, learning-commit convention, and repository-specific skill restriction.
 
-**Core Logic:**
-- `src/mini_claude_code/cli.py`: Contains all current runtime behavior; at `s00` this is a single readiness message.
+- **Core Logic:**
+- `src/mini_claude_code/cli.py`: Contains CLI environment loading, prompt handling, and final text output.
+- `src/mini_claude_code/loop.py`: Contains the current Agent Loop and tool-result correlation behavior.
+- `src/mini_claude_code/tool.py`: Contains the current teaching bash tool.
 - `src/mini_claude_code/__init__.py`: Exposes the package's current `__version__` value.
-- No agent-loop, model-client, tool-dispatch, configuration, or state module exists yet under `src/mini_claude_code/`.
 
 **Testing:**
 - `tests/test_smoke.py`: Covers importability, the baseline version contract, and direct invocation of `main()`.
@@ -122,7 +128,7 @@ Generated `__pycache__/` directories may appear beneath `src/mini_claude_code/` 
 
 **Utilities:**
 - Shared helpers: Add `src/mini_claude_code/<purpose>.py` for helpers with a coherent responsibility; no generic utilities module or utilities directory currently exists.
-- Test-only helpers: Keep them under `tests/` once repeated fixture/setup behavior emerges; no fixture module exists at `s00`.
+- Test-only helpers: Keep them under `tests/` once repeated fixture/setup behavior emerges.
 
 **New Test:**
 - Unit or component test: `tests/test_<subject>.py`
@@ -168,4 +174,4 @@ Generated `__pycache__/` directories may appear beneath `src/mini_claude_code/` 
 
 ---
 
-*Structure analysis: 2026-07-19*
+*Structure analysis: 2026-07-21*
