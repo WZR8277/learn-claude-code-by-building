@@ -20,14 +20,17 @@ and tag are complete.
 
 ## Document Quality
 
-The Feishu child document must be a polished review artifact, not a raw
-concatenation of local Markdown files. Keep it visually clean, concise, and easy
-to revisit:
+The Feishu child document must be a polished Feishu online `docx` page, not a
+raw `.md` Drive file or a concatenation of local Markdown files. Keep it
+visually clean, concise, and easy to revisit:
 
 - title, status, commit, tag, and one short takeaway near the top
 - clear sections for mechanism, code paths, tests/demo, reflection, and evidence
 - short bullets or tables for scanability
 - no secrets, raw keys, or noisy terminal dumps
 
-The first s01 upload is known to be below this target quality and should be
-beautified later.
+The corrected home s01 page is
+`https://jcneiirfaiic.feishu.cn/wiki/WkW6wgMnbifIiTkFuUGcEhYhnWf`. The obsolete
+raw Markdown child is
+`https://jcneiirfaiic.feishu.cn/wiki/K9M4wXtUEiEpb6kv0nzc2d3znrd`; delete or
+move it only after explicit confirmation.

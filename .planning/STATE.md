@@ -23,7 +23,7 @@ See: .planning/PROJECT.md (updated 2026-07-19)
 Phase: 2 of 20 (s02 Tool Use)
 Plan: 0 of TBD in current phase
 Status: s01 archived; ready to plan s02
-Last activity: 2026-07-21 — Completed s01 commit/tag/push and home Feishu archive; updated GSD workflow for s02+
+Last activity: 2026-07-21 — Replaced the raw home s01 Markdown upload with a polished Feishu docx child and updated the home parent index; s02 remains next
 
 Progress: [█░░░░░░░░░] 5%
 
@@ -65,14 +65,14 @@ Recent decisions affecting current work:
 ### Pending Todos
 
 - [Phase 2]: Start s02 Tool Use guide/discussion after syncing remote tags.
-- [Docs]: Beautify the existing s01 Feishu child document later; current upload is below the target style standard.
+- [Docs]: Optionally delete or move the obsolete home s01 Markdown child after explicit user confirmation: `https://jcneiirfaiic.feishu.cn/wiki/K9M4wXtUEiEpb6kv0nzc2d3znrd`.
 
 ### Blockers/Concerns
 
 - [Phase 2]: Revalidate provider tool-result protocol before expanding tool registry behavior.
 - [Phase 2]: Keep s02 scope to tool registry and guarded dispatch; do not prebuild permissions or hooks.
 - [Documentation]: Feishu write path works on the home parent, but still ask home/company before every future archive.
-- [Documentation]: Future Feishu updates should be composed as concise review pages before upload; avoid raw terminal dumps and duplicated local notes.
+- [Documentation]: Future Feishu updates should use real Feishu `docx` pages, composed as concise review pages before upload; avoid raw Markdown file uploads, raw terminal dumps, and duplicated local notes.
 
 ## Deferred Items
 

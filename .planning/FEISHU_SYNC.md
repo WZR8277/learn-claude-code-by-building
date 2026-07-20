@@ -12,8 +12,9 @@ and tag are complete.
 
 ## Quality Standard
 
-Feishu child documents are not raw dumps of `guide.md`, `reflection.md`, and
-`evidence.md`. Before upload, synthesize a polished review document:
+Feishu child documents are real Feishu online `docx` pages, not raw `.md` Drive
+files and not raw dumps of `guide.md`, `reflection.md`, and `evidence.md`.
+Before upload, synthesize a polished review document:
 
 - Start with chapter title, status, commit, tag, and a short takeaway.
 - Use concise sections with clear headings.
@@ -24,5 +25,12 @@ Feishu child documents are not raw dumps of `guide.md`, `reflection.md`, and
 - Include commit/tag/Feishu evidence without exposing secrets.
 - Prefer tables or short bullets where they improve scanning.
 
-The current s01 upload was created as a raw Markdown-style file and should be
-treated as needing later beautification, not as the target quality bar.
+The first s01 upload was an incorrect raw Markdown file. The corrected home
+s01 page is:
+
+- `https://jcneiirfaiic.feishu.cn/wiki/WkW6wgMnbifIiTkFuUGcEhYhnWf`
+
+The obsolete raw Markdown child remains only to avoid destructive cleanup
+without explicit confirmation:
+
+- `https://jcneiirfaiic.feishu.cn/wiki/K9M4wXtUEiEpb6kv0nzc2d3znrd`
