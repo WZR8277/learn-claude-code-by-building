@@ -18,7 +18,12 @@ cd learn-claude-code-by-building
 ```bash
 git log --oneline -5
 git status --short --branch
+git fetch --all --tags
+git tag --list 's*' --sort=v:refname
 ```
+
+开始任何新章节前，先按 [`docs/CROSS_COMPUTER_SYNC.md`](CROSS_COMPUTER_SYNC.md)
+确认远程 tag 中已经完成到哪一章。不要只依赖本机 Codex 对话记忆来判断进度。
 
 ## 2. 恢复 Python 环境
 
@@ -105,6 +110,7 @@ python -m mini_claude_code
 - 源代码、测试和章节提交
 - `AGENTS.md` 项目约束
 - `.planning/` 中的 GSD 项目记忆
+- Git tags, which are the cross-computer chapter completion markers
 - 环境声明和依赖锁文件
 - 本接续指南
 
@@ -119,7 +125,12 @@ python -m mini_claude_code
 
 ## 8. 飞书学习文档
 
-父文档：<https://trip.larkenterprise.com/wiki/S8X8wpgTCio65Yk3C76ceTYMnBc>
+飞书父文档按当前电脑环境选择：
+
+- 在家：<https://jcneiirfaiic.feishu.cn/wiki/UDZJwVXukitwJ3kvOlecXYOMnng>
+- 在公司：<https://trip.larkenterprise.com/wiki/S8X8wpgTCio65Yk3C76ceTYMnBc>
+
+更新飞书父目录或创建章节子文档前，Agent 必须先询问用户当前是在家还是在公司。
 
 章节子文档只在该章代码、测试、个人观点、提交和标签全部完成后创建。每章一个子文档，父文档维护目录和进度。
 
@@ -130,4 +141,3 @@ python -m mini_claude_code
 - 依赖不一致：激活 `LearnClaudeCode` 后按 `requirements.lock` 重新执行两条 `uv pip install`。
 - 模型调用失败：只检查 `.env` 的三个变量是否存在，不要在聊天或日志中输出密钥。
 - Git 出现意外改动：先运行 `git status` 和 `git diff`，不要使用破坏性 reset。
-

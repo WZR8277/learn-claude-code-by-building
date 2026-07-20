@@ -7,7 +7,7 @@
 
 ### Core Loop and Guarded Dispatch
 
-- [ ] **LOOP-01**: 学习者可以运行 s01 Agent Loop，并通过可注入模型客户端观察完整的模型调用、工具请求、工具结果回传和最终响应终止流程
+- [x] **LOOP-01**: 学习者可以运行 s01 Agent Loop，并通过可注入模型客户端观察完整的模型调用、工具请求、工具结果回传和最终响应终止流程
 - [ ] **TOOL-01**: 学习者可以在 s02 通过统一工具注册表调用工作区受限的读、写、编辑、搜索与命令工具，并观察未知工具和执行失败如何返回模型
 - [ ] **SAFE-01**: 学习者可以在 s03 区分 deny、ask、allow 三种权限结果，并验证拒绝和未批准调用不会执行实际工具
 - [ ] **HOOK-01**: 学习者可以在 s04 通过有序生命周期 Hooks 扩展提示提交、工具调用前后和停止阶段，同时保持原有循环与权限语义
@@ -86,7 +86,7 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| LOOP-01 | Phase 1 | Pending |
+| LOOP-01 | Phase 1 | Complete |
 | TOOL-01 | Phase 2 | Pending |
 | SAFE-01 | Phase 3 | Pending |
 | HOOK-01 | Phase 4 | Pending |

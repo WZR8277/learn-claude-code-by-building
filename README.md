@@ -16,7 +16,7 @@
 
 ## 当前状态
 
-`s00`：仓库和学习协议初始化，尚未实现 Agent Loop。
+`s01`：Agent Loop 已实现，支持模型工具请求、bash 工具执行、tool_result 回传和无工具调用终止。
 
 ## 本地准备
 
@@ -48,3 +48,4 @@ pytest -q
 ## 换电脑继续学习
 
 在另一台电脑恢复仓库、Conda 环境、模型配置和 GSD 上下文，请按 [`docs/NEW_COMPUTER_HANDOFF.md`](docs/NEW_COMPUTER_HANDOFF.md) 操作。
+日常在两台电脑之间切换前，请先按 [`docs/CROSS_COMPUTER_SYNC.md`](docs/CROSS_COMPUTER_SYNC.md) 同步远程 tag。

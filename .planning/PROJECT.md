@@ -42,9 +42,9 @@
 ## Context
 
 - 上游学习主线：`https://github.com/shareAI-lab/learn-claude-code` 根目录新版教程 `s01_agent_loop` 至 `s20_comprehensive`。
-- 本地仓库：`/Users/zhaorongwang/agentprojects/learn-claude-code-by-building`。
-- 飞书父文档：`https://trip.larkenterprise.com/wiki/S8X8wpgTCio65Yk3C76ceTYMnBc`，标题为“Agent基础-Learn Claude Code”；父文档承担总目录和学习进度，每章完成后创建一个子文档。
-- 当前处于 `s00`：包结构、CLI 边界、smoke tests、章节记录模板和学习协议已经建立，Agent Loop 尚未实现。
+- 本地仓库路径因电脑不同而不同；当前电脑路径为 `/Users/loganlee/Desktop/Pyprojs/learn-claude-code-by-building`。不要把某台电脑的绝对路径当作跨电脑事实。
+- 飞书父文档按电脑环境选择：在家使用 `https://jcneiirfaiic.feishu.cn/wiki/UDZJwVXukitwJ3kvOlecXYOMnng`；在公司使用 `https://trip.larkenterprise.com/wiki/S8X8wpgTCio65Yk3C76ceTYMnBc`。更新飞书前必须先询问用户当前是在家还是在公司。
+- 当前处于 `s01` 收尾：Agent Loop 已实现，正在完成章节证据、提交、标签和飞书归档。
 - 代码库使用一个稳定的 CLI 边界；模块执行、安装后的控制台命令和测试都汇聚到 `mini_claude_code.cli:main`。
 - 学习闭环为：本章导读 → 结合上游阅读与讨论 → 增量实现 → 测试/演示 → 个人观点 → 单章提交与标签 → 飞书子文档。
 - 助手在每个新章节开始前负责梳理目标、调用链、关键抽象、相对上一章的变化、阅读路径和常见误区；学习者结合代码阅读并输出个人观点。
@@ -74,6 +74,7 @@
 | 父文档维护目录，章节作为子文档 | 长期学习材料保持结构清晰且便于导航 | — Pending |
 | 使用 GSD 管理长期上下文 | 学习周期较长，需要跨会话保存目标、阶段、决策和进度 | — Pending |
 | Agent 项目禁用全部 `trn-` 技能 | 这是用户明确设定的全局边界，且已写入全局与项目指令 | — Pending |
+| 飞书父文档按家/公司环境切换 | 两台电脑对应不同飞书空间，写死单一父文档会导致归档到错误目录 | 在更新飞书前先询问当前位置 |
 
 ## Evolution
 
