@@ -44,3 +44,7 @@ pytest -q
 ```text
 本章导读 → 阅读与讨论 → 实现 → 测试/演示 → 个人观点 → 单章提交 → 飞书子文档
 ```
+
+## 换电脑继续学习
+
+在另一台电脑恢复仓库、Conda 环境、模型配置和 GSD 上下文，请按 [`docs/NEW_COMPUTER_HANDOFF.md`](docs/NEW_COMPUTER_HANDOFF.md) 操作。
