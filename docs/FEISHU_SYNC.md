@@ -31,6 +31,6 @@ visually clean, concise, and easy to revisit:
 
 The corrected home s01 page is
 `https://jcneiirfaiic.feishu.cn/wiki/WkW6wgMnbifIiTkFuUGcEhYhnWf`. The obsolete
-raw Markdown child is
-`https://jcneiirfaiic.feishu.cn/wiki/K9M4wXtUEiEpb6kv0nzc2d3znrd`; delete or
-move it only after explicit confirmation.
+raw Markdown child
+`https://jcneiirfaiic.feishu.cn/wiki/K9M4wXtUEiEpb6kv0nzc2d3znrd` is no longer
+listed under the home parent and currently resolves as not found.

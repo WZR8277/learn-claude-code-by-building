@@ -65,7 +65,7 @@ Recent decisions affecting current work:
 ### Pending Todos
 
 - [Phase 2]: Start s02 Tool Use guide/discussion after syncing remote tags.
-- [Docs]: Optionally delete or move the obsolete home s01 Markdown child after explicit user confirmation: `https://jcneiirfaiic.feishu.cn/wiki/K9M4wXtUEiEpb6kv0nzc2d3znrd`.
+- [Docs]: Review the corrected home s01 Feishu docx page visually in browser if needed: `https://jcneiirfaiic.feishu.cn/wiki/WkW6wgMnbifIiTkFuUGcEhYhnWf`.
 
 ### Blockers/Concerns
 
@@ -73,6 +73,7 @@ Recent decisions affecting current work:
 - [Phase 2]: Keep s02 scope to tool registry and guarded dispatch; do not prebuild permissions or hooks.
 - [Documentation]: Feishu write path works on the home parent, but still ask home/company before every future archive.
 - [Documentation]: Future Feishu updates should use real Feishu `docx` pages, composed as concise review pages before upload; avoid raw Markdown file uploads, raw terminal dumps, and duplicated local notes.
+- [Documentation]: The incorrect home s01 Markdown wiki child `K9M4wXtUEiEpb6kv0nzc2d3znrd` is no longer listed under the home parent and now resolves as not found; use the corrected docx child instead.
 
 ## Deferred Items
 

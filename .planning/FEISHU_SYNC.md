@@ -30,7 +30,7 @@ s01 page is:
 
 - `https://jcneiirfaiic.feishu.cn/wiki/WkW6wgMnbifIiTkFuUGcEhYhnWf`
 
-The obsolete raw Markdown child remains only to avoid destructive cleanup
-without explicit confirmation:
+The obsolete raw Markdown child is no longer listed under the home parent and
+currently resolves as not found:
 
 - `https://jcneiirfaiic.feishu.cn/wiki/K9M4wXtUEiEpb6kv0nzc2d3znrd`

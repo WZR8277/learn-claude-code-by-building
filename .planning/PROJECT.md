@@ -47,7 +47,7 @@
 - 上游学习主线：`https://github.com/shareAI-lab/learn-claude-code` 根目录新版教程 `s01_agent_loop` 至 `s20_comprehensive`。
 - 本地仓库路径因电脑不同而不同；当前电脑路径为 `/Users/loganlee/Desktop/Pyprojs/learn-claude-code-by-building`。不要把某台电脑的绝对路径当作跨电脑事实。
 - 飞书父文档按电脑环境选择：在家使用 `https://jcneiirfaiic.feishu.cn/wiki/UDZJwVXukitwJ3kvOlecXYOMnng`；在公司使用 `https://trip.larkenterprise.com/wiki/S8X8wpgTCio65Yk3C76ceTYMnBc`。更新飞书前必须先询问用户当前是在家还是在公司。
-- 当前处于 `s02` 准备：s01 Agent Loop 已完成、提交、打标签、推送，并在家飞书父文档下创建了清晰简洁的 docx 子文档。旧的 Markdown 子节点仍保留，只有用户明确确认后才删除或移动。
+- 当前处于 `s02` 准备：s01 Agent Loop 已完成、提交、打标签、推送，并在家飞书父文档下创建了清晰简洁的 docx 子文档。旧的 Markdown 子节点已不在父目录中，旧链接当前解析为 not found。
 - 代码库使用一个稳定的 CLI 边界；模块执行、安装后的控制台命令和测试都汇聚到 `mini_claude_code.cli:main`。
 - 学习闭环为：本章导读 → 结合上游阅读与讨论 → 增量实现 → 测试/演示 → 个人观点 → 单章提交与标签 → 飞书子文档。
 - 助手在每个新章节开始前负责梳理目标、调用链、关键抽象、相对上一章的变化、阅读路径和常见误区；学习者结合代码阅读并输出个人观点。
