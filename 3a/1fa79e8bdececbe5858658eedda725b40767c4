@@ -1,0 +1,21 @@
+README.md
+  s_4624dbc9a78f6f::t_d8ef9bbf23c7da 47-50
+docs/NEW_COMPUTER_HANDOFF.md
+  s_4624dbc9a78f6f::t_d8ef9bbf23c7da 1-133
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.34-trip",
+  "base_commit_sha": "3a1fa79e8bdececbe5858658eedda725b40767c4",
+  "prompts": {},
+  "sessions": {
+    "s_4624dbc9a78f6f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f7a57-7ff4-7e52-9bdb-e34f3160f85d",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "zhaorongwang <zhaorongwang@trip.com>"
+    }
+  }
+}
