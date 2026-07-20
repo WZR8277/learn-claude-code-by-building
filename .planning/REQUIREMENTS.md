@@ -51,6 +51,7 @@
 - [ ] **DOCS-01**: 每章在代码、测试、演示、观点、提交和标签全部完成后，才在指定飞书父文档下创建对应子文档
 - [ ] **DOCS-02**: 每个飞书子文档包含章节导读、机制说明、关键代码路径、测试与演示证据、润色后的个人观点以及不可变的提交和标签信息
 - [ ] **DOCS-03**: 飞书父文档持续维护 s01–s20 目录、学习状态和全部已完成子文档入口
+- [ ] **FLOW-01**: 从 s02 开始，Codex 根据上游行为差量实现章节代码，学习者通过 PyCharm diff 审查、提问和确认，代码应保持方法清晰、结构拆分合理、中文注释准确
 
 ## v2 Requirements
 
@@ -115,13 +116,14 @@
 | DOCS-01 | Phase 20 | Pending |
 | DOCS-02 | Phase 20 | Pending |
 | DOCS-03 | Phase 20 | Pending |
+| FLOW-01 | All phases from s02 | Active |
 
 **Coverage:**
-- v1 requirements: 29 total
-- Mapped to phases: 29
+- v1 requirements: 30 total
+- Mapped to phases: 30
 - Unmapped: 0 ✓
 - Duplicate mappings: 0 ✓
 
 ---
 *Requirements defined: 2026-07-19*
-*Last updated: 2026-07-19 after roadmap traceability mapping*
+*Last updated: 2026-07-21 after s01 completion and s02 workflow update*

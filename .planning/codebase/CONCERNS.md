@@ -29,7 +29,7 @@
 - Fix approach: Add a minimal CI job that installs the locked development environment and runs tests; add linting, formatting, and type checking only when their configuration is committed and documented.
 
 **Chapter protocol is not mechanically verified:**
-- Issue: Chapter records, one-commit-per-chapter history, matching `sXX-*` tags, evidence completion, and Feishu synchronization are requirements expressed only in prose. The current repository has one initialization commit and no tags.
+- Issue: Chapter records, one-commit-per-chapter history, matching `sXX-*` tags, evidence completion, and Feishu synchronization are requirements expressed mostly in prose. s01 now has a commit/tag/Feishu record, but later chapters still depend on disciplined checks.
 - Files: `AGENTS.md`, `README.md`, `learning/README.md`, `learning/chapter-template.md`
 - Impact: The learning history can silently diverge from the defining workflow, reducing the value of the repository as a chapter-by-chapter reconstruction.
 - Fix approach: Add a read-only validation script and CI check for directory naming, required record files, completed checklist fields, tag naming, and commit/tag correspondence. Treat external Feishu state as an explicitly recorded evidence item rather than assuming it can be inferred from Git.
@@ -143,7 +143,7 @@
 ## Missing Critical Features
 
 **Core agent loop:**
-- Problem: The repository explicitly remains at `s00`; `main()` only prints that the Agent Loop comes in `s01`.
+- Problem: Historical note: before s01, the repository explicitly remained at `s00`; `main()` only printed that the Agent Loop comes in `s01`. s01 has since replaced this with the first Agent Loop implementation.
 - Blocks: Model interaction, turn state, stopping conditions, tool calling, error recovery, and every end-to-end coding-agent workflow.
 - Files: `README.md`, `src/mini_claude_code/cli.py`
 

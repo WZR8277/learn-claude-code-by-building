@@ -72,7 +72,7 @@ pytest -q
 python -m mini_claude_code
 ```
 
-基线预期：依赖检查无冲突、测试通过、CLI 输出 `s00` 已就绪。
+基线预期：依赖检查无冲突、测试通过、CLI 可启动并显示当前章节状态。
 
 ## 5. 恢复项目上下文
 
@@ -87,20 +87,20 @@ python -m mini_claude_code
 
 可以直接发送以下开场提示：
 
-> 请先读取 AGENTS.md 和 .planning 中的 PROJECT.md、STATE.md、ROADMAP.md、REQUIREMENTS.md、research/SUMMARY.md，恢复 Learn Claude Code by Building 项目上下文。严格遵守：这是 Agent 学习项目，不允许调用任何名称以 trn- 开头的 skill。先汇报当前阶段、学习协议、环境状态和下一步，不要直接写章节代码。
+> 请先执行跨电脑同步检查，读取 AGENTS.md 和 .planning 中的 PROJECT.md、STATE.md、ROADMAP.md、REQUIREMENTS.md、CROSS_COMPUTER_SYNC.md、FEISHU_SYNC.md、CODING_WORKFLOW.md、research/SUMMARY.md，恢复 Learn Claude Code by Building 项目上下文。严格遵守：这是 Agent 学习项目，不允许调用任何名称以 trn- 开头的 skill。先汇报远程最新 `sXX-*` tag、当前阶段、学习协议、环境状态和下一步。
 
 如果全局尚未安装 GSD，可先安装并重启 Codex；项目级规划文件本身不依赖旧电脑的聊天记录。
 
-## 6. 开始 s01
+## 6. 继续下一章
 
 上下文恢复并完成环境验证后，发送：
 
-> 开始 s01。先帮我梳理 Agent Loop 的目标、核心控制流、代码阅读顺序、关键问题和本章完成标准；我看完代码并输出个人观点后，再进入实现、测试、单章提交和飞书子文档流程。
+> 根据远程 tags 判断下一章。先帮我梳理本章目标、核心控制流、代码阅读顺序、关键问题和完成标准；讨论清楚后，按 `.planning/CODING_WORKFLOW.md` 进入实现、测试、演示、个人观点、单章提交和飞书子文档流程。
 
 每章固定遵循：
 
 ```text
-本章导读 → 阅读与讨论 → 实现 → 测试/演示 → 个人观点 → 单章提交/标签 → 飞书子文档
+同步 tags → 本章导读 → 阅读与讨论 → Codex 实现差量 → PyCharm diff 审查/讨论 → 测试/演示 → 个人观点 → 单章提交/标签 → 飞书子文档
 ```
 
 ## 7. 云端与本地内容边界
@@ -121,7 +121,7 @@ python -m mini_claude_code
 - Conda 环境本体
 - Git stash、未提交改动和 IDE 本地状态
 
-旧电脑曾保存一个名为 `pre-s01 cli exploration` 的 Git stash。它只是未归属章节的试验性导入，不是 s01 的正式成果，也不会通过 push 传到新电脑；新电脑可以直接从干净的 `main` 开始。
+s01 已完成并打上 `s01-agent-loop` tag。新电脑应从远程 tag 判断下一章，当前应继续 s02，除非远程已经出现更后的 `sXX-*` tag。
 
 ## 8. 飞书学习文档
 

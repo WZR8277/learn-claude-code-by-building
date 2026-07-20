@@ -64,7 +64,7 @@ These values are loaded from `.env`, which is gitignored. No key is recorded in 
 
 ## Commit And Tag
 
-- Commit: final s01 commit in this repository.
+- Commit: `b8a21aa` (`s01: implement agent loop`).
 - Tag: `s01-agent-loop`.
 
 ## Feishu
@@ -72,5 +72,5 @@ These values are loaded from `.env`, which is gitignored. No key is recorded in 
 - Parent wiki depends on environment:
   - Home: `https://jcneiirfaiic.feishu.cn/wiki/UDZJwVXukitwJ3kvOlecXYOMnng`
   - Company: `https://trip.larkenterprise.com/wiki/S8X8wpgTCio65Yk3C76ceTYMnBc`
-- Child document: pending until commit and tag exist.
+- Home child document: `https://jcneiirfaiic.feishu.cn/file/MNAIblpyEolpC6x0oohcmlHjnHb`.
 - Before updating Feishu, ask whether the user is at home or company.

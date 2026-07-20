@@ -22,8 +22,8 @@ See: .planning/PROJECT.md (updated 2026-07-19)
 
 Phase: 2 of 20 (s02 Tool Use)
 Plan: 0 of TBD in current phase
-Status: s01 learned; ready to archive evidence and then plan s02
-Last activity: 2026-07-21 — Completed s01 Agent Loop implementation, offline loop tests, runtime demo, and learner reflection
+Status: s01 archived; ready to plan s02
+Last activity: 2026-07-21 — Completed s01 commit/tag/push and home Feishu archive; updated GSD workflow for s02+
 
 Progress: [█░░░░░░░░░] 5%
 
@@ -42,7 +42,7 @@ Progress: [█░░░░░░░░░] 5%
 
 **Recent Trend:**
 - Last 5 plans: s01 Agent Loop
-- Trend: Started and completing evidence archive
+- Trend: s01 complete; s02 ready
 
 *Updated after each plan completion*
 
@@ -58,16 +58,18 @@ Recent decisions affecting current work:
 - [All phases]: Do not invoke or rely on any skill whose name starts with `trn-`.
 - [All phases]: Use remote Git tags as the cross-computer source of truth before starting or closing a chapter.
 - [Docs]: Ask whether the user is at home or company before updating Feishu, because each environment has a different parent wiki document.
+- [Workflow]: Starting with s02, Codex implements the chapter delta after discussion; the learner reviews the PyCharm diff and asks questions before final archive.
+- [Code style]: Keep methods clear, module splits reasonable, and Chinese comments focused on important Agent harness concepts.
 
 ### Pending Todos
 
-- [Docs]: Create s01 Feishu child document under the correct parent after confirming home/company environment.
+- [Phase 2]: Start s02 Tool Use guide/discussion after syncing remote tags.
 
 ### Blockers/Concerns
 
-- [Phase 2]: Plan s02 only after s01 commit, tag, and Feishu child document are complete.
 - [Phase 2]: Revalidate provider tool-result protocol before expanding tool registry behavior.
-- [Documentation]: Verify Feishu permissions, redaction, and idempotent parent/child update behavior before publishing the first chapter document.
+- [Phase 2]: Keep s02 scope to tool registry and guarded dispatch; do not prebuild permissions or hooks.
+- [Documentation]: Feishu write path works on the home parent, but still ask home/company before every future archive.
 
 ## Deferred Items
 
@@ -80,7 +82,7 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-07-21
-Stopped at: s01 implementation and learner reflection complete; preparing commit, tag, and Feishu archive
+Stopped at: s01 fully archived; s02 is the next chapter
 Resume file: None
 
 ### Cross-Computer Sync
@@ -90,3 +92,10 @@ any chapter, run `git fetch --all --tags` and inspect `git tag --list 's*'
 --sort=v:refname`. The latest remote `sXX-*` tag is the source of truth for the
 newest completed chapter. Do not rely on local Codex chat memory. See
 `.planning/CROSS_COMPUTER_SYNC.md`.
+
+### Coding Workflow From s02
+
+Starting with s02, Codex should implement the chapter delta after the learning
+discussion, using upstream only as behavioral reference. The learner reviews the
+PyCharm diff and asks questions before final commit/tag/archive. See
+`.planning/CODING_WORKFLOW.md`.
