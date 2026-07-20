@@ -29,6 +29,7 @@
 - [ ] 每章形成一个边界清晰的学习提交和一个匹配的 `sXX-short-name` Git tag
 - [ ] 每章完成后，将导读、原理、代码、测试、个人观点和提交证据写入飞书子文档
 - [ ] 在飞书父文档维护章节目录、状态和子文档入口
+- [ ] 每个飞书子文档必须美观、清晰、简洁、适合复习，不得直接上传本地 Markdown 拼接稿作为最终版本
 - [ ] 完成 `s20` 后，仓库能够运行一个整合教程核心机制的 Python 编码 Agent
 - [ ] 学习者能够用自己的语言解释 Agent Loop、工具调用、上下文、任务管理及综合机制之间的关系
 
@@ -46,7 +47,7 @@
 - 上游学习主线：`https://github.com/shareAI-lab/learn-claude-code` 根目录新版教程 `s01_agent_loop` 至 `s20_comprehensive`。
 - 本地仓库路径因电脑不同而不同；当前电脑路径为 `/Users/loganlee/Desktop/Pyprojs/learn-claude-code-by-building`。不要把某台电脑的绝对路径当作跨电脑事实。
 - 飞书父文档按电脑环境选择：在家使用 `https://jcneiirfaiic.feishu.cn/wiki/UDZJwVXukitwJ3kvOlecXYOMnng`；在公司使用 `https://trip.larkenterprise.com/wiki/S8X8wpgTCio65Yk3C76ceTYMnBc`。更新飞书前必须先询问用户当前是在家还是在公司。
-- 当前处于 `s02` 准备：s01 Agent Loop 已完成、提交、打标签、推送，并在家飞书父文档下创建子文档。
+- 当前处于 `s02` 准备：s01 Agent Loop 已完成、提交、打标签、推送，并在家飞书父文档下创建子文档；但 s01 飞书子文档是初版拼接稿，后续应美化为清晰简洁的复习文档。
 - 代码库使用一个稳定的 CLI 边界；模块执行、安装后的控制台命令和测试都汇聚到 `mini_claude_code.cli:main`。
 - 学习闭环为：本章导读 → 结合上游阅读与讨论 → 增量实现 → 测试/演示 → 个人观点 → 单章提交与标签 → 飞书子文档。
 - 助手在每个新章节开始前负责梳理目标、调用链、关键抽象、相对上一章的变化、阅读路径和常见误区；学习者结合代码阅读并输出个人观点。
@@ -63,6 +64,7 @@
 - **Verification**: 每章必须通过自动化测试并留下可复现运行证据 — “看懂”必须有行为证据支持
 - **Git history**: 每章恰好一个聚焦的学习提交和一个匹配标签 — 让提交历史成为可浏览的学习时间线
 - **Documentation timing**: 只有在观点、验证和提交齐备后才创建该章飞书子文档 — 防止文档与实际成果脱节
+- **Feishu quality**: 飞书子文档必须是面向复习的精炼成稿，不能只是 `guide.md`、`reflection.md`、`evidence.md` 的原样拼接
 - **Secrets**: `.env`、API key、token 等敏感信息不得进入 Git 或飞书章节文档 — 保证凭据安全
 - **Skill policy**: 本项目及所有子代理不得调用或依赖任何名称以 `trn-` 开头的技能 — 遵守全局和项目级 Agent 项目限制
 - **Clean handoff**: 每章开始和结束都检查 `git status --short --branch`，确认没有未解释的用户改动或跨电脑同步遗漏
@@ -80,6 +82,7 @@
 | Agent 项目禁用全部 `trn-` 技能 | 这是用户明确设定的全局边界，且已写入全局与项目指令 | — Pending |
 | 飞书父文档按家/公司环境切换 | 两台电脑对应不同飞书空间，写死单一父文档会导致归档到错误目录 | 在更新飞书前先询问当前位置 |
 | s02 起 Codex 实现章节差量，学习者审查 PyCharm diff | 用户只在 s01 手写代码；后续更重视理解、diff 审查和讨论 | Active; see `.planning/CODING_WORKFLOW.md` |
+| 飞书子文档必须美观清晰简洁 | 用户明确指出 s01 原始上传不符合复习质量要求 | Active; see `.planning/FEISHU_SYNC.md` |
 
 ## Evolution
 

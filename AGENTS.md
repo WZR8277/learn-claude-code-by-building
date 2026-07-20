@@ -20,6 +20,7 @@ This repository is a chapter-by-chapter reconstruction of the core harness mecha
 - From `s02` onward, Codex implements the chapter delta after discussion; the learner reviews the PyCharm diff, asks questions, and confirms before final commit/tag/archive.
 - Code written by Codex should keep methods clear, module/file splits reasonable, and Chinese comments focused on important Agent harness concepts.
 - Before updating Feishu, ask whether the user is at home or company, then choose the matching parent wiki from `.planning/FEISHU_SYNC.md`.
+- Feishu chapter documents must be polished for review: visually clean, concise, well-structured, and easy to revisit. Do not upload a raw concatenation of local Markdown notes as the final chapter document.
 
 ## Skill restrictions
 
@@ -35,4 +36,4 @@ This repository is a chapter-by-chapter reconstruction of the core harness mecha
 4. A safe, reproducible runtime demonstration is recorded.
 5. The learner's personal reflection is captured.
 6. The chapter has one focused commit and one matching tag.
-7. The Feishu chapter document records the explanation, reflection, tests, and commit evidence.
+7. The Feishu chapter document records the explanation, reflection, tests, and commit evidence in a clean, concise, visually readable format.

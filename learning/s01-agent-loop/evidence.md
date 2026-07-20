@@ -73,4 +73,5 @@ These values are loaded from `.env`, which is gitignored. No key is recorded in 
   - Home: `https://jcneiirfaiic.feishu.cn/wiki/UDZJwVXukitwJ3kvOlecXYOMnng`
   - Company: `https://trip.larkenterprise.com/wiki/S8X8wpgTCio65Yk3C76ceTYMnBc`
 - Home child document: `https://jcneiirfaiic.feishu.cn/file/MNAIblpyEolpC6x0oohcmlHjnHb`.
+- Quality note: this first upload is a raw Markdown-style draft and should be beautified later into a concise review document.
 - Before updating Feishu, ask whether the user is at home or company.

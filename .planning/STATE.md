@@ -58,18 +58,21 @@ Recent decisions affecting current work:
 - [All phases]: Do not invoke or rely on any skill whose name starts with `trn-`.
 - [All phases]: Use remote Git tags as the cross-computer source of truth before starting or closing a chapter.
 - [Docs]: Ask whether the user is at home or company before updating Feishu, because each environment has a different parent wiki document.
+- [Docs]: Feishu child documents must be polished, clear, concise review artifacts; do not upload raw concatenated Markdown notes as the final version.
 - [Workflow]: Starting with s02, Codex implements the chapter delta after discussion; the learner reviews the PyCharm diff and asks questions before final archive.
 - [Code style]: Keep methods clear, module splits reasonable, and Chinese comments focused on important Agent harness concepts.
 
 ### Pending Todos
 
 - [Phase 2]: Start s02 Tool Use guide/discussion after syncing remote tags.
+- [Docs]: Beautify the existing s01 Feishu child document later; current upload is below the target style standard.
 
 ### Blockers/Concerns
 
 - [Phase 2]: Revalidate provider tool-result protocol before expanding tool registry behavior.
 - [Phase 2]: Keep s02 scope to tool registry and guarded dispatch; do not prebuild permissions or hooks.
 - [Documentation]: Feishu write path works on the home parent, but still ask home/company before every future archive.
+- [Documentation]: Future Feishu updates should be composed as concise review pages before upload; avoid raw terminal dumps and duplicated local notes.
 
 ## Deferred Items
 

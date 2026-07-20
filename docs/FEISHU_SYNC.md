@@ -17,3 +17,17 @@ Use the answer to choose the parent wiki:
 Never assume the parent from local Codex memory. The chapter content should be
 created only after code, tests, runtime evidence, learner reflection, commit,
 and tag are complete.
+
+## Document Quality
+
+The Feishu child document must be a polished review artifact, not a raw
+concatenation of local Markdown files. Keep it visually clean, concise, and easy
+to revisit:
+
+- title, status, commit, tag, and one short takeaway near the top
+- clear sections for mechanism, code paths, tests/demo, reflection, and evidence
+- short bullets or tables for scanability
+- no secrets, raw keys, or noisy terminal dumps
+
+The first s01 upload is known to be below this target quality and should be
+beautified later.
