@@ -1,4 +1,5 @@
 import os
+from copy import deepcopy
 
 from anthropic import Anthropic
 
@@ -12,6 +13,7 @@ from .compact import (
     tool_result_budget,
 )
 from .hooks import HOOKS, large_output_hook, log_hook, register_hook, summary_hook, trigger_hooks
+from .memory import consolidate_memories, extract_memories, load_memories, read_memory_index
 from .permission import permission_hook
 from .skills import build_system
 from .tool import TOOLS, TOOL_HANDLERS
@@ -38,8 +40,13 @@ def agent_loop(messages: list, client=None) -> None:
     stop_continuations = 0
     rounds_since_todo = 0
     reactive_retries = 0
+    # S09：索引进 system，完整记忆只按需注入当前 user turn，避免每轮常驻大段历史。
+    memory_index = read_memory_index()
+    memories_content = load_memories(messages, client=client, model=model)
+    system = build_system(os.getcwd(), memory_index=memory_index)
 
     while True:
+        pre_compress = deepcopy(messages)
         # s05 的 TODO 提醒只影响当前会话上下文，不会持久化为任务系统。
         if rounds_since_todo >= TODO_REMINDER_AFTER and messages:
             messages.append({"role": "user", "content": "<reminder>Update your todos.</reminder>"})
@@ -54,8 +61,11 @@ def agent_loop(messages: list, client=None) -> None:
             messages[:] = compact_history(messages, client=client, model=model)
 
         try:
+            request_messages = messages
+            if memories_content:
+                request_messages = _inject_memories(messages, memories_content)
             response = client.messages.create(
-                model=model, system=build_system(os.getcwd()), messages=messages,
+                model=model, system=system, messages=request_messages,
                 tools=TOOLS, max_tokens=8192
             )
         except Exception as exc:
@@ -82,6 +92,9 @@ def agent_loop(messages: list, client=None) -> None:
                 stop_continuations += 1
                 messages.append({"role": "user", "content": stop_result})
                 continue
+            # S09：最终停止后再提取，且用压缩前快照，尽量避免从摘要里二次学习失真内容。
+            extract_memories(pre_compress, client=client, model=model)
+            consolidate_memories(client=client, model=model)
             return
 
         rounds_since_todo += 1
@@ -132,3 +145,16 @@ def agent_loop(messages: list, client=None) -> None:
 
         if result:
             messages.append({"role": "user", "content": result})
+
+
+def _inject_memories(messages: list, memories_content: str) -> list:
+    request_messages = list(messages)
+    for index in range(len(request_messages) - 1, -1, -1):
+        message = request_messages[index]
+        if message.get("role") == "user" and isinstance(message.get("content"), str):
+            request_messages[index] = {
+                **message,
+                "content": memories_content + "\n\n" + message["content"],
+            }
+            break
+    return request_messages

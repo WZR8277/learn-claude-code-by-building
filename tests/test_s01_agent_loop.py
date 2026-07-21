@@ -38,8 +38,10 @@ class AgentLoopTest(unittest.TestCase):
         messages = [{"role": "user", "content": "where am I?"}]
 
         with patch.dict(TOOL_HANDLERS, {"bash": lambda command: f"ran {command}"}):
-            with patch.dict(os.environ, {"MODEL_ID": "test-model"}):
-                agent_loop(messages, client=client)
+            with patch("mini_claude_code.loop.extract_memories", return_value=0):
+                with patch("mini_claude_code.loop.consolidate_memories", return_value=0):
+                    with patch.dict(os.environ, {"MODEL_ID": "test-model"}):
+                        agent_loop(messages, client=client)
 
         self.assertEqual(len(client.messages.calls), 2)
         self.assertEqual(messages[1]["role"], "assistant")
@@ -60,8 +62,10 @@ class AgentLoopTest(unittest.TestCase):
         ])
         messages = [{"role": "user", "content": "hello"}]
 
-        with patch.dict(os.environ, {"MODEL_ID": "test-model"}):
-            agent_loop(messages, client=client)
+        with patch("mini_claude_code.loop.extract_memories", return_value=0):
+            with patch("mini_claude_code.loop.consolidate_memories", return_value=0):
+                with patch.dict(os.environ, {"MODEL_ID": "test-model"}):
+                    agent_loop(messages, client=client)
 
         self.assertEqual(len(client.messages.calls), 1)
         self.assertEqual(messages[-1], {"role": "assistant", "content": [final_block]})

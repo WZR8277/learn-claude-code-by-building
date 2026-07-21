@@ -4,9 +4,9 @@ milestone: v1.0
 milestone_name: milestone
 current_phase: 9
 current_phase_name: s09 Memory
-status: planning
-stopped_at: s08 Context Compact archived; ready to start s09 Memory
-last_updated: "2026-07-21T17:02:16Z"
+status: closing
+stopped_at: s09 Memory learned; running final local closeout before Feishu archive
+last_updated: "2026-07-21T17:36:11Z"
 last_activity: 2026-07-22
 last_activity_desc: Completed s08 Context Compact with tests, commit/tag/push, and home Feishu archive
 progress:
@@ -25,9 +25,9 @@ See: .planning/PROJECT.md (updated 2026-07-21)
 ## Current Position
 
 Phase: 9 of 20 (s09 Memory)
-Plan: 0 of TBD in current phase
-Status: s08 Context Compact archived; s09 Memory is next
-Last activity: 2026-07-22 — Completed s08 Context Compact with `48 passed in 1.05s`, commit `d23540b`, tag `s08-context-compact`, and home Feishu child `https://jcneiirfaiic.feishu.cn/wiki/RhG7wRQlqi4wg8k1D1kcicnvn99`
+Plan: 1 of 1 in current phase
+Status: s09 Memory learned; final test passed; preparing commit/tag and Feishu archive
+Last activity: 2026-07-22 — Learner completed s09 reflection and final local tests passed with `57 passed in 0.97s`
 
 Progress: [████░░░░░░] 40%
 
@@ -55,7 +55,7 @@ Progress: [████░░░░░░] 40%
 **Recent Trend:**
 
 - Last 5 completed plans: s04 Hooks, s05 TodoWrite, s06 Subagent, s07 Skill Loading, s08 Context Compact
-- Trend: s01-s08 complete; s09 next
+- Trend: s09 learned; closing chapter evidence
 
 *Updated after each plan completion*
 
@@ -80,7 +80,7 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- [Phase 9]: Start s09 only after confirming remote tags include `s08-context-compact` and comparing local upstream `s09_memory` against `s08_context_compact`.
+- [Phase 9]: Finish final test, one focused commit/tag, push, then archive polished Feishu child after confirming home/company.
 - [Docs]: s08 Context Compact home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/RhG7wRQlqi4wg8k1D1kcicnvn99`.
 - [Docs]: s07 Skill Loading home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/GGe6wFFePiJEkXk48pGcIHbGnrf`.
 - [Docs]: s06 Subagent home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/KHJUwCe0NiTKmEkLi5IcFUaQnSc`.
@@ -90,6 +90,7 @@ Recent decisions affecting current work:
 ### Blockers/Concerns
 
 - [Phase 9]: Keep s09 limited to memory; do not promote later system prompt, recovery, or task-system mechanisms.
+- [Phase 9]: `MEMORY.md` is a lightweight index in system prompt; selected full memory files are injected only into the current request.
 - [Documentation]: When updating parent directory tables with lark-cli, do not assume `str_replace` is first-match only; fetch the table block id and use `block_replace` when a repeated placeholder appears many times.
 - [Documentation]: Feishu write path works on the home parent, but still ask home/company before every future archive.
 - [Documentation]: Future Feishu updates should use real Feishu `docx` pages, composed as concise review pages before upload; avoid raw Markdown file uploads, raw terminal dumps, and duplicated local notes.
@@ -105,8 +106,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-07-21T17:02:16Z
-Stopped at: s08 Context Compact archived; ready to start s09 Memory
+Last session: 2026-07-21T17:36:11Z
+Stopped at: s09 Memory learned; running final local closeout before Feishu archive
 Resume file: .planning/STATE.md
 
 ### Cross-Computer Sync

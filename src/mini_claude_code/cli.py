@@ -30,7 +30,7 @@ except ImportError:
 
 
 def main() -> None:
-    print("mini-claude-code s07: Skill Loading ready")
+    print("mini-claude-code s09: Memory ready")
     history = []
     while True:
         try:

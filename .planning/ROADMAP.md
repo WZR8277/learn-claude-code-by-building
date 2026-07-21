@@ -139,7 +139,7 @@
   2. 秘密、不可信指令、猜测和任务不会被提升为记忆，重复事实可合并或更正。
   3. 演示可对比会话转录、压缩内容和持久记忆的不同生命周期，累计离线测试通过。
   4. s09 在反思后产出一个 `s09-*` 提交/标签和引用真实记忆证据的飞书子文档。
-**Plans**: TBD
+**Plans**: 1/1 in review — chapter evidence is recorded under `learning/s09-memory/`
 
 ### Phase 10: s10 System Prompt
 **Goal**: 学习者可以由技能、记忆和运行状态确定性组装 System Prompt

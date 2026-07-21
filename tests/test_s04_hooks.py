@@ -76,7 +76,9 @@ class AgentLoopHookTest(HookTestCase):
         client = FakeClient(model_responses)
         messages = [{"role": "user", "content": "run tools"}]
         with patch.dict(os.environ, {"MODEL_ID": "test-model"}):
-            agent_loop(messages, client=client)
+            with patch("mini_claude_code.loop.extract_memories", return_value=0):
+                with patch("mini_claude_code.loop.consolidate_memories", return_value=0):
+                    agent_loop(messages, client=client)
         return client, messages
 
     def test_pre_tool_hook_can_block_without_running_handler(self) -> None:
@@ -126,8 +128,10 @@ class AgentLoopHookTest(HookTestCase):
             SimpleNamespace(stop_reason="end_turn", content=[second_final]),
         ])
         messages = [{"role": "user", "content": "hello"}]
-        with patch.dict(os.environ, {"MODEL_ID": "test-model"}):
-            agent_loop(messages, client=client)
+        with patch("mini_claude_code.loop.extract_memories", return_value=0):
+            with patch("mini_claude_code.loop.consolidate_memories", return_value=0):
+                with patch.dict(os.environ, {"MODEL_ID": "test-model"}):
+                    agent_loop(messages, client=client)
 
         self.assertEqual(len(client.messages.calls), 2)
         self.assertEqual(messages[2], {"role": "user", "content": "please continue"})

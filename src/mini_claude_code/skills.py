@@ -74,12 +74,15 @@ def list_skills() -> str:
     )
 
 
-def build_system(workdir: Path | str | None = None) -> str:
+def build_system(workdir: Path | str | None = None, memory_index: str = "") -> str:
     cwd = workdir or Path.cwd()
+    memories = f"\n\nMemories available:\n{memory_index}" if memory_index else ""
     return (
         f"You are a coding agent at {cwd}. "
         f"Skills available:\n{list_skills()}\n"
         "Use load_skill to get full details when needed."
+        f"{memories}\n"
+        "Relevant memories may be injected into the current user turn."
     )
 
 

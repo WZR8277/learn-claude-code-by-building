@@ -172,7 +172,9 @@ class AgentLoopCompactTest(unittest.TestCase):
 
         with patch.dict(os.environ, {"MODEL_ID": "test-model"}):
             with patch("mini_claude_code.loop.reactive_compact", return_value=[{"role": "user", "content": "[Reactive compact]\n\nsummary"}]):
-                agent_loop(messages, client=client)
+                with patch("mini_claude_code.loop.extract_memories", return_value=0):
+                    with patch("mini_claude_code.loop.consolidate_memories", return_value=0):
+                        agent_loop(messages, client=client)
 
         self.assertEqual(len(client.messages.calls), 2)
         self.assertEqual(client.messages.calls[1]["messages"], [{"role": "user", "content": "[Reactive compact]\n\nsummary"}])
