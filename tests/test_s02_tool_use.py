@@ -27,10 +27,11 @@ class FakeClient:
 
 class ToolUseTest(unittest.TestCase):
     def test_s02_tools_have_matching_handlers(self) -> None:
-        names = ["bash", "read_file", "write_file", "edit_file", "glob", "todo_write", "task", "load_skill"]
+        names = ["bash", "read_file", "write_file", "edit_file", "glob", "todo_write", "task", "load_skill", "compact"]
+        handler_names = ["bash", "read_file", "write_file", "edit_file", "glob", "todo_write", "task", "load_skill"]
 
         self.assertEqual([tool["name"] for tool in TOOLS], names)
-        self.assertEqual(list(TOOL_HANDLERS), names)
+        self.assertEqual(list(TOOL_HANDLERS), handler_names)
 
     def test_file_tools_follow_the_tutorial_behavior(self) -> None:
         with tempfile.TemporaryDirectory() as workspace:

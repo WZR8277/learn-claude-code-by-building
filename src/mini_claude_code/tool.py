@@ -181,6 +181,14 @@ TOOLS = [
             "required": ["name"],
         },
     },
+    {
+        "name": "compact",
+        "description": "Summarize earlier conversation to free context space.",
+        "input_schema": {
+            "type": "object",
+            "properties": {"focus": {"type": "string"}},
+        },
+    },
 ]
 
 

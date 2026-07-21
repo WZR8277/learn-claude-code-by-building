@@ -127,7 +127,7 @@
   2. assistant tool_use 与后续 user tool_result 始终作为不可分单元保留，必要状态与继续锚点不丢失。
   3. 溢出/归档证据可检查，重复压缩和摘要失败有界且由离线测试覆盖。
   4. s08 的反思、一个 `s08-*` 提交/标签和飞书子文档展示压缩前后行为证据。
-**Plans**: TBD
+**Plans**: 1/1 in review — chapter evidence is recorded under `learning/s08-context-compact/`
 
 ### Phase 9: s09 Memory
 **Goal**: 学习者可以安全持久化可信事实并在重启后按相关性恢复

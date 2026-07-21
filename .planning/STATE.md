@@ -4,9 +4,9 @@ milestone: v1.0
 milestone_name: milestone
 current_phase: 8
 current_phase_name: s08 Context Compact
-status: planning
-stopped_at: s07 Skill Loading archived; ready to start s08 Context Compact
-last_updated: "2026-07-22T16:20:00Z"
+status: closing
+stopped_at: s08 Context Compact learned; running final local closeout before Feishu archive
+last_updated: "2026-07-21T16:51:05Z"
 last_activity: 2026-07-22
 last_activity_desc: Completed s07 Skill Loading with tests, commit/tag/push, and home Feishu archive
 progress:
@@ -25,9 +25,9 @@ See: .planning/PROJECT.md (updated 2026-07-21)
 ## Current Position
 
 Phase: 8 of 20 (s08 Context Compact)
-Plan: 0 of TBD in current phase
-Status: s07 Skill Loading archived; s08 Context Compact is next
-Last activity: 2026-07-22 — Completed s07 Skill Loading with `39 passed in 0.96s`, commit `a85c13c`, tag `s07-skill-loading`, and home Feishu child `https://jcneiirfaiic.feishu.cn/wiki/GGe6wFFePiJEkXk48pGcIHbGnrf`
+Plan: 1 of 1 in current phase
+Status: s08 Context Compact learned; final test passed; preparing commit/tag and Feishu archive
+Last activity: 2026-07-22 — Learner completed s08 reflection and final local tests passed with `48 passed in 1.05s`
 
 Progress: [███░░░░░░░] 25%
 
@@ -53,8 +53,8 @@ Progress: [███░░░░░░░] 25%
 
 **Recent Trend:**
 
-- Last 5 plans: s03 Permission, s04 Hooks, s05 TodoWrite, s06 Subagent, s07 Skill Loading
-- Trend: s01-s07 complete; s08 next
+- Last 5 completed plans: s03 Permission, s04 Hooks, s05 TodoWrite, s06 Subagent, s07 Skill Loading
+- Trend: s08 learned; closing chapter evidence
 
 *Updated after each plan completion*
 
@@ -79,7 +79,7 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- [Phase 8]: Start s08 only after confirming remote tags include `s07-skill-loading` and comparing local upstream `s08_context_compact` against `s07_skill_loading`.
+- [Phase 8]: Finish final test, one focused commit/tag, push, then archive polished Feishu child after confirming home/company.
 - [Docs]: s07 Skill Loading home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/GGe6wFFePiJEkXk48pGcIHbGnrf`.
 - [Docs]: s06 Subagent home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/KHJUwCe0NiTKmEkLi5IcFUaQnSc`.
 - [Docs]: s05 TodoWrite home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/Dmf6wxoNXimqWbkRT1mcFVEXnid`.
@@ -88,6 +88,7 @@ Recent decisions affecting current work:
 ### Blockers/Concerns
 
 - [Phase 8]: Keep s08 limited to context compaction; do not promote long-term memory or recovery policy from later chapters.
+- [Phase 8]: `compact` is a loop-level tool, not a normal handler; preserve `assistant tool_use` / `user tool_result` pairs after explicit compaction.
 - [Documentation]: Feishu write path works on the home parent, but still ask home/company before every future archive.
 - [Documentation]: Future Feishu updates should use real Feishu `docx` pages, composed as concise review pages before upload; avoid raw Markdown file uploads, raw terminal dumps, and duplicated local notes.
 - [Documentation]: The incorrect home s01 Markdown wiki child `K9M4wXtUEiEpb6kv0nzc2d3znrd` is no longer listed under the home parent and now resolves as not found; use the corrected docx child instead.
@@ -102,8 +103,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-07-22T16:20:00Z
-Stopped at: s07 Skill Loading archived; s08 Context Compact is next
+Last session: 2026-07-21T16:51:05Z
+Stopped at: s08 Context Compact learned; running final local closeout before Feishu archive
 Resume file: .planning/STATE.md
 
 ### Cross-Computer Sync

@@ -2,6 +2,15 @@ import os
 
 from anthropic import Anthropic
 
+from .compact import (
+    CONTEXT_LIMIT,
+    compact_history,
+    estimate_size,
+    micro_compact,
+    reactive_compact,
+    snip_compact,
+    tool_result_budget,
+)
 from .hooks import HOOKS, large_output_hook, log_hook, register_hook, summary_hook, trigger_hooks
 from .permission import permission_hook
 from .skills import build_system
@@ -9,6 +18,7 @@ from .tool import TOOLS, TOOL_HANDLERS
 
 MAX_STOP_CONTINUATIONS = 1
 TODO_REMINDER_AFTER = 3
+MAX_REACTIVE_RETRIES = 1
 
 
 if permission_hook not in HOOKS["PreToolUse"]:
@@ -27,6 +37,7 @@ def agent_loop(messages: list, client=None) -> None:
     model = os.environ["MODEL_ID"]
     stop_continuations = 0
     rounds_since_todo = 0
+    reactive_retries = 0
 
     while True:
         # s05 的 TODO 提醒只影响当前会话上下文，不会持久化为任务系统。
@@ -34,10 +45,33 @@ def agent_loop(messages: list, client=None) -> None:
             messages.append({"role": "user", "content": "<reminder>Update your todos.</reminder>"})
             rounds_since_todo = 0
 
-        response = client.messages.create(
-            model=model, system=build_system(os.getcwd()), messages=messages,
-            tools=TOOLS, max_tokens=8192
-        )
+        # S08 在模型调用前先缩减上下文；这仍然是会话内整理，不是长期记忆。
+        messages[:] = tool_result_budget(messages)
+        messages[:] = snip_compact(messages)
+        messages[:] = micro_compact(messages)
+        if estimate_size(messages) > CONTEXT_LIMIT:
+            print("\033[33m[auto compact]\033[0m")
+            messages[:] = compact_history(messages, client=client, model=model)
+
+        try:
+            response = client.messages.create(
+                model=model, system=build_system(os.getcwd()), messages=messages,
+                tools=TOOLS, max_tokens=8192
+            )
+        except Exception as exc:
+            error = str(exc).lower()
+            if (
+                ("prompt_too_long" in error or "too many tokens" in error)
+                and reactive_retries < MAX_REACTIVE_RETRIES
+            ):
+                # 模型明确拒绝过长 prompt 时，只做一次补救压缩，避免失败循环空转。
+                print("\033[33m[reactive compact]\033[0m")
+                messages[:] = reactive_compact(messages, client=client, model=model)
+                reactive_retries += 1
+                continue
+            raise
+
+        reactive_retries = 0
         # 模型响应加入对话历史
         messages.append({"role": "assistant", "content": response.content})
 
@@ -58,6 +92,23 @@ def agent_loop(messages: list, client=None) -> None:
                 continue
 
             print(f"\033[36m> {block.name}\033[0m")
+            if block.name == "compact":
+                # compact 是 loop 内置控制工具；保留本轮 tool_use/result，避免产生孤儿 tool_result。
+                compacted = compact_history(messages, client=client, model=model)
+                messages[:] = compacted + [
+                    {"role": "assistant", "content": response.content},
+                    {
+                        "role": "user",
+                        "content": [{
+                            "type": "tool_result",
+                            "tool_use_id": block.id,
+                            "content": "[Compacted. Conversation history has been summarized.]",
+                        }],
+                    },
+                ]
+                result = []
+                break
+
             blocked = trigger_hooks("PreToolUse", block)
             if blocked:
                 result.append({
@@ -79,4 +130,5 @@ def agent_loop(messages: list, client=None) -> None:
                 "content": output
             })
 
-        messages.append({"role": "user", "content": result})
+        if result:
+            messages.append({"role": "user", "content": result})
