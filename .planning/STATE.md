@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 7
-current_phase_name: s07 Skill Loading
-status: finalizing
-stopped_at: s07 Skill Loading learned; final commit/tag/Feishu archive in progress
-last_updated: "2026-07-21T16:10:29Z"
+current_phase: 8
+current_phase_name: s08 Context Compact
+status: planning
+stopped_at: s07 Skill Loading archived; ready to start s08 Context Compact
+last_updated: "2026-07-22T16:20:00Z"
 last_activity: 2026-07-22
-last_activity_desc: Captured s07 learner reflection and started final chapter closeout
+last_activity_desc: Completed s07 Skill Loading with tests, commit/tag/push, and home Feishu archive
 progress:
   percent: 25
 ---
@@ -20,14 +20,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-21)
 
 **Core value:** 通过亲手实现、验证和解释每个章节机制，真正掌握 Claude Code 各部分代码逻辑，并最终得到一个可以运行且演进历史清晰的 Python 编码 Agent。
-**Current focus:** Phase 7 — s07 Skill Loading
+**Current focus:** Phase 8 — s08 Context Compact
 
 ## Current Position
 
-Phase: 7 of 20 (s07 Skill Loading)
+Phase: 8 of 20 (s08 Context Compact)
 Plan: 0 of TBD in current phase
-Status: s07 Skill Loading learned; final commit/tag/Feishu archive in progress
-Last activity: 2026-07-22 — Captured learner reflection that skill loading is a regular progressive loading mechanism, while skill design itself needs care and craft
+Status: s07 Skill Loading archived; s08 Context Compact is next
+Last activity: 2026-07-22 — Completed s07 Skill Loading with `39 passed in 0.96s`, commit `a85c13c`, tag `s07-skill-loading`, and home Feishu child `https://jcneiirfaiic.feishu.cn/wiki/GGe6wFFePiJEkXk48pGcIHbGnrf`
 
 Progress: [███░░░░░░░] 25%
 
@@ -35,7 +35,7 @@ Progress: [███░░░░░░░] 25%
 
 **Velocity:**
 
-- Total plans completed: 6
+- Total plans completed: 7
 - Average duration: -
 - Total execution time: not measured
 
@@ -49,11 +49,12 @@ Progress: [███░░░░░░░] 25%
 | s04 Hooks | 1 | 1 | not measured |
 | s05 TodoWrite | 1 | 1 | not measured |
 | s06 Subagent | 1 | 1 | not measured |
+| s07 Skill Loading | 1 | 1 | not measured |
 
 **Recent Trend:**
 
-- Last 5 plans: s02 Tool Use, s03 Permission, s04 Hooks, s05 TodoWrite, s06 Subagent
-- Trend: s01-s06 complete; s07 next
+- Last 5 plans: s03 Permission, s04 Hooks, s05 TodoWrite, s06 Subagent, s07 Skill Loading
+- Trend: s01-s07 complete; s08 next
 
 *Updated after each plan completion*
 
@@ -78,14 +79,15 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- [Phase 7]: Rerun final tests, create one `s07-*` learning commit and matching tag, push, then create a polished Feishu child after confirming home/company.
+- [Phase 8]: Start s08 only after confirming remote tags include `s07-skill-loading` and comparing local upstream `s08_context_compact` against `s07_skill_loading`.
+- [Docs]: s07 Skill Loading home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/GGe6wFFePiJEkXk48pGcIHbGnrf`.
 - [Docs]: s06 Subagent home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/KHJUwCe0NiTKmEkLi5IcFUaQnSc`.
 - [Docs]: s05 TodoWrite home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/Dmf6wxoNXimqWbkRT1mcFVEXnid`.
 - [Docs]: Review the corrected home s01 Feishu docx page visually in browser if needed: `https://jcneiirfaiic.feishu.cn/wiki/WkW6wgMnbifIiTkFuUGcEhYhnWf`.
 
 ### Blockers/Concerns
 
-- [Phase 7]: Keep s07 limited to skill discovery/loading; do not promote long-term memory or runtime prompt composition from later chapters.
+- [Phase 8]: Keep s08 limited to context compaction; do not promote long-term memory or recovery policy from later chapters.
 - [Documentation]: Feishu write path works on the home parent, but still ask home/company before every future archive.
 - [Documentation]: Future Feishu updates should use real Feishu `docx` pages, composed as concise review pages before upload; avoid raw Markdown file uploads, raw terminal dumps, and duplicated local notes.
 - [Documentation]: The incorrect home s01 Markdown wiki child `K9M4wXtUEiEpb6kv0nzc2d3znrd` is no longer listed under the home parent and now resolves as not found; use the corrected docx child instead.
@@ -100,8 +102,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-07-21T16:10:29Z
-Stopped at: s07 Skill Loading learned; final closeout in progress
+Last session: 2026-07-22T16:20:00Z
+Stopped at: s07 Skill Loading archived; s08 Context Compact is next
 Resume file: .planning/STATE.md
 
 ### Cross-Computer Sync

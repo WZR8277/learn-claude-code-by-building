@@ -16,7 +16,7 @@
 - [x] **Phase 4: s04 Hooks** - 用有序生命周期 Hook 扩展既有循环和权限语义
 - [x] **Phase 5: s05 TodoWrite** - 用会话内 TODO 状态组织当前注意力
 - [x] **Phase 6: s06 Subagent** - 在受限新上下文中执行子 Agent 并返回摘要
-- [ ] **Phase 7: s07 Skill Loading** - 发现技能清单并按需安全加载完整内容
+- [x] **Phase 7: s07 Skill Loading** - 发现技能清单并按需安全加载完整内容
 - [ ] **Phase 8: s08 Context Compact** - 压缩上下文且保留协议对与继续执行状态
 - [ ] **Phase 9: s09 Memory** - 筛选、持久化并按相关性恢复可信记忆
 - [ ] **Phase 10: s10 System Prompt** - 由运行状态确定性组装并刷新 System Prompt
@@ -115,7 +115,7 @@
   2. 非法路径、不安全 YAML 和损坏清单被拒绝，加载文本不会被当作可信策略覆盖本地边界。
   3. 测试证明未选技能正文不会进入上下文，既有工具和 Subagent 契约保持通过。
   4. s07 以个人反思、一个 `s07-*` 提交/标签和证据完整的飞书子文档结束。
-**Plans**: 1/1 finalizing — chapter evidence is recorded under `learning/s07-skill-loading/`
+**Plans**: 1/1 complete — chapter evidence is recorded under `learning/s07-skill-loading/`
 
 ### Phase 8: s08 Context Compact
 **Goal**: 学习者可以压缩超限上下文且保留工具协议对、继续执行状态和溢出证据

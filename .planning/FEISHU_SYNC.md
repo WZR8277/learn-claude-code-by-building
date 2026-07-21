@@ -58,6 +58,10 @@ The completed home s06 page is:
 
 - `https://jcneiirfaiic.feishu.cn/wiki/KHJUwCe0NiTKmEkLi5IcFUaQnSc`
 
+The completed home s07 page is:
+
+- `https://jcneiirfaiic.feishu.cn/wiki/GGe6wFFePiJEkXk48pGcIHbGnrf`
+
 The obsolete raw Markdown child is no longer listed under the home parent and
 currently resolves as not found:
 
