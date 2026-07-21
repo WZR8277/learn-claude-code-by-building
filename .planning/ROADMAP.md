@@ -10,7 +10,7 @@
 - Integer phases (1-20): planned chapters, executed strictly in order
 - Decimal phases: reserved for urgent insertions and do not replace a chapter
 
-- [ ] **Phase 1: s01 Agent Loop** - 建立可注入、可离线验证的模型与工具结果循环
+- [x] **Phase 1: s01 Agent Loop** - 建立可注入、可离线验证的模型与工具结果循环
 - [ ] **Phase 2: s02 Tool Use** - 通过统一注册表安全调用工作区工具
 - [ ] **Phase 3: s03 Permission** - 在执行前落实 deny、ask、allow 权限决策
 - [ ] **Phase 4: s04 Hooks** - 用有序生命周期 Hook 扩展既有循环和权限语义
@@ -43,7 +43,7 @@
   2. 多工具调用、工具失败和最终响应都保留正确顺序与关联 ID，最终响应后不再发起模型调用。
   3. 稳定 CLI 可在临时工作区运行脱敏演示，离线测试同时证明模型 seam 与终止条件。
   4. s01 的增量、测试/演示、反思、单一提交、`s01-*` 标签和飞书子文档形成可复习闭环。
-**Plans**: TBD
+**Plans**: 1/1 complete — chapter evidence is recorded under `learning/s01-agent-loop/`
 
 ### Phase 2: s02 Tool Use
 **Goal**: 学习者可以通过统一注册表调用工作区受限工具并观察规范化结果
