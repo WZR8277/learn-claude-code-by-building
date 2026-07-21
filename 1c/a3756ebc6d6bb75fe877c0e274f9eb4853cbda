@@ -1,0 +1,21 @@
+.planning/ROADMAP.md
+  s_4e50d838b0e550::t_65cf038167c365 13,46
+.planning/PROJECT.md
+  s_4e50d838b0e550::t_65cf038167c365 48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.35-trip",
+  "base_commit_sha": "1ca3756ebc6d6bb75fe877c0e274f9eb4853cbda",
+  "prompts": {},
+  "sessions": {
+    "s_4e50d838b0e550": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f829f-fd9a-7391-80ae-741c2c9e1f33",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "zhaorongwang <zhaorongwang@trip.com>"
+    }
+  }
+}
