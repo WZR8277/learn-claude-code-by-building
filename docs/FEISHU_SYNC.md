@@ -34,3 +34,10 @@ The corrected home s01 page is
 raw Markdown child
 `https://jcneiirfaiic.feishu.cn/wiki/K9M4wXtUEiEpb6kv0nzc2d3znrd` is no longer
 listed under the home parent and currently resolves as not found.
+
+Current known home chapter pages:
+
+- s01: `https://jcneiirfaiic.feishu.cn/wiki/WkW6wgMnbifIiTkFuUGcEhYhnWf`
+- s02: `https://jcneiirfaiic.feishu.cn/wiki/JlozwiR0SizBpWkDHQ9cgyhynFb`
+- s03: `https://jcneiirfaiic.feishu.cn/wiki/Mv0RwNiDmihBRYkYlOockEhjnHh`
+- s04: `https://jcneiirfaiic.feishu.cn/wiki/PNNRwDIetiz7OjkAdmocdDHenfe`

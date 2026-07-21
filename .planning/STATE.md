@@ -5,10 +5,10 @@ milestone_name: milestone
 current_phase: 5
 current_phase_name: s05 TodoWrite
 status: planning
-stopped_at: s04 Hooks completed locally with final tests; commit/tag/Feishu archive in progress
-last_updated: "2026-07-21T14:35:00Z"
+stopped_at: s04 Hooks completed with commit/tag/push and home Feishu archive; ready to start s05
+last_updated: "2026-07-21T14:50:00Z"
 last_activity: 2026-07-21
-last_activity_desc: Completed s04 Hooks with 19 passing tests and learner reflection
+last_activity_desc: Completed s04 Hooks with 19 passing tests, commit/tag/push, and home Feishu archive
 progress:
   percent: 20
 ---
@@ -26,8 +26,8 @@ See: .planning/PROJECT.md (updated 2026-07-21)
 
 Phase: 5 of 20 (s05 TodoWrite)
 Plan: 0 of TBD in current phase
-Status: s04 Hooks complete; final commit/tag/Feishu archive in progress; s05 is next after archive
-Last activity: 2026-07-21 — Completed s04 Hooks with 19 passing tests and reflection comparing Hooks to Java AOP-style cross-cutting concerns
+Status: s04 archived; ready for the s05 TodoWrite concise guide and local upstream delta comparison
+Last activity: 2026-07-21 — Completed s04 Hooks with commit/tag/push and home Feishu archive
 
 Progress: [██░░░░░░░░] 20%
 
@@ -96,8 +96,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-07-21T14:35:00Z
-Stopped at: s04 Hooks finalization in progress; after commit/tag/archive, s05 is next
+Last session: 2026-07-21T14:50:00Z
+Stopped at: s04 Hooks archived; s05 TodoWrite is next
 Resume file: .planning/STATE.md
 
 ### Cross-Computer Sync
