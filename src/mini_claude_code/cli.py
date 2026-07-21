@@ -30,7 +30,7 @@ except ImportError:
 
 
 def main() -> None:
-    print("mini-claude-code s06: Subagent ready")
+    print("mini-claude-code s07: Skill Loading ready")
     history = []
     while True:
         try:

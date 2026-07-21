@@ -6,6 +6,7 @@ from pathlib import Path
 
 from .todo import run_todo_write
 from .subagent import spawn_subagent
+from .skills import load_skill
 
 
 WORKDIR = Path.cwd()
@@ -171,6 +172,15 @@ TOOLS = [
             "required": ["description"],
         },
     },
+    {
+        "name": "load_skill",
+        "description": "Load the full content of a skill by name.",
+        "input_schema": {
+            "type": "object",
+            "properties": {"name": {"type": "string"}},
+            "required": ["name"],
+        },
+    },
 ]
 
 
@@ -182,4 +192,5 @@ TOOL_HANDLERS = {
     "glob": run_glob,
     "todo_write": run_todo_write,
     "task": spawn_subagent,
+    "load_skill": load_skill,
 }

@@ -115,7 +115,7 @@
   2. 非法路径、不安全 YAML 和损坏清单被拒绝，加载文本不会被当作可信策略覆盖本地边界。
   3. 测试证明未选技能正文不会进入上下文，既有工具和 Subagent 契约保持通过。
   4. s07 以个人反思、一个 `s07-*` 提交/标签和证据完整的飞书子文档结束。
-**Plans**: TBD
+**Plans**: 1/1 finalizing — chapter evidence is recorded under `learning/s07-skill-loading/`
 
 ### Phase 8: s08 Context Compact
 **Goal**: 学习者可以压缩超限上下文且保留工具协议对、继续执行状态和溢出证据

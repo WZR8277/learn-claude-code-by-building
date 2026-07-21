@@ -4,13 +4,9 @@ from anthropic import Anthropic
 
 from .hooks import HOOKS, large_output_hook, log_hook, register_hook, summary_hook, trigger_hooks
 from .permission import permission_hook
+from .skills import build_system
 from .tool import TOOLS, TOOL_HANDLERS
 
-# 系统提示词
-SYSTEM = (
-    f"You are a coding agent at {os.getcwd()}. "
-    "For complex sub-problems, use the task tool to spawn a subagent."
-)
 MAX_STOP_CONTINUATIONS = 1
 TODO_REMINDER_AFTER = 3
 
@@ -39,7 +35,7 @@ def agent_loop(messages: list, client=None) -> None:
             rounds_since_todo = 0
 
         response = client.messages.create(
-            model=model, system=SYSTEM, messages=messages,
+            model=model, system=build_system(os.getcwd()), messages=messages,
             tools=TOOLS, max_tokens=8192
         )
         # 模型响应加入对话历史
