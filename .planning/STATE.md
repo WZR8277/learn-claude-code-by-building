@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 6
-current_phase_name: s06 Subagent
-status: finalizing
-stopped_at: s06 Subagent learned; final commit/tag/Feishu archive in progress
-last_updated: "2026-07-21T15:25:00Z"
+current_phase: 7
+current_phase_name: s07 Skill Loading
+status: planning
+stopped_at: s06 Subagent archived; ready to start s07 Skill Loading
+last_updated: "2026-07-21T15:40:00Z"
 last_activity: 2026-07-21
-last_activity_desc: Captured s06 learner reflection and started final chapter closeout
+last_activity_desc: Completed s06 Subagent with tests, commit/tag/push, and home Feishu archive
 progress:
   percent: 25
 ---
@@ -20,14 +20,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-21)
 
 **Core value:** 通过亲手实现、验证和解释每个章节机制，真正掌握 Claude Code 各部分代码逻辑，并最终得到一个可以运行且演进历史清晰的 Python 编码 Agent。
-**Current focus:** Phase 6 — s06 Subagent
+**Current focus:** Phase 7 — s07 Skill Loading
 
 ## Current Position
 
-Phase: 6 of 20 (s06 Subagent)
-Plan: 1 of 1 in current phase
-Status: s06 Subagent learned; final commit/tag/Feishu archive in progress
-Last activity: 2026-07-21 — Captured learner reflection that Subagent is an Agent Loop wrapped as a tool, with real-world complexity around context inheritance, permission bubbling, cancellation/timeouts, resource control, and parallel execution
+Phase: 7 of 20 (s07 Skill Loading)
+Plan: 0 of TBD in current phase
+Status: s06 Subagent archived; s07 Skill Loading is next
+Last activity: 2026-07-21 — Completed s06 Subagent with `32 passed in 0.92s`, commit `7c075f2`, tag `s06-subagent`, and home Feishu child `https://jcneiirfaiic.feishu.cn/wiki/KHJUwCe0NiTKmEkLi5IcFUaQnSc`
 
 Progress: [███░░░░░░░] 25%
 
@@ -35,7 +35,7 @@ Progress: [███░░░░░░░] 25%
 
 **Velocity:**
 
-- Total plans completed: 5
+- Total plans completed: 6
 - Average duration: -
 - Total execution time: not measured
 
@@ -48,11 +48,12 @@ Progress: [███░░░░░░░] 25%
 | s03 Permission | 1 | 1 | not measured |
 | s04 Hooks | 1 | 1 | not measured |
 | s05 TodoWrite | 1 | 1 | not measured |
+| s06 Subagent | 1 | 1 | not measured |
 
 **Recent Trend:**
 
-- Last 5 plans: s01 Agent Loop, s02 Tool Use, s03 Permission, s04 Hooks, s05 TodoWrite
-- Trend: s01-s05 complete; s06 next
+- Last 5 plans: s02 Tool Use, s03 Permission, s04 Hooks, s05 TodoWrite, s06 Subagent
+- Trend: s01-s06 complete; s07 next
 
 *Updated after each plan completion*
 
@@ -77,13 +78,14 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- [Phase 6]: Rerun final tests, create one `s06-*` learning commit and matching tag, push, then create a polished Feishu child after confirming home/company.
+- [Phase 7]: Start s07 only after confirming remote tags include `s06-subagent` and comparing local upstream `s07_skill_loading` against `s06_subagent`.
+- [Docs]: s06 Subagent home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/KHJUwCe0NiTKmEkLi5IcFUaQnSc`.
 - [Docs]: s05 TodoWrite home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/Dmf6wxoNXimqWbkRT1mcFVEXnid`.
 - [Docs]: Review the corrected home s01 Feishu docx page visually in browser if needed: `https://jcneiirfaiic.feishu.cn/wiki/WkW6wgMnbifIiTkFuUGcEhYhnWf`.
 
 ### Blockers/Concerns
 
-- [Phase 6]: Keep s06 limited to Subagent behavior; do not promote autonomous teams or persistent task-system behavior from later chapters.
+- [Phase 7]: Keep s07 limited to skill discovery/loading; do not promote long-term memory or runtime prompt composition from later chapters.
 - [Documentation]: Feishu write path works on the home parent, but still ask home/company before every future archive.
 - [Documentation]: Future Feishu updates should use real Feishu `docx` pages, composed as concise review pages before upload; avoid raw Markdown file uploads, raw terminal dumps, and duplicated local notes.
 - [Documentation]: The incorrect home s01 Markdown wiki child `K9M4wXtUEiEpb6kv0nzc2d3znrd` is no longer listed under the home parent and now resolves as not found; use the corrected docx child instead.
@@ -98,8 +100,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-07-21T15:25:00Z
-Stopped at: s06 Subagent learned; final closeout in progress
+Last session: 2026-07-21T15:40:00Z
+Stopped at: s06 Subagent archived; s07 Skill Loading is next
 Resume file: .planning/STATE.md
 
 ### Cross-Computer Sync

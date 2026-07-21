@@ -15,7 +15,7 @@
 - [x] **Phase 3: s03 Permission** - 在执行前落实 deny、ask、allow 权限决策
 - [x] **Phase 4: s04 Hooks** - 用有序生命周期 Hook 扩展既有循环和权限语义
 - [x] **Phase 5: s05 TodoWrite** - 用会话内 TODO 状态组织当前注意力
-- [ ] **Phase 6: s06 Subagent** - 在受限新上下文中执行子 Agent 并返回摘要
+- [x] **Phase 6: s06 Subagent** - 在受限新上下文中执行子 Agent 并返回摘要
 - [ ] **Phase 7: s07 Skill Loading** - 发现技能清单并按需安全加载完整内容
 - [ ] **Phase 8: s08 Context Compact** - 压缩上下文且保留协议对与继续执行状态
 - [ ] **Phase 9: s09 Memory** - 筛选、持久化并按相关性恢复可信记忆
@@ -103,7 +103,7 @@
   2. 轮数、递归深度和取消均有界，子 Agent 无法绕过父级工作区与权限约束。
   3. 父上下文只收到关联摘要而非完整子轨迹，离线测试证明前序循环未分叉。
   4. s06 的反思、一个 `s06-*` 提交/标签和飞书子文档记录隔离选择与上游简化点。
-**Plans**: 1/1 finalizing — chapter evidence is recorded under `learning/s06-subagent/`
+**Plans**: 1/1 complete — chapter evidence is recorded under `learning/s06-subagent/`
 
 ### Phase 7: s07 Skill Loading
 **Goal**: 学习者可以渐进发现技能并按需安全加载完整 SKILL.md
