@@ -14,7 +14,7 @@
 - [x] **Phase 2: s02 Tool Use** - 用工具处理器映射把单一 Bash 扩展为多个工具
 - [x] **Phase 3: s03 Permission** - 在执行前落实 deny、ask、allow 权限决策
 - [x] **Phase 4: s04 Hooks** - 用有序生命周期 Hook 扩展既有循环和权限语义
-- [ ] **Phase 5: s05 TodoWrite** - 用会话内 TODO 状态组织当前注意力
+- [x] **Phase 5: s05 TodoWrite** - 用会话内 TODO 状态组织当前注意力
 - [ ] **Phase 6: s06 Subagent** - 在受限新上下文中执行子 Agent 并返回摘要
 - [ ] **Phase 7: s07 Skill Loading** - 发现技能清单并按需安全加载完整内容
 - [ ] **Phase 8: s08 Context Compact** - 压缩上下文且保留协议对与继续执行状态
@@ -91,7 +91,7 @@
   2. 新会话不会恢复旧 TODO，演示清楚说明它不是任务所有权或依赖系统。
   3. 无效状态和过度提醒有确定性处理，前序 Agent Loop 与 Hook 回归通过。
   4. s05 以反思、一个 `s05-*` 提交/标签和对应飞书子文档保存学习证据。
-**Plans**: TBD
+**Plans**: 1/1 complete — chapter evidence is recorded under `learning/s05-todo-write/`
 
 ### Phase 6: s06 Subagent
 **Goal**: 学习者可以在受限新上下文中运行 Subagent 并只向父 Agent 返回摘要

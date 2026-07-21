@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 5
-current_phase_name: s05 TodoWrite
+current_phase: 6
+current_phase_name: s06 Subagent
 status: planning
-stopped_at: s04 Hooks completed with commit/tag/push and home Feishu archive; ready to start s05
-last_updated: "2026-07-21T14:50:00Z"
+stopped_at: s05 TodoWrite completed locally with final tests; commit/tag/Feishu archive in progress
+last_updated: "2026-07-21T16:05:00Z"
 last_activity: 2026-07-21
-last_activity_desc: Completed s04 Hooks with 19 passing tests, commit/tag/push, and home Feishu archive
+last_activity_desc: Completed s05 TodoWrite with 25 passing tests and learner reflection
 progress:
-  percent: 20
+  percent: 25
 ---
 
 # Project State
@@ -20,22 +20,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-21)
 
 **Core value:** 通过亲手实现、验证和解释每个章节机制，真正掌握 Claude Code 各部分代码逻辑，并最终得到一个可以运行且演进历史清晰的 Python 编码 Agent。
-**Current focus:** Phase 5 — s05 TodoWrite
+**Current focus:** Phase 6 — s06 Subagent
 
 ## Current Position
 
-Phase: 5 of 20 (s05 TodoWrite)
+Phase: 6 of 20 (s06 Subagent)
 Plan: 0 of TBD in current phase
-Status: s04 archived; ready for the s05 TodoWrite concise guide and local upstream delta comparison
-Last activity: 2026-07-21 — Completed s04 Hooks with commit/tag/push and home Feishu archive
+Status: s05 TodoWrite complete; final commit/tag/Feishu archive in progress; s06 is next after archive
+Last activity: 2026-07-21 — Completed s05 TodoWrite with 25 passing tests and reflection describing it as an embedded Plan-mode seed
 
-Progress: [██░░░░░░░░] 20%
+Progress: [███░░░░░░░] 25%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 4
+- Total plans completed: 5
 - Average duration: -
 - Total execution time: not measured
 
@@ -47,11 +47,12 @@ Progress: [██░░░░░░░░] 20%
 | s02 Tool Use | 1 | 1 | not measured |
 | s03 Permission | 1 | 1 | not measured |
 | s04 Hooks | 1 | 1 | not measured |
+| s05 TodoWrite | 1 | 1 | not measured |
 
 **Recent Trend:**
 
-- Last 5 plans: s01 Agent Loop, s02 Tool Use, s03 Permission, s04 Hooks
-- Trend: s01-s04 complete; s05 next
+- Last 5 plans: s01 Agent Loop, s02 Tool Use, s03 Permission, s04 Hooks, s05 TodoWrite
+- Trend: s01-s05 complete; s06 next
 
 *Updated after each plan completion*
 
@@ -76,12 +77,12 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- [Phase 5]: Start s05 only after confirming remote tags include `s04-hooks` and comparing local upstream `s05_todo_write` against `s04_hooks`.
+- [Phase 6]: Start s06 only after confirming remote tags include `s05-todo-write` and comparing local upstream `s06_subagent` against `s05_todo_write`.
 - [Docs]: Review the corrected home s01 Feishu docx page visually in browser if needed: `https://jcneiirfaiic.feishu.cn/wiki/WkW6wgMnbifIiTkFuUGcEhYhnWf`.
 
 ### Blockers/Concerns
 
-- [Phase 5]: Keep s05 limited to TodoWrite/session TODO behavior; do not promote persistent task-system behavior from later chapters.
+- [Phase 6]: Keep s06 limited to Subagent behavior; do not promote autonomous teams or persistent task-system behavior from later chapters.
 - [Documentation]: Feishu write path works on the home parent, but still ask home/company before every future archive.
 - [Documentation]: Future Feishu updates should use real Feishu `docx` pages, composed as concise review pages before upload; avoid raw Markdown file uploads, raw terminal dumps, and duplicated local notes.
 - [Documentation]: The incorrect home s01 Markdown wiki child `K9M4wXtUEiEpb6kv0nzc2d3znrd` is no longer listed under the home parent and now resolves as not found; use the corrected docx child instead.
@@ -96,8 +97,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-07-21T14:50:00Z
-Stopped at: s04 Hooks archived; s05 TodoWrite is next
+Last session: 2026-07-21T16:05:00Z
+Stopped at: s05 TodoWrite finalization in progress; after commit/tag/archive, s06 is next
 Resume file: .planning/STATE.md
 
 ### Cross-Computer Sync

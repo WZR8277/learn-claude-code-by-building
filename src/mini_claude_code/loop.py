@@ -7,8 +7,13 @@ from .permission import permission_hook
 from .tool import TOOLS, TOOL_HANDLERS
 
 # 系统提示词
-SYSTEM = f"You are a coding agent at {os.getcwd()}. All destructive operations require user approval."
+SYSTEM = (
+    f"You are a coding agent at {os.getcwd()}. "
+    "Before starting any multi-step task, use todo_write to plan your steps. "
+    "Update status as you go."
+)
 MAX_STOP_CONTINUATIONS = 1
+TODO_REMINDER_AFTER = 3
 
 
 if permission_hook not in HOOKS["PreToolUse"]:
@@ -26,8 +31,14 @@ def agent_loop(messages: list, client=None) -> None:
         client = Anthropic(base_url=os.getenv("ANTHROPIC_BASE_URL"))
     model = os.environ["MODEL_ID"]
     stop_continuations = 0
+    rounds_since_todo = 0
 
     while True:
+        # s05 的 TODO 提醒只影响当前会话上下文，不会持久化为任务系统。
+        if rounds_since_todo >= TODO_REMINDER_AFTER and messages:
+            messages.append({"role": "user", "content": "<reminder>Update your todos.</reminder>"})
+            rounds_since_todo = 0
+
         response = client.messages.create(
             model=model, system=SYSTEM, messages=messages,
             tools=TOOLS, max_tokens=8192
@@ -44,6 +55,7 @@ def agent_loop(messages: list, client=None) -> None:
                 continue
             return
 
+        rounds_since_todo += 1
         # 每个工具调用先经过 PreToolUse Hook，再交给 s02 的分发表执行。
         result = []
         for block in response.content:
@@ -63,6 +75,8 @@ def agent_loop(messages: list, client=None) -> None:
             handler = TOOL_HANDLERS.get(block.name)
             output = handler(**block.input) if handler else f"Unknown: {block.name}"
             trigger_hooks("PostToolUse", block, output)
+            if block.name == "todo_write":
+                rounds_since_todo = 0
             print(str(output)[:200])
             result.append({
                 "type": "tool_result",
