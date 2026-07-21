@@ -1,0 +1,26 @@
+.planning/PROJECT.md
+  s_4e50d838b0e550::t_d7ef5e9416f1b6 26,52,54,84,105
+AGENTS.md
+  s_4e50d838b0e550::t_d7ef5e9416f1b6 20
+.planning/CODING_WORKFLOW.md
+  s_4e50d838b0e550::t_d7ef5e9416f1b6 4-8,26-38
+.planning/STATE.md
+  s_4e50d838b0e550::t_3dbf6bd28a302a 2-6,10-11,37,49,70
+  s_4e50d838b0e550::t_30c0d717cfc506 8-9,95-97
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.35-trip",
+  "base_commit_sha": "c22eda116cba65f65959e0ad20ce609a93647e8f",
+  "prompts": {},
+  "sessions": {
+    "s_4e50d838b0e550": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f829f-fd9a-7391-80ae-741c2c9e1f33",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "zhaorongwang <zhaorongwang@trip.com>"
+    }
+  }
+}
