@@ -2,40 +2,40 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 9
-current_phase_name: s09 Memory
-status: closing
-stopped_at: s09 Memory learned; running final local closeout before Feishu archive
-last_updated: "2026-07-21T17:36:11Z"
+current_phase: 10
+current_phase_name: s10 System Prompt
+status: planning
+stopped_at: s09 Memory archived; ready to start s10 System Prompt
+last_updated: "2026-07-21T17:42:03Z"
 last_activity: 2026-07-22
-last_activity_desc: Completed s08 Context Compact with tests, commit/tag/push, and home Feishu archive
+last_activity_desc: Completed s09 Memory with tests, commit/tag/push, and home Feishu archive
 progress:
-  percent: 40
+  percent: 45
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-07-21)
+See: .planning/PROJECT.md (updated 2026-07-22)
 
 **Core value:** 通过亲手实现、验证和解释每个章节机制，真正掌握 Claude Code 各部分代码逻辑，并最终得到一个可以运行且演进历史清晰的 Python 编码 Agent。
-**Current focus:** Phase 9 — s09 Memory
+**Current focus:** Phase 10 — s10 System Prompt
 
 ## Current Position
 
-Phase: 9 of 20 (s09 Memory)
+Phase: 10 of 20 (s10 System Prompt)
 Plan: 1 of 1 in current phase
-Status: s09 Memory learned; final test passed; preparing commit/tag and Feishu archive
-Last activity: 2026-07-22 — Learner completed s09 reflection and final local tests passed with `57 passed in 0.97s`
+Status: s09 Memory archived; ready to compare local upstream `s10_system_prompt` against the completed `s09_memory` baseline
+Last activity: 2026-07-22 — Learner completed s09 reflection; final test passed with `57 passed in 0.97s`; commit `a473bf4`, tag `s09-memory`, and home Feishu child are complete
 
-Progress: [████░░░░░░] 40%
+Progress: [█████░░░░░] 45%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 8
+- Total plans completed: 9
 - Average duration: -
 - Total execution time: not measured
 
@@ -51,11 +51,12 @@ Progress: [████░░░░░░] 40%
 | s06 Subagent | 1 | 1 | not measured |
 | s07 Skill Loading | 1 | 1 | not measured |
 | s08 Context Compact | 1 | 1 | not measured |
+| s09 Memory | 1 | 1 | not measured |
 
 **Recent Trend:**
 
-- Last 5 completed plans: s04 Hooks, s05 TodoWrite, s06 Subagent, s07 Skill Loading, s08 Context Compact
-- Trend: s09 learned; closing chapter evidence
+- Last 5 completed plans: s05 TodoWrite, s06 Subagent, s07 Skill Loading, s08 Context Compact, s09 Memory
+- Trend: s01-s09 complete; s10 is next
 
 *Updated after each plan completion*
 
@@ -80,7 +81,8 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- [Phase 9]: Finish final test, one focused commit/tag, push, then archive polished Feishu child after confirming home/company.
+- [Phase 10]: Start s10 by running cross-computer sync, then compare local upstream `s10_system_prompt` against the completed `s09_memory` baseline before implementing any delta.
+- [Docs]: s09 Memory home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/SidbwRBr8iFc5IkETEZcwZjWnoI`.
 - [Docs]: s08 Context Compact home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/RhG7wRQlqi4wg8k1D1kcicnvn99`.
 - [Docs]: s07 Skill Loading home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/GGe6wFFePiJEkXk48pGcIHbGnrf`.
 - [Docs]: s06 Subagent home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/KHJUwCe0NiTKmEkLi5IcFUaQnSc`.
@@ -89,8 +91,8 @@ Recent decisions affecting current work:
 
 ### Blockers/Concerns
 
-- [Phase 9]: Keep s09 limited to memory; do not promote later system prompt, recovery, or task-system mechanisms.
-- [Phase 9]: `MEMORY.md` is a lightweight index in system prompt; selected full memory files are injected only into the current request.
+- [Phase 10]: Keep s10 limited to deterministic system prompt assembly; do not promote later error recovery, task-system, background-task, team, worktree, or MCP mechanisms.
+- [Phase 10]: Reuse the s09 memory index as one input to prompt assembly, but keep memory storage and retrieval owned by the memory module.
 - [Documentation]: When updating parent directory tables with lark-cli, do not assume `str_replace` is first-match only; fetch the table block id and use `block_replace` when a repeated placeholder appears many times.
 - [Documentation]: Feishu write path works on the home parent, but still ask home/company before every future archive.
 - [Documentation]: Future Feishu updates should use real Feishu `docx` pages, composed as concise review pages before upload; avoid raw Markdown file uploads, raw terminal dumps, and duplicated local notes.
@@ -106,8 +108,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-07-21T17:36:11Z
-Stopped at: s09 Memory learned; running final local closeout before Feishu archive
+Last session: 2026-07-21T17:42:03Z
+Stopped at: s09 Memory archived; ready to start s10 System Prompt
 Resume file: .planning/STATE.md
 
 ### Cross-Computer Sync

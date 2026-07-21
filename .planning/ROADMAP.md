@@ -18,7 +18,7 @@
 - [x] **Phase 6: s06 Subagent** - 在受限新上下文中执行子 Agent 并返回摘要
 - [x] **Phase 7: s07 Skill Loading** - 发现技能清单并按需安全加载完整内容
 - [x] **Phase 8: s08 Context Compact** - 压缩上下文且保留协议对与继续执行状态
-- [ ] **Phase 9: s09 Memory** - 筛选、持久化并按相关性恢复可信记忆
+- [x] **Phase 9: s09 Memory** - 筛选、持久化并按相关性恢复可信记忆
 - [ ] **Phase 10: s10 System Prompt** - 由运行状态确定性组装并刷新 System Prompt
 - [ ] **Phase 11: s11 Error Recovery** - 对模型边界错误执行有界、可解释的恢复
 - [ ] **Phase 12: s12 Task System** - 管理可恢复、带依赖和所有权的持久任务
@@ -139,7 +139,7 @@
   2. 秘密、不可信指令、猜测和任务不会被提升为记忆，重复事实可合并或更正。
   3. 演示可对比会话转录、压缩内容和持久记忆的不同生命周期，累计离线测试通过。
   4. s09 在反思后产出一个 `s09-*` 提交/标签和引用真实记忆证据的飞书子文档。
-**Plans**: 1/1 in review — chapter evidence is recorded under `learning/s09-memory/`
+**Plans**: 1/1 complete — chapter evidence is recorded under `learning/s09-memory/`
 
 ### Phase 10: s10 System Prompt
 **Goal**: 学习者可以由技能、记忆和运行状态确定性组装 System Prompt
@@ -280,15 +280,15 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. s01 Agent Loop | 0/TBD | Not started | - |
+| 1. s01 Agent Loop | 1/1 | Complete | 2026-07-21 |
 | 2. s02 Tool Use | 1/1 | Complete | 2026-07-21 |
 | 3. s03 Permission | 1/1 | Complete | 2026-07-21 |
-| 4. s04 Hooks | 0/TBD | Not started | - |
-| 5. s05 TodoWrite | 0/TBD | Not started | - |
-| 6. s06 Subagent | 0/TBD | Not started | - |
-| 7. s07 Skill Loading | 0/TBD | Not started | - |
-| 8. s08 Context Compact | 0/TBD | Not started | - |
-| 9. s09 Memory | 0/TBD | Not started | - |
+| 4. s04 Hooks | 1/1 | Complete | 2026-07-21 |
+| 5. s05 TodoWrite | 1/1 | Complete | 2026-07-21 |
+| 6. s06 Subagent | 1/1 | Complete | 2026-07-21 |
+| 7. s07 Skill Loading | 1/1 | Complete | 2026-07-21 |
+| 8. s08 Context Compact | 1/1 | Complete | 2026-07-22 |
+| 9. s09 Memory | 1/1 | Complete | 2026-07-22 |
 | 10. s10 System Prompt | 0/TBD | Not started | - |
 | 11. s11 Error Recovery | 0/TBD | Not started | - |
 | 12. s12 Task System | 0/TBD | Not started | - |

@@ -45,6 +45,7 @@ Current known home chapter pages:
 - s06: `https://jcneiirfaiic.feishu.cn/wiki/KHJUwCe0NiTKmEkLi5IcFUaQnSc`
 - s07: `https://jcneiirfaiic.feishu.cn/wiki/GGe6wFFePiJEkXk48pGcIHbGnrf`
 - s08: `https://jcneiirfaiic.feishu.cn/wiki/RhG7wRQlqi4wg8k1D1kcicnvn99`
+- s09: `https://jcneiirfaiic.feishu.cn/wiki/SidbwRBr8iFc5IkETEZcwZjWnoI`
 
 ## Parent Update Safety
 
