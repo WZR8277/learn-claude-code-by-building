@@ -34,6 +34,10 @@ The completed company s02 page is:
 
 - `https://trip.larkenterprise.com/wiki/MwfHwn0Lwi4b9XkWNNUcFUmgnth`
 
+The completed company s03 page is:
+
+- `https://trip.larkenterprise.com/wiki/DqXEw21KWiuzWDkCA6CcYzLAn4g`
+
 The obsolete raw Markdown child is no longer listed under the home parent and
 currently resolves as not found:
 

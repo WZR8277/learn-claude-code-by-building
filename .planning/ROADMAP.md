@@ -12,7 +12,7 @@
 
 - [x] **Phase 1: s01 Agent Loop** - 建立可注入、可离线验证的模型与工具结果循环
 - [x] **Phase 2: s02 Tool Use** - 用工具处理器映射把单一 Bash 扩展为多个工具
-- [ ] **Phase 3: s03 Permission** - 在执行前落实 deny、ask、allow 权限决策
+- [x] **Phase 3: s03 Permission** - 在执行前落实 deny、ask、allow 权限决策
 - [ ] **Phase 4: s04 Hooks** - 用有序生命周期 Hook 扩展既有循环和权限语义
 - [ ] **Phase 5: s05 TodoWrite** - 用会话内 TODO 状态组织当前注意力
 - [ ] **Phase 6: s06 Subagent** - 在受限新上下文中执行子 Agent 并返回摘要
@@ -67,7 +67,7 @@
   2. 测试证明 deny 不提示也不执行，ask 未获批准不执行，批准只作用于当前调用。
   3. 学习者能通过演示解释权限策略与操作系统沙箱的区别，s01-s02 回归保持通过。
   4. s03 在反思后以一个 `s03-*` 提交/标签和一个含验证证据的飞书子文档结束。
-**Plans**: TBD
+**Plans**: 1/1 complete — chapter evidence is recorded under `learning/s03-permission/`
 
 ### Phase 4: s04 Hooks
 **Goal**: 学习者可以用有序生命周期 Hooks 扩展循环而不改变既有权限与协议语义
@@ -282,7 +282,7 @@
 |-------|----------------|--------|-----------|
 | 1. s01 Agent Loop | 0/TBD | Not started | - |
 | 2. s02 Tool Use | 1/1 | Complete | 2026-07-21 |
-| 3. s03 Permission | 0/TBD | Not started | - |
+| 3. s03 Permission | 1/1 | Complete | 2026-07-21 |
 | 4. s04 Hooks | 0/TBD | Not started | - |
 | 5. s05 TodoWrite | 0/TBD | Not started | - |
 | 6. s06 Subagent | 0/TBD | Not started | - |

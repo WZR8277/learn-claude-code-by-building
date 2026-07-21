@@ -9,7 +9,7 @@
 
 - [x] **LOOP-01**: 学习者可以运行 s01 Agent Loop，并通过可注入模型客户端观察完整的模型调用、工具请求、工具结果回传和最终响应终止流程
 - [x] **TOOL-01**: 学习者可以在 s02 通过简单的 `TOOL_HANDLERS` 映射调用 Bash、读、写、编辑与 Glob 工具，并观察工具结果和未知工具名称如何返回模型；运行行为不超过上游 s02
-- [ ] **SAFE-01**: 学习者可以在 s03 区分 deny、ask、allow 三种权限结果，并验证拒绝和未批准调用不会执行实际工具
+- [x] **SAFE-01**: 学习者可以在 s03 区分 deny、ask、allow 三种权限结果，并验证拒绝和未批准调用不会执行实际工具
 - [ ] **HOOK-01**: 学习者可以在 s04 通过有序生命周期 Hooks 扩展提示提交、工具调用前后和停止阶段，同时保持原有循环与权限语义
 
 ### Single-Agent Effectiveness and Context
@@ -89,7 +89,7 @@
 |-------------|-------|--------|
 | LOOP-01 | Phase 1 | Complete |
 | TOOL-01 | Phase 2 | Complete |
-| SAFE-01 | Phase 3 | Pending |
+| SAFE-01 | Phase 3 | Complete |
 | HOOK-01 | Phase 4 | Pending |
 | TODO-01 | Phase 5 | Pending |
 | SUBA-01 | Phase 6 | Pending |
@@ -126,4 +126,4 @@
 
 ---
 *Requirements defined: 2026-07-19*
-*Last updated: 2026-07-21 after aligning chapter scope with the upstream behavioral ceiling*
+*Last updated: 2026-07-21 after completing s03 Permission*

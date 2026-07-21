@@ -1,4 +1,4 @@
-"""Built-in tools introduced by the s02 tutorial."""
+"""Built-in tools shared by the s03 tutorial."""
 
 import glob as glob_module
 import subprocess
@@ -9,9 +9,6 @@ WORKDIR = Path.cwd()
 
 
 def run_bash(command: str) -> str:
-    dangerous = ["rm -rf /", "sudo", "shutdown", "reboot", "> /dev/"]
-    if any(fragment in command for fragment in dangerous):
-        return "Error: Dangerous command blocked"
     try:
         result = subprocess.run(
             command,

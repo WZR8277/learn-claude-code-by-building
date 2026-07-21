@@ -2,10 +2,11 @@ import os
 
 from anthropic import Anthropic
 
+from .permission import check_permission
 from .tool import TOOLS, TOOL_HANDLERS
 
 # 系统提示词
-SYSTEM = f"You are a coding agent at {os.getcwd()}. Use tools to solve tasks. Act, don't explain."
+SYSTEM = f"You are a coding agent at {os.getcwd()}. All destructive operations require user approval."
 
 
 def agent_loop(messages: list, client=None) -> None:
@@ -25,18 +26,28 @@ def agent_loop(messages: list, client=None) -> None:
         if response.stop_reason != "tool_use":
             return
 
-        # 执行工具获取工具调用结果
+        # 每个工具调用先经过权限管线，再交给 s02 的分发表执行。
         result = []
         for block in response.content:
-            if block.type == "tool_use":
-                print(f"\033[33m> {block.name}\033[0m")
-                handler = TOOL_HANDLERS.get(block.name)
-                output = handler(**block.input) if handler else f"Unknown: {block.name}"
-                print(str(output)[:200])
+            if block.type != "tool_use":
+                continue
+
+            print(f"\033[36m> {block.name}\033[0m")
+            if not check_permission(block):
                 result.append({
                     "type": "tool_result",
                     "tool_use_id": block.id,
-                    "content": output
+                    "content": "Permission denied."
                 })
+                continue
+
+            handler = TOOL_HANDLERS.get(block.name)
+            output = handler(**block.input) if handler else f"Unknown: {block.name}"
+            print(str(output)[:200])
+            result.append({
+                "type": "tool_result",
+                "tool_use_id": block.id,
+                "content": output
+            })
 
         messages.append({"role": "user", "content": result})
