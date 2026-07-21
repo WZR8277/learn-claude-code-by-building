@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 4
-current_phase_name: s04 Hooks
+current_phase: 5
+current_phase_name: s05 TodoWrite
 status: planning
-stopped_at: s03 Permission completed with tests, reflection, one commit/tag, and company Feishu archive; ready to start s04
-last_updated: "2026-07-21T13:00:16Z"
+stopped_at: s04 Hooks completed locally with final tests; commit/tag/Feishu archive in progress
+last_updated: "2026-07-21T14:35:00Z"
 last_activity: 2026-07-21
-last_activity_desc: Completed s03 Permission with 13 passing tests and company Feishu archive
+last_activity_desc: Completed s04 Hooks with 19 passing tests and learner reflection
 progress:
-  percent: 15
+  percent: 20
 ---
 
 # Project State
@@ -20,22 +20,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-21)
 
 **Core value:** 通过亲手实现、验证和解释每个章节机制，真正掌握 Claude Code 各部分代码逻辑，并最终得到一个可以运行且演进历史清晰的 Python 编码 Agent。
-**Current focus:** Phase 4 — s04 Hooks
+**Current focus:** Phase 5 — s05 TodoWrite
 
 ## Current Position
 
-Phase: 4 of 20 (s04 Hooks)
+Phase: 5 of 20 (s05 TodoWrite)
 Plan: 0 of TBD in current phase
-Status: s03 archived; ready for the s04 concise guide and upstream delta comparison
-Last activity: 2026-07-21 — Completed s03 Permission with 13 passing tests and company Feishu archive
+Status: s04 Hooks complete; final commit/tag/Feishu archive in progress; s05 is next after archive
+Last activity: 2026-07-21 — Completed s04 Hooks with 19 passing tests and reflection comparing Hooks to Java AOP-style cross-cutting concerns
 
-Progress: [██░░░░░░░░] 15%
+Progress: [██░░░░░░░░] 20%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 3
+- Total plans completed: 4
 - Average duration: -
 - Total execution time: not measured
 
@@ -46,11 +46,12 @@ Progress: [██░░░░░░░░] 15%
 | s01 Agent Loop | 1 | 1 | not measured |
 | s02 Tool Use | 1 | 1 | not measured |
 | s03 Permission | 1 | 1 | not measured |
+| s04 Hooks | 1 | 1 | not measured |
 
 **Recent Trend:**
 
-- Last 5 plans: s01 Agent Loop, s02 Tool Use, s03 Permission
-- Trend: s01-s03 complete; s04 next
+- Last 5 plans: s01 Agent Loop, s02 Tool Use, s03 Permission, s04 Hooks
+- Trend: s01-s04 complete; s05 next
 
 *Updated after each plan completion*
 
@@ -71,15 +72,16 @@ Recent decisions affecting current work:
 - [Phase 2]: From s02 onward, Codex gives concise guide and diff-review pointers, then implements the uncommitted delta; learner discussion happens after reviewing the actual PyCharm diff. — The diff is the learning material; preselecting discussion topics before code exists is not required.
 - [Phase 2]: 上游当前章节的运行行为是功能上限；代码风格、中文注释、模块拆分和测试接缝只能改善实现形式，不能增加功能 — 学习目标是掌握教程增量；任何额外能力、校验、防护、错误语义或未来机制都需要学习者明确批准
 - [Phase 2]: 测试必须跟随当前生产接口演进，不得仅为旧测试向生产代码添加兼容参数或分支 — 除非向后兼容本身是章节目标，否则应修改旧测试以使用当前 seam，避免测试反向腐化生产设计
+- [Upstream]: Prefer the local tutorial checkout at `/Users/loganlee/Desktop/Pyprojs/learn-claude-code-main` for future chapter comparisons; use network only if the local copy is missing, stale for the task, or explicitly requested.
 
 ### Pending Todos
 
-- [Phase 4]: Start s04 only after fetching remote tags and comparing upstream s04 against s03.
+- [Phase 5]: Start s05 only after confirming remote tags include `s04-hooks` and comparing local upstream `s05_todo_write` against `s04_hooks`.
 - [Docs]: Review the corrected home s01 Feishu docx page visually in browser if needed: `https://jcneiirfaiic.feishu.cn/wiki/WkW6wgMnbifIiTkFuUGcEhYhnWf`.
 
 ### Blockers/Concerns
 
-- [Phase 4]: Keep the next implementation within the exact upstream s04 behavioral delta; do not promote deferred production concerns into chapter scope.
+- [Phase 5]: Keep s05 limited to TodoWrite/session TODO behavior; do not promote persistent task-system behavior from later chapters.
 - [Documentation]: Feishu write path works on the home parent, but still ask home/company before every future archive.
 - [Documentation]: Future Feishu updates should use real Feishu `docx` pages, composed as concise review pages before upload; avoid raw Markdown file uploads, raw terminal dumps, and duplicated local notes.
 - [Documentation]: The incorrect home s01 Markdown wiki child `K9M4wXtUEiEpb6kv0nzc2d3znrd` is no longer listed under the home parent and now resolves as not found; use the corrected docx child instead.
@@ -94,8 +96,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-07-21T13:00:16Z
-Stopped at: s03 Permission completed with tests, reflection, one commit/tag, and company Feishu archive; ready to start s04
+Last session: 2026-07-21T14:35:00Z
+Stopped at: s04 Hooks finalization in progress; after commit/tag/archive, s05 is next
 Resume file: .planning/STATE.md
 
 ### Cross-Computer Sync

@@ -70,3 +70,8 @@ def check_permission(block) -> bool:
         return False
 
     return True
+
+
+def permission_hook(block) -> str | None:
+    """s04 把 s03 权限判断接入 PreToolUse 生命周期。"""
+    return None if check_permission(block) else "Permission denied."

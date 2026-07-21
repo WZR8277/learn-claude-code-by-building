@@ -10,6 +10,12 @@ if os.getenv("ANTHROPIC_BASE_URL"):
     os.environ.pop("ANTHROPIC_AUTH_TOKEN", None)
 
 from .loop import agent_loop
+from .hooks import context_inject_hook, HOOKS, register_hook, trigger_hooks
+from .tool import WORKDIR
+
+
+if context_inject_hook not in HOOKS["UserPromptSubmit"]:
+    register_hook("UserPromptSubmit", context_inject_hook)
 
 
 try:
@@ -24,7 +30,7 @@ except ImportError:
 
 
 def main() -> None:
-    print("mini-claude-code s03: Permission ready")
+    print("mini-claude-code s04: Hooks ready")
     history = []
     while True:
         try:
@@ -35,6 +41,7 @@ def main() -> None:
         #  退出指令
         if query.strip().lower() in ("q", "exit", ""):
             break
+        trigger_hooks("UserPromptSubmit", query, WORKDIR)
         #消息列表加入用户消息
         history.append({"role": "user", "content": query})
 

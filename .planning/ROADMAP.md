@@ -13,7 +13,7 @@
 - [x] **Phase 1: s01 Agent Loop** - 建立可注入、可离线验证的模型与工具结果循环
 - [x] **Phase 2: s02 Tool Use** - 用工具处理器映射把单一 Bash 扩展为多个工具
 - [x] **Phase 3: s03 Permission** - 在执行前落实 deny、ask、allow 权限决策
-- [ ] **Phase 4: s04 Hooks** - 用有序生命周期 Hook 扩展既有循环和权限语义
+- [x] **Phase 4: s04 Hooks** - 用有序生命周期 Hook 扩展既有循环和权限语义
 - [ ] **Phase 5: s05 TodoWrite** - 用会话内 TODO 状态组织当前注意力
 - [ ] **Phase 6: s06 Subagent** - 在受限新上下文中执行子 Agent 并返回摘要
 - [ ] **Phase 7: s07 Skill Loading** - 发现技能清单并按需安全加载完整内容
@@ -55,7 +55,7 @@
   2. Agent Loop 通过简单的 `TOOL_HANDLERS` 名称查找完成分发；未知名称返回 `Unknown: <name>`，不引入注册器类、统一错误模型或后续章节机制。
   3. `safe_path`、文件工具、Glob 和已有 Bash 的行为与上游 s02 教学范围一致，离线回归证明 s01 循环仍成立。
   4. s02 在 PyCharm diff 审查、讨论和个人反思确认后，以一个 `s02-*` 提交/标签及一个简洁飞书子文档结束。
-**Plans**: TBD
+**Plans**: 1/1 complete — chapter evidence is recorded under `learning/s02-tool-use/`
 
 ### Phase 3: s03 Permission
 **Goal**: 学习者可以区分 deny、ask、allow 并确认未授权工具永不执行
@@ -79,7 +79,7 @@
   2. 阻断、Hook 异常、PostToolUse 恰好一次和 Stop 有界继续均有离线失败路径测试。
   3. 权限继续通过统一执行 seam 生效，前序工具与循环回归通过。
   4. s04 的反思、单一 `s04-*` 提交/标签和飞书子文档记录 Hook 次序及边界。
-**Plans**: TBD
+**Plans**: 1/1 complete — chapter evidence is recorded under `learning/s04-hooks/`
 
 ### Phase 5: s05 TodoWrite
 **Goal**: 学习者可以用仅限当前会话的 TODO 状态组织注意力并与持久任务区分

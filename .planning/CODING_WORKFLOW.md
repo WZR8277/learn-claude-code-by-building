@@ -3,7 +3,14 @@
 Starting with s02, the learner will no longer hand-write the chapter code first.
 Codex should give a concise chapter guide and diff-review pointers, then
 implement the chapter delta using the referenced upstream open-source project
-only as behavioral reference. Pre-implementation discussion is optional, not a
+only as behavioral reference. On this computer, read the local upstream checkout
+first:
+
+- `/Users/loganlee/Desktop/Pyprojs/learn-claude-code-main`
+
+Use network access for upstream code only when the local checkout is missing,
+out of date for the requested task, or the learner explicitly asks to verify
+remote content. Pre-implementation discussion is optional, not a
 gate, and the learner is not required to predict or select discussion topics
 before seeing the code.
 
@@ -12,6 +19,11 @@ before seeing the code.
 - Preserve the single evolving implementation under `src/mini_claude_code/`.
 - Before coding, compare the current upstream chapter with its predecessor and
   identify the exact runtime behavior added by the current chapter.
+- Prefer the local upstream checkout when comparing chapters. For example,
+  compare `../learn-claude-code-main/s04_hooks/` with
+  `../learn-claude-code-main/s03_permission/` from this repository's current
+  home-computer location. On another computer, find that machine's local
+  `learn-claude-code-main` path instead of assuming this absolute path exists.
 - Treat that upstream runtime behavior as the chapter ceiling. Implement only
   the current chapter delta.
 - Do not copy upstream code verbatim. Re-express the understood mechanism in the
