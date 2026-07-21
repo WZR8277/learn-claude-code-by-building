@@ -1,8 +1,11 @@
 # Coding Workflow From s02 Onward
 
 Starting with s02, the learner will no longer hand-write the chapter code first.
-Codex should implement the chapter delta after the guide/discussion step, using
-the referenced upstream open-source project only as behavioral reference.
+Codex should give a concise chapter guide and diff-review pointers, then
+implement the chapter delta using the referenced upstream open-source project
+only as behavioral reference. Pre-implementation discussion is optional, not a
+gate, and the learner is not required to predict or select discussion topics
+before seeing the code.
 
 ## Implementation Rules
 
@@ -20,12 +23,19 @@ the referenced upstream open-source project only as behavioral reference.
 
 ## Review Rhythm
 
-1. Codex explains the chapter goal and expected delta.
-2. The learner discusses questions and confirms readiness.
-3. Codex implements the delta, tests, demo evidence, and chapter records.
-4. The learner reviews the PyCharm diff and asks questions.
-5. Codex adjusts if needed, then completes tests, commit, tag, push, and Feishu
-   archive.
+1. Codex briefly explains the chapter goal, expected delta, and useful points to
+   watch while reviewing the diff.
+2. Codex implements the delta, tests, and reproducible demo evidence, leaving
+   the chapter changes uncommitted for review.
+3. The learner reviews the PyCharm diff, asks questions based on the actual
+   code, records personal observations, and requests adjustments if needed.
+4. Codex explains and adjusts the implementation until the learner confirms it.
+5. Codex finalizes chapter records and verification, then creates the single
+   chapter commit, tag, push, and polished Feishu archive.
+
+The pre-implementation guide may include attention points or prompts for
+reflection, but it must not force the learner to choose discussion areas before
+the diff exists.
 
 The learner may still edit code manually when desired, but that is no longer the
 default workflow after s01.

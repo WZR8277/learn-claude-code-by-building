@@ -1,11 +1,15 @@
 ---
-gsd_state_version: '1.0'
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+current_phase: 2
+current_phase_name: s02 Tool Use
 status: planning
+stopped_at: s02 diff-first review workflow aligned across computers; ready to implement s02 after concise guide
+last_updated: "2026-07-21T03:24:52.816Z"
+last_activity: 2026-07-21
+last_activity_desc: Replaced the raw home s01 Markdown upload with a polished Feishu docx child and updated the home parent index; s02 remains next
 progress:
-  total_phases: 20
-  completed_phases: 1
-  total_plans: 1
-  completed_plans: 1
   percent: 5
 ---
 
@@ -30,6 +34,7 @@ Progress: [█░░░░░░░░░] 5%
 ## Performance Metrics
 
 **Velocity:**
+
 - Total plans completed: 1
 - Average duration: -
 - Total execution time: not measured
@@ -41,6 +46,7 @@ Progress: [█░░░░░░░░░] 5%
 | s01 Agent Loop | 1 | 1 | not measured |
 
 **Recent Trend:**
+
 - Last 5 plans: s01 Agent Loop
 - Trend: s01 complete; s02 ready
 
@@ -61,6 +67,7 @@ Recent decisions affecting current work:
 - [Docs]: Feishu child documents must be polished, clear, concise review artifacts; do not upload raw concatenated Markdown notes as the final version.
 - [Workflow]: Starting with s02, Codex implements the chapter delta after discussion; the learner reviews the PyCharm diff and asks questions before final archive.
 - [Code style]: Keep methods clear, module splits reasonable, and Chinese comments focused on important Agent harness concepts.
+- [Phase 2]: From s02 onward, Codex gives concise guide and diff-review pointers, then implements the uncommitted delta; learner discussion happens after reviewing the actual PyCharm diff. — The diff is the learning material; preselecting discussion topics before code exists is not required.
 
 ### Pending Todos
 
@@ -85,9 +92,9 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-07-21
-Stopped at: s01 fully archived; s02 is the next chapter
-Resume file: None
+Last session: 2026-07-21T03:24:52.813Z
+Stopped at: s02 diff-first review workflow aligned across computers; ready to implement s02 after concise guide
+Resume file: .planning/CODING_WORKFLOW.md
 
 ### Cross-Computer Sync
 

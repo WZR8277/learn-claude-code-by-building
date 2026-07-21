@@ -17,7 +17,7 @@ This repository is a chapter-by-chapter reconstruction of the core harness mecha
 
 - Before starting or closing any chapter, fetch remote tags and use the newest remote `sXX-*` tag as the source of truth for completed chapters.
 - Read `.planning/STATE.md`, `.planning/PROJECT.md`, `.planning/CROSS_COMPUTER_SYNC.md`, `.planning/FEISHU_SYNC.md`, and `.planning/CODING_WORKFLOW.md` when restoring context.
-- From `s02` onward, Codex implements the chapter delta after discussion; the learner reviews the PyCharm diff, asks questions, and confirms before final commit/tag/archive.
+- From `s02` onward, Codex first gives a concise chapter guide and diff-review pointers, then implements the uncommitted chapter delta without requiring the learner to preselect discussion topics or confirm readiness. The learner reviews the PyCharm diff, asks questions, and confirms before final commit/tag/archive.
 - Code written by Codex should keep methods clear, module/file splits reasonable, and Chinese comments focused on important Agent harness concepts.
 - Before updating Feishu, ask whether the user is at home or company, then choose the matching parent wiki from `.planning/FEISHU_SYNC.md`.
 - Feishu chapter documents must be polished for review: visually clean, concise, well-structured, and easy to revisit. Do not upload a raw concatenation of local Markdown notes as the final chapter document.

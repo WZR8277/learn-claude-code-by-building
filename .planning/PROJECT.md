@@ -23,7 +23,7 @@
 
 - [ ] 按 `s01`–`s20` 的顺序理解每章目标、核心机制及其相对上一章的增量
 - [ ] 在同一个 `src/mini_claude_code/` 包中逐章实现机制，不维护相互割裂的章节代码副本
-- [ ] 从 s02 开始，由 Codex 基于上游行为差量实现章节代码，学习者在 PyCharm 中审查 diff 并提出问题
+- [ ] 从 s02 开始，由 Codex 先给出简短导读和 diff 阅读提示，再基于上游行为差量实现未提交的章节代码；学习者看过 PyCharm diff 后再提出问题和确认，不要求实现前预选讨论主题
 - [ ] 每章补充与新增机制匹配的自动化测试和安全、可复现的运行演示
 - [ ] 每章记录学习者的个人观点，并在不改变原意的前提下整理成通顺表达
 - [ ] 每章形成一个边界清晰的学习提交和一个匹配的 `sXX-short-name` Git tag
@@ -49,9 +49,9 @@
 - 飞书父文档按电脑环境选择：在家使用 `https://jcneiirfaiic.feishu.cn/wiki/UDZJwVXukitwJ3kvOlecXYOMnng`；在公司使用 `https://trip.larkenterprise.com/wiki/S8X8wpgTCio65Yk3C76ceTYMnBc`。更新飞书前必须先询问用户当前是在家还是在公司。
 - 当前处于 `s02` 准备：s01 Agent Loop 已完成、提交、打标签、推送，并在家飞书父文档下创建了清晰简洁的 docx 子文档。旧的 Markdown 子节点已不在父目录中，旧链接当前解析为 not found。
 - 代码库使用一个稳定的 CLI 边界；模块执行、安装后的控制台命令和测试都汇聚到 `mini_claude_code.cli:main`。
-- 学习闭环为：本章导读 → 结合上游阅读与讨论 → 增量实现 → 测试/演示 → 个人观点 → 单章提交与标签 → 飞书子文档。
+- 学习闭环为：简短导读与 diff 关注点 → 增量实现及测试/演示（保持未提交）→ 学习者审查 PyCharm diff、讨论并输出个人观点 → 调整确认 → 单章提交与标签 → 飞书子文档。
 - 助手在每个新章节开始前负责梳理目标、调用链、关键抽象、相对上一章的变化、阅读路径和常见误区；学习者结合代码阅读并输出个人观点。
-- 从 s02 开始，助手在讨论完成后负责实现章节差量；学习者在 PyCharm 中查看 diff，有疑问再继续讨论和调整。
+- 从 s02 开始，助手在简短导读后直接实现章节差量，不把实现前讨论或预选讨论主题作为门槛；学习者在 PyCharm 中查看实际 diff 后，再围绕代码提问、讨论和要求调整。
 - 助手在章节结束时结合前置梳理、润色后的个人观点、测试结果和 Git 证据，生成美观、简洁、可复习的飞书文档。
 
 ## Constraints
@@ -81,7 +81,7 @@
 | 使用 GSD 管理长期上下文 | 学习周期较长，需要跨会话保存目标、阶段、决策和进度 | Active |
 | Agent 项目禁用全部 `trn-` 技能 | 这是用户明确设定的全局边界，且已写入全局与项目指令 | — Pending |
 | 飞书父文档按家/公司环境切换 | 两台电脑对应不同飞书空间，写死单一父文档会导致归档到错误目录 | 在更新飞书前先询问当前位置 |
-| s02 起 Codex 实现章节差量，学习者审查 PyCharm diff | 用户只在 s01 手写代码；后续更重视理解、diff 审查和讨论 | Active; see `.planning/CODING_WORKFLOW.md` |
+| s02 起先导读、再实现未提交差量、后看 diff 讨论 | 用户只在 s01 手写代码；后续以实际 diff 作为学习讨论材料，不要求学习者在代码出现前预选问题或确认就绪 | Active; see `.planning/CODING_WORKFLOW.md` |
 | 飞书子文档必须美观清晰简洁，且使用真正的飞书在线文档 | 用户明确指出 s01 原始 Markdown 上传不符合复习质量要求 | Active; s01 home docx has been corrected; see `.planning/FEISHU_SYNC.md` |
 
 ## Evolution
@@ -102,4 +102,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-21 after s01 archive and s02 workflow update*
+*Last updated: 2026-07-21 after aligning the s02 diff-first review workflow across computers*
