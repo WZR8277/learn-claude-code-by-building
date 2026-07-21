@@ -30,6 +30,10 @@ s01 page is:
 
 - `https://jcneiirfaiic.feishu.cn/wiki/WkW6wgMnbifIiTkFuUGcEhYhnWf`
 
+The completed company s02 page is:
+
+- `https://trip.larkenterprise.com/wiki/MwfHwn0Lwi4b9XkWNNUcFUmgnth`
+
 The obsolete raw Markdown child is no longer listed under the home parent and
 currently resolves as not found:
 

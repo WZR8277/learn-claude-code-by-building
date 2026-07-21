@@ -24,7 +24,7 @@ except ImportError:
 
 
 def main() -> None:
-    print("mini-claude-code s01: Agent Loop ready")
+    print("mini-claude-code s02: Tool Use ready")
     history = []
     while True:
         try:

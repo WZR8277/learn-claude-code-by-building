@@ -4,6 +4,7 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 from mini_claude_code.loop import agent_loop
+from mini_claude_code.tool import TOOL_HANDLERS
 
 
 class FakeMessages:
@@ -26,6 +27,7 @@ class AgentLoopTest(unittest.TestCase):
         tool_block = SimpleNamespace(
             type="tool_use",
             id="toolu_123",
+            name="bash",
             input={"command": "pwd"},
         )
         final_block = SimpleNamespace(type="text", text="done")
@@ -35,8 +37,9 @@ class AgentLoopTest(unittest.TestCase):
         ])
         messages = [{"role": "user", "content": "where am I?"}]
 
-        with patch.dict(os.environ, {"MODEL_ID": "test-model"}):
-            agent_loop(messages, client=client, tool_runner=lambda command: f"ran {command}")
+        with patch.dict(TOOL_HANDLERS, {"bash": lambda command: f"ran {command}"}):
+            with patch.dict(os.environ, {"MODEL_ID": "test-model"}):
+                agent_loop(messages, client=client)
 
         self.assertEqual(len(client.messages.calls), 2)
         self.assertEqual(messages[1]["role"], "assistant")

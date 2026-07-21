@@ -11,7 +11,7 @@
 - Decimal phases: reserved for urgent insertions and do not replace a chapter
 
 - [x] **Phase 1: s01 Agent Loop** - 建立可注入、可离线验证的模型与工具结果循环
-- [ ] **Phase 2: s02 Tool Use** - 通过统一注册表安全调用工作区工具
+- [x] **Phase 2: s02 Tool Use** - 用工具处理器映射把单一 Bash 扩展为多个工具
 - [ ] **Phase 3: s03 Permission** - 在执行前落实 deny、ask、allow 权限决策
 - [ ] **Phase 4: s04 Hooks** - 用有序生命周期 Hook 扩展既有循环和权限语义
 - [ ] **Phase 5: s05 TodoWrite** - 用会话内 TODO 状态组织当前注意力
@@ -46,15 +46,15 @@
 **Plans**: 1/1 complete — chapter evidence is recorded under `learning/s01-agent-loop/`
 
 ### Phase 2: s02 Tool Use
-**Goal**: 学习者可以通过统一注册表调用工作区受限工具并观察规范化结果
+**Goal**: 学习者可以在不改变 Agent Loop 主体结构的前提下，通过 `TOOL_HANDLERS` 映射调用 Bash、读、写、编辑和 Glob 工具
 **Mode:** mvp
 **Depends on**: Phase 1
 **Requirements**: TOOL-01
 **Success Criteria** (what must be TRUE):
-  1. 学习者可从同一注册表调用读、写、编辑、搜索和有界命令工具，Agent Loop 无需为每种工具增加分支。
-  2. 路径穿越、越界符号链接、未知工具、超时和处理器失败均返回可关联的规范化结果且不破坏循环。
-  3. 离线回归证明 s01 协议仍成立，安全演示只作用于临时工作区。
-  4. s02 的精确增量、反思、聚焦提交、`s02-*` 标签和飞书子文档均引用真实验证证据。
+  1. 在保留 Bash 的基础上新增 `read_file`、`write_file`、`edit_file` 和 `glob`，其参数与结果行为不超过上游 s02 `code.py`。
+  2. Agent Loop 通过简单的 `TOOL_HANDLERS` 名称查找完成分发；未知名称返回 `Unknown: <name>`，不引入注册器类、统一错误模型或后续章节机制。
+  3. `safe_path`、文件工具、Glob 和已有 Bash 的行为与上游 s02 教学范围一致，离线回归证明 s01 循环仍成立。
+  4. s02 在 PyCharm diff 审查、讨论和个人反思确认后，以一个 `s02-*` 提交/标签及一个简洁飞书子文档结束。
 **Plans**: TBD
 
 ### Phase 3: s03 Permission
@@ -281,7 +281,7 @@
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. s01 Agent Loop | 0/TBD | Not started | - |
-| 2. s02 Tool Use | 0/TBD | Not started | - |
+| 2. s02 Tool Use | 1/1 | Complete | 2026-07-21 |
 | 3. s03 Permission | 0/TBD | Not started | - |
 | 4. s04 Hooks | 0/TBD | Not started | - |
 | 5. s05 TodoWrite | 0/TBD | Not started | - |

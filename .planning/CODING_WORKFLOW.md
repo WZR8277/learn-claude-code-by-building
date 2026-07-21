@@ -10,16 +10,35 @@ before seeing the code.
 ## Implementation Rules
 
 - Preserve the single evolving implementation under `src/mini_claude_code/`.
-- Do not copy upstream code verbatim.
-- Implement only the current chapter delta.
+- Before coding, compare the current upstream chapter with its predecessor and
+  identify the exact runtime behavior added by the current chapter.
+- Treat that upstream runtime behavior as the chapter ceiling. Implement only
+  the current chapter delta.
+- Do not copy upstream code verbatim. Re-express the understood mechanism in the
+  evolving local structure without redesigning or expanding its feature set.
 - Keep methods small, clear, and reasonably named.
-- Keep module/file boundaries intentional; split code when it clarifies the
-  mechanism or prepares the current chapter boundary.
-- Prefer deterministic, injectable seams for model, filesystem, command, and
-  clock behavior.
+- Keep module/file boundaries intentional. Upstream may use one `code.py` per
+  chapter; this project may split equivalent behavior across modules, but must
+  not keep parallel chapter source copies or introduce extra runtime behavior.
+- Deterministic test seams are allowed only when they preserve production
+  behavior, stay minimal, and do not introduce a mechanism from a later
+  chapter. Tests should patch the current seam rather than require a legacy
+  production API.
+- When a chapter intentionally evolves an internal interface, update earlier
+  tests to exercise the current interface. Do not preserve obsolete parameters,
+  compatibility branches, fallback behavior, or duplicate execution paths in
+  production code solely for old tests.
 - Add clear Chinese comments where they help explain Agent harness concepts or
   non-obvious control flow. Do not add noisy comments for obvious assignments.
-- Match the existing code style unless it conflicts with clarity or safety.
+- Match the existing code style while staying inside the chapter's behavioral
+  ceiling.
+- Do not add validation, safeguards, error normalization, concurrency,
+  abstractions, or future roadmap features merely because they seem cleaner or
+  safer. If upstream does not teach them in the current chapter, obtain the
+  learner's explicit approval first.
+- Treat `.planning/research/` as background rather than an implementation
+  specification. If it conflicts with the learner's current decision,
+  `AGENTS.md`, or the current upstream chapter, those sources take precedence.
 
 ## Review Rhythm
 

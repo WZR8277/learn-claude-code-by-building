@@ -5,10 +5,10 @@
 
 ## v1 Requirements
 
-### Core Loop and Guarded Dispatch
+### Core Loop and Tool Dispatch
 
 - [x] **LOOP-01**: 学习者可以运行 s01 Agent Loop，并通过可注入模型客户端观察完整的模型调用、工具请求、工具结果回传和最终响应终止流程
-- [ ] **TOOL-01**: 学习者可以在 s02 通过统一工具注册表调用工作区受限的读、写、编辑、搜索与命令工具，并观察未知工具和执行失败如何返回模型
+- [x] **TOOL-01**: 学习者可以在 s02 通过简单的 `TOOL_HANDLERS` 映射调用 Bash、读、写、编辑与 Glob 工具，并观察工具结果和未知工具名称如何返回模型；运行行为不超过上游 s02
 - [ ] **SAFE-01**: 学习者可以在 s03 区分 deny、ask、allow 三种权限结果，并验证拒绝和未批准调用不会执行实际工具
 - [ ] **HOOK-01**: 学习者可以在 s04 通过有序生命周期 Hooks 扩展提示提交、工具调用前后和停止阶段，同时保持原有循环与权限语义
 
@@ -51,7 +51,7 @@
 - [ ] **DOCS-01**: 每章在代码、测试、演示、观点、提交和标签全部完成后，才在指定飞书父文档下创建对应子文档
 - [ ] **DOCS-02**: 每个飞书子文档包含章节导读、机制说明、关键代码路径、测试与演示证据、润色后的个人观点以及不可变的提交和标签信息，并保持美观、清晰、简洁、适合复习
 - [ ] **DOCS-03**: 飞书父文档持续维护 s01–s20 目录、学习状态和全部已完成子文档入口
-- [ ] **FLOW-01**: 从 s02 开始，Codex 根据上游行为差量实现章节代码，学习者通过 PyCharm diff 审查、提问和确认，代码应保持方法清晰、结构拆分合理、中文注释准确
+- [ ] **FLOW-01**: 从 s02 开始，Codex 根据上游行为差量实现章节代码，学习者通过 PyCharm diff 审查、提问和确认；方法、结构、中文注释和测试接缝可以改善实现形式，但不得扩大当前章节的运行行为，也不得仅为旧测试向生产代码添加兼容逻辑
 
 ## v2 Requirements
 
@@ -88,7 +88,7 @@
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | LOOP-01 | Phase 1 | Complete |
-| TOOL-01 | Phase 2 | Pending |
+| TOOL-01 | Phase 2 | Complete |
 | SAFE-01 | Phase 3 | Pending |
 | HOOK-01 | Phase 4 | Pending |
 | TODO-01 | Phase 5 | Pending |
@@ -126,4 +126,4 @@
 
 ---
 *Requirements defined: 2026-07-19*
-*Last updated: 2026-07-21 after s01 completion and s02 workflow update*
+*Last updated: 2026-07-21 after aligning chapter scope with the upstream behavioral ceiling*

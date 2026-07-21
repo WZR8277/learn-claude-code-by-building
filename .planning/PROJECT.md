@@ -18,11 +18,13 @@
 - ✓ 仓库已定义逐章学习、测试、反思、单提交、标签和飞书归档协议 — existing
 - ✓ 代码库架构、技术栈、质量约定和主要风险已通过 GSD 映射 — existing
 - ✓ s01 Agent Loop 已完成并归档 — commit `b8a21aa`, tag `s01-agent-loop`, home Feishu docx child `https://jcneiirfaiic.feishu.cn/wiki/WkW6wgMnbifIiTkFuUGcEhYhnWf`
+- ✓ s02 Tool Use 已完成并归档 — tag `s02-tool-use`, company Feishu docx child `https://trip.larkenterprise.com/wiki/MwfHwn0Lwi4b9XkWNNUcFUmgnth`
 
 ### Active
 
 - [ ] 按 `s01`–`s20` 的顺序理解每章目标、核心机制及其相对上一章的增量
 - [ ] 在同一个 `src/mini_claude_code/` 包中逐章实现机制，不维护相互割裂的章节代码副本
+- [ ] 以上游当前章节的可运行行为作为功能上限；代码风格、中文注释、模块拆分和测试接缝只改善表达与可测试性，不增加教程之外的功能
 - [ ] 从 s02 开始，由 Codex 先给出简短导读和 diff 阅读提示，再基于上游行为差量实现未提交的章节代码；学习者看过 PyCharm diff 后再提出问题和确认，不要求实现前预选讨论主题
 - [ ] 每章补充与新增机制匹配的自动化测试和安全、可复现的运行演示
 - [ ] 每章记录学习者的个人观点，并在不改变原意的前提下整理成通顺表达
@@ -37,6 +39,7 @@
 
 - 复制 Claude Code 的闭源正式实现 — 本项目学习公开教程中的 Agent Harness 机制，不声称复刻官方内部架构
 - 逐字照抄上游教学代码 — 以理解后的独立实现和个人解释为学习证据
+- 以“代码质量”或“安全性”为理由提前增加当前章节未教授的能力、校验、防护、错误语义或未来机制 — 如确有需要，必须先获得学习者明确同意
 - 为每章维护一套可执行源码快照 — Git commit/tag 已承担历史追溯，运行时代码只保留一套
 - 在章节完成前预先批量创建飞书子文档 — 子文档必须反映真实观点、测试和提交证据
 - 将其直接作为生产级、自主执行的 Claude Code 替代品 — 当前目标是可运行、可解释的学习实现
@@ -47,7 +50,7 @@
 - 上游学习主线：`https://github.com/shareAI-lab/learn-claude-code` 根目录新版教程 `s01_agent_loop` 至 `s20_comprehensive`。
 - 本地仓库路径因电脑不同而不同；已知检出路径包括 `/Users/loganlee/Desktop/Pyprojs/learn-claude-code-by-building` 和 `/Users/zhaorongwang/agentprojects/learn-claude-code-by-building`。每次以当前仓库根目录为准，不把任一路径当作跨电脑事实，也不根据路径猜测家里/公司环境；涉及环境相关操作时先询问用户当前是在家还是在公司。
 - 飞书父文档按电脑环境选择：在家使用 `https://jcneiirfaiic.feishu.cn/wiki/UDZJwVXukitwJ3kvOlecXYOMnng`；在公司使用 `https://trip.larkenterprise.com/wiki/S8X8wpgTCio65Yk3C76ceTYMnBc`。更新飞书前必须先询问用户当前是在家还是在公司。
-- 当前处于 `s02` 准备：s01 Agent Loop 已完成、提交、打标签、推送，并在家飞书父文档下创建了清晰简洁的 docx 子文档。旧的 Markdown 子节点已不在父目录中，旧链接当前解析为 not found。
+- 当前处于 `s03` 准备：s01 Agent Loop 与 s02 Tool Use 已完成、提交、打标签并归档；s02 使用公司飞书父文档，下一章仍需在归档前确认家/公司环境。
 - 代码库使用一个稳定的 CLI 边界；模块执行、安装后的控制台命令和测试都汇聚到 `mini_claude_code.cli:main`。
 - 学习闭环为：简短导读与 diff 关注点 → 增量实现及测试/演示（保持未提交）→ 学习者审查 PyCharm diff、讨论并输出个人观点 → 调整确认 → 单章提交与标签 → 飞书子文档。
 - 助手在每个新章节开始前负责梳理目标、调用链、关键抽象、相对上一章的变化、阅读路径和常见误区；学习者结合代码阅读并输出个人观点。
@@ -59,8 +62,10 @@
 - **Tech stack**: 使用 Python 3.11+，跟随上游 Python 教程主线 — 避免语言差异干扰对 Agent 机制的理解
 - **Code evolution**: 生产代码始终在 `src/mini_claude_code/` 原地演进 — 保持唯一可运行实现
 - **Chapter order**: 默认严格按 `s01`–`s20` 顺序推进 — 后续机制建立在前置机制之上
-- **Chapter scope**: 每章只引入该章要求的核心增量 — 保持因果关系清晰，避免提前实现模糊学习边界
-- **Code quality from s02**: Codex 实现代码时必须保持方法清晰、结构和文件拆分合理，并为关键 Agent 机制保留清楚的中文注释
+- **Chapter scope**: 上游当前章节的可运行代码和讲解是本章行为上限；先与上一章比较并只实现精确增量 — 保持因果关系清晰，避免提前实现模糊学习边界
+- **Code quality from s02**: Codex 实现代码时必须保持方法清晰、结构和文件拆分合理，并为关键 Agent 机制保留清楚的中文注释；这些要求只约束实现形式，不授权增加功能
+- **Test integrity**: 测试应适配当前生产接口；除非向后兼容本身是当前章节要求，不得仅为保留旧测试而在生产代码中增加旧参数、兼容分支、回退行为或重复执行路径
+- **Planning precedence**: 学习者明确决定、`AGENTS.md` 和上游当前章节优先于早期研究建议或旧规划措辞 — 避免历史文档重新扩大章节范围
 - **Verification**: 每章必须通过自动化测试并留下可复现运行证据 — “看懂”必须有行为证据支持
 - **Git history**: 每章恰好一个聚焦的学习提交和一个匹配标签 — 让提交历史成为可浏览的学习时间线
 - **Documentation timing**: 只有在观点、验证和提交齐备后才创建该章飞书子文档 — 防止文档与实际成果脱节
@@ -82,6 +87,8 @@
 | Agent 项目禁用全部 `trn-` 技能 | 这是用户明确设定的全局边界，且已写入全局与项目指令 | — Pending |
 | 飞书父文档按家/公司环境切换 | 两台电脑对应不同飞书空间，写死单一父文档会导致归档到错误目录 | 在更新飞书前先询问当前位置 |
 | s02 起先导读、再实现未提交差量、后看 diff 讨论 | 用户只在 s01 手写代码；后续以实际 diff 作为学习讨论材料，不要求学习者在代码出现前预选问题或确认就绪 | Active; see `.planning/CODING_WORKFLOW.md` |
+| 上游当前章节行为是功能上限 | 用户要求改善代码风格、中文注释和架构，但没有授权新增教程之外的功能；独立实现也不等于扩大设计 | Active; engineering quality may change form, never chapter scope without explicit approval |
+| 旧测试不得腐化生产代码 | 章节演进后应修改旧测试以使用当前接口，不应为测试保留过时参数或兼容分支；只有章节明确教授向后兼容时例外 | Active; tests follow the production design |
 | 飞书子文档必须美观清晰简洁，且使用真正的飞书在线文档 | 用户明确指出 s01 原始 Markdown 上传不符合复习质量要求 | Active; s01 home docx has been corrected; see `.planning/FEISHU_SYNC.md` |
 
 ## Evolution
@@ -102,4 +109,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-21 after aligning the s02 diff-first review workflow across computers*
+*Last updated: 2026-07-21 after completing and archiving s02 Tool Use*
