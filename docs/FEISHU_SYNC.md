@@ -44,3 +44,11 @@ Current known home chapter pages:
 - s05: `https://jcneiirfaiic.feishu.cn/wiki/Dmf6wxoNXimqWbkRT1mcFVEXnid`
 - s06: `https://jcneiirfaiic.feishu.cn/wiki/KHJUwCe0NiTKmEkLi5IcFUaQnSc`
 - s07: `https://jcneiirfaiic.feishu.cn/wiki/GGe6wFFePiJEkXk48pGcIHbGnrf`
+- s08: `https://jcneiirfaiic.feishu.cn/wiki/RhG7wRQlqi4wg8k1D1kcicnvn99`
+
+## Parent Update Safety
+
+Use `lark-cli` for Feishu updates when available. `docs +update --command
+str_replace` can replace every matching text fragment, not just the first one.
+For parent directory tables, prefer fetching the table block id and using
+`block_replace`, or use patterns that are globally unique.

@@ -62,6 +62,19 @@ The completed home s07 page is:
 
 - `https://jcneiirfaiic.feishu.cn/wiki/GGe6wFFePiJEkXk48pGcIHbGnrf`
 
+The completed home s08 page is:
+
+- `https://jcneiirfaiic.feishu.cn/wiki/RhG7wRQlqi4wg8k1D1kcicnvn99`
+
+## Parent Update Safety
+
+Use `lark-cli` for Feishu updates when available. Do not assume
+`docs +update --command str_replace` replaces only the first occurrence: it can
+replace every matching text fragment in the document. For parent directory
+tables, prefer fetching the table block id with `docs +fetch --detail with-ids`
+and using `block_replace` for the table, or use patterns that are globally
+unique.
+
 The obsolete raw Markdown child is no longer listed under the home parent and
 currently resolves as not found:
 

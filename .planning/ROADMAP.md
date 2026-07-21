@@ -17,7 +17,7 @@
 - [x] **Phase 5: s05 TodoWrite** - 用会话内 TODO 状态组织当前注意力
 - [x] **Phase 6: s06 Subagent** - 在受限新上下文中执行子 Agent 并返回摘要
 - [x] **Phase 7: s07 Skill Loading** - 发现技能清单并按需安全加载完整内容
-- [ ] **Phase 8: s08 Context Compact** - 压缩上下文且保留协议对与继续执行状态
+- [x] **Phase 8: s08 Context Compact** - 压缩上下文且保留协议对与继续执行状态
 - [ ] **Phase 9: s09 Memory** - 筛选、持久化并按相关性恢复可信记忆
 - [ ] **Phase 10: s10 System Prompt** - 由运行状态确定性组装并刷新 System Prompt
 - [ ] **Phase 11: s11 Error Recovery** - 对模型边界错误执行有界、可解释的恢复
@@ -127,7 +127,7 @@
   2. assistant tool_use 与后续 user tool_result 始终作为不可分单元保留，必要状态与继续锚点不丢失。
   3. 溢出/归档证据可检查，重复压缩和摘要失败有界且由离线测试覆盖。
   4. s08 的反思、一个 `s08-*` 提交/标签和飞书子文档展示压缩前后行为证据。
-**Plans**: 1/1 in review — chapter evidence is recorded under `learning/s08-context-compact/`
+**Plans**: 1/1 complete — chapter evidence is recorded under `learning/s08-context-compact/`
 
 ### Phase 9: s09 Memory
 **Goal**: 学习者可以安全持久化可信事实并在重启后按相关性恢复
