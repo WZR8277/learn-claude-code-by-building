@@ -9,8 +9,7 @@ from .tool import TOOLS, TOOL_HANDLERS
 # 系统提示词
 SYSTEM = (
     f"You are a coding agent at {os.getcwd()}. "
-    "Before starting any multi-step task, use todo_write to plan your steps. "
-    "Update status as you go."
+    "For complex sub-problems, use the task tool to spawn a subagent."
 )
 MAX_STOP_CONTINUATIONS = 1
 TODO_REMINDER_AFTER = 3

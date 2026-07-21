@@ -1,10 +1,11 @@
-"""Built-in tools shared by the s05 tutorial."""
+"""Built-in tools shared by the evolving tutorial."""
 
 import glob as glob_module
 import subprocess
 from pathlib import Path
 
 from .todo import run_todo_write
+from .subagent import spawn_subagent
 
 
 WORKDIR = Path.cwd()
@@ -161,6 +162,15 @@ TOOLS = [
             "required": ["todos"],
         },
     },
+    {
+        "name": "task",
+        "description": "Launch a subagent to handle a complex subtask. Returns only the final conclusion.",
+        "input_schema": {
+            "type": "object",
+            "properties": {"description": {"type": "string"}},
+            "required": ["description"],
+        },
+    },
 ]
 
 
@@ -171,4 +181,5 @@ TOOL_HANDLERS = {
     "edit_file": run_edit,
     "glob": run_glob,
     "todo_write": run_todo_write,
+    "task": spawn_subagent,
 }

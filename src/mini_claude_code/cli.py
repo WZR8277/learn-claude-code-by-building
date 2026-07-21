@@ -30,7 +30,7 @@ except ImportError:
 
 
 def main() -> None:
-    print("mini-claude-code s05: TodoWrite ready")
+    print("mini-claude-code s06: Subagent ready")
     history = []
     while True:
         try:

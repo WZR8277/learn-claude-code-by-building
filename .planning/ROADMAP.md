@@ -103,7 +103,7 @@
   2. 轮数、递归深度和取消均有界，子 Agent 无法绕过父级工作区与权限约束。
   3. 父上下文只收到关联摘要而非完整子轨迹，离线测试证明前序循环未分叉。
   4. s06 的反思、一个 `s06-*` 提交/标签和飞书子文档记录隔离选择与上游简化点。
-**Plans**: TBD
+**Plans**: 1/1 finalizing — chapter evidence is recorded under `learning/s06-subagent/`
 
 ### Phase 7: s07 Skill Loading
 **Goal**: 学习者可以渐进发现技能并按需安全加载完整 SKILL.md

@@ -4,11 +4,11 @@ milestone: v1.0
 milestone_name: milestone
 current_phase: 6
 current_phase_name: s06 Subagent
-status: planning
-stopped_at: s05 TodoWrite archived; ready to start s06 Subagent
-last_updated: "2026-07-21T16:30:00Z"
+status: finalizing
+stopped_at: s06 Subagent learned; final commit/tag/Feishu archive in progress
+last_updated: "2026-07-21T15:25:00Z"
 last_activity: 2026-07-21
-last_activity_desc: Completed s05 TodoWrite with 25 passing tests, commit/tag/push, and home Feishu archive
+last_activity_desc: Captured s06 learner reflection and started final chapter closeout
 progress:
   percent: 25
 ---
@@ -25,9 +25,9 @@ See: .planning/PROJECT.md (updated 2026-07-21)
 ## Current Position
 
 Phase: 6 of 20 (s06 Subagent)
-Plan: 0 of TBD in current phase
-Status: s05 TodoWrite archived; s06 Subagent is next
-Last activity: 2026-07-21 — Completed s05 TodoWrite with 25 passing tests, commit `8efa890`, tag `s05-todo-write`, and home Feishu child `https://jcneiirfaiic.feishu.cn/wiki/Dmf6wxoNXimqWbkRT1mcFVEXnid`
+Plan: 1 of 1 in current phase
+Status: s06 Subagent learned; final commit/tag/Feishu archive in progress
+Last activity: 2026-07-21 — Captured learner reflection that Subagent is an Agent Loop wrapped as a tool, with real-world complexity around context inheritance, permission bubbling, cancellation/timeouts, resource control, and parallel execution
 
 Progress: [███░░░░░░░] 25%
 
@@ -77,7 +77,7 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- [Phase 6]: Start s06 only after confirming remote tags include `s05-todo-write` and comparing local upstream `s06_subagent` against `s05_todo_write`.
+- [Phase 6]: Rerun final tests, create one `s06-*` learning commit and matching tag, push, then create a polished Feishu child after confirming home/company.
 - [Docs]: s05 TodoWrite home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/Dmf6wxoNXimqWbkRT1mcFVEXnid`.
 - [Docs]: Review the corrected home s01 Feishu docx page visually in browser if needed: `https://jcneiirfaiic.feishu.cn/wiki/WkW6wgMnbifIiTkFuUGcEhYhnWf`.
 
@@ -98,8 +98,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-07-21T16:30:00Z
-Stopped at: s05 TodoWrite archived; s06 Subagent is next
+Last session: 2026-07-21T15:25:00Z
+Stopped at: s06 Subagent learned; final closeout in progress
 Resume file: .planning/STATE.md
 
 ### Cross-Computer Sync
