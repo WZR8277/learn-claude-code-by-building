@@ -21,7 +21,7 @@
 - ✓ s02 Tool Use 已完成并归档 — tag `s02-tool-use`, company Feishu docx child `https://trip.larkenterprise.com/wiki/MwfHwn0Lwi4b9XkWNNUcFUmgnth`
 - ✓ s03 Permission 已完成并归档 — tag `s03-permission`, company Feishu docx child `https://trip.larkenterprise.com/wiki/DqXEw21KWiuzWDkCA6CcYzLAn4g`
 - ✓ s04 Hooks 已完成并归档 — commit `8ce0806`, tag `s04-hooks`, home Feishu docx child `https://jcneiirfaiic.feishu.cn/wiki/PNNRwDIetiz7OjkAdmocdDHenfe`
-- ✓ s05 TodoWrite 已完成代码、测试、反思与提交准备 — final archive uses home Feishu after commit/tag
+- ✓ s05 TodoWrite 已完成并归档 — commit `8efa890`, tag `s05-todo-write`, home Feishu docx child `https://jcneiirfaiic.feishu.cn/wiki/Dmf6wxoNXimqWbkRT1mcFVEXnid`
 
 ### Active
 

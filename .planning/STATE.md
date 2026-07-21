@@ -5,10 +5,10 @@ milestone_name: milestone
 current_phase: 6
 current_phase_name: s06 Subagent
 status: planning
-stopped_at: s05 TodoWrite completed locally with final tests; commit/tag/Feishu archive in progress
-last_updated: "2026-07-21T16:05:00Z"
+stopped_at: s05 TodoWrite archived; ready to start s06 Subagent
+last_updated: "2026-07-21T16:30:00Z"
 last_activity: 2026-07-21
-last_activity_desc: Completed s05 TodoWrite with 25 passing tests and learner reflection
+last_activity_desc: Completed s05 TodoWrite with 25 passing tests, commit/tag/push, and home Feishu archive
 progress:
   percent: 25
 ---
@@ -26,8 +26,8 @@ See: .planning/PROJECT.md (updated 2026-07-21)
 
 Phase: 6 of 20 (s06 Subagent)
 Plan: 0 of TBD in current phase
-Status: s05 TodoWrite complete; final commit/tag/Feishu archive in progress; s06 is next after archive
-Last activity: 2026-07-21 — Completed s05 TodoWrite with 25 passing tests and reflection describing it as an embedded Plan-mode seed
+Status: s05 TodoWrite archived; s06 Subagent is next
+Last activity: 2026-07-21 — Completed s05 TodoWrite with 25 passing tests, commit `8efa890`, tag `s05-todo-write`, and home Feishu child `https://jcneiirfaiic.feishu.cn/wiki/Dmf6wxoNXimqWbkRT1mcFVEXnid`
 
 Progress: [███░░░░░░░] 25%
 
@@ -78,6 +78,7 @@ Recent decisions affecting current work:
 ### Pending Todos
 
 - [Phase 6]: Start s06 only after confirming remote tags include `s05-todo-write` and comparing local upstream `s06_subagent` against `s05_todo_write`.
+- [Docs]: s05 TodoWrite home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/Dmf6wxoNXimqWbkRT1mcFVEXnid`.
 - [Docs]: Review the corrected home s01 Feishu docx page visually in browser if needed: `https://jcneiirfaiic.feishu.cn/wiki/WkW6wgMnbifIiTkFuUGcEhYhnWf`.
 
 ### Blockers/Concerns
@@ -97,8 +98,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-07-21T16:05:00Z
-Stopped at: s05 TodoWrite finalization in progress; after commit/tag/archive, s06 is next
+Last session: 2026-07-21T16:30:00Z
+Stopped at: s05 TodoWrite archived; s06 Subagent is next
 Resume file: .planning/STATE.md
 
 ### Cross-Computer Sync

@@ -41,3 +41,4 @@ Current known home chapter pages:
 - s02: `https://jcneiirfaiic.feishu.cn/wiki/JlozwiR0SizBpWkDHQ9cgyhynFb`
 - s03: `https://jcneiirfaiic.feishu.cn/wiki/Mv0RwNiDmihBRYkYlOockEhjnHh`
 - s04: `https://jcneiirfaiic.feishu.cn/wiki/PNNRwDIetiz7OjkAdmocdDHenfe`
+- s05: `https://jcneiirfaiic.feishu.cn/wiki/Dmf6wxoNXimqWbkRT1mcFVEXnid`
