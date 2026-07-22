@@ -15,7 +15,7 @@ from .compact import (
 from .hooks import HOOKS, large_output_hook, log_hook, register_hook, summary_hook, trigger_hooks
 from .memory import consolidate_memories, extract_memories, load_memories, read_memory_index
 from .permission import permission_hook
-from .skills import build_system
+from .system_prompt import get_system_prompt, update_prompt_context
 from .tool import TOOLS, TOOL_HANDLERS
 
 MAX_STOP_CONTINUATIONS = 1
@@ -41,9 +41,14 @@ def agent_loop(messages: list, client=None) -> None:
     rounds_since_todo = 0
     reactive_retries = 0
     # S09：索引进 system，完整记忆只按需注入当前 user turn，避免每轮常驻大段历史。
-    memory_index = read_memory_index()
     memories_content = load_memories(messages, client=client, model=model)
-    system = build_system(os.getcwd(), memory_index=memory_index)
+    # S10：system prompt 来自真实运行态，可在工具轮次后重新组装。
+    prompt_context = update_prompt_context(
+        os.getcwd(),
+        enabled_tools=tuple(TOOL_HANDLERS.keys()),
+        memory_index=read_memory_index(),
+    )
+    system = get_system_prompt(prompt_context)
 
     while True:
         pre_compress = deepcopy(messages)
@@ -145,6 +150,12 @@ def agent_loop(messages: list, client=None) -> None:
 
         if result:
             messages.append({"role": "user", "content": result})
+            prompt_context = update_prompt_context(
+                os.getcwd(),
+                enabled_tools=tuple(TOOL_HANDLERS.keys()),
+                memory_index=read_memory_index(),
+            )
+            system = get_system_prompt(prompt_context)
 
 
 def _inject_memories(messages: list, memories_content: str) -> list:

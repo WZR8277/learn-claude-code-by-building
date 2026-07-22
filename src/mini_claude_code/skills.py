@@ -74,16 +74,20 @@ def list_skills() -> str:
     )
 
 
-def build_system(workdir: Path | str | None = None, memory_index: str = "") -> str:
-    cwd = workdir or Path.cwd()
-    memories = f"\n\nMemories available:\n{memory_index}" if memory_index else ""
-    return (
-        f"You are a coding agent at {cwd}. "
-        f"Skills available:\n{list_skills()}\n"
-        "Use load_skill to get full details when needed."
-        f"{memories}\n"
-        "Relevant memories may be injected into the current user turn."
+def build_system(
+    workdir: Path | str | None = None,
+    memory_index: str = "",
+    enabled_tools: list[str] | tuple[str, ...] | None = None,
+) -> str:
+    """S10 后保留旧入口，但实际 prompt 由 system_prompt 模块组装。"""
+    from .system_prompt import assemble_system_prompt, update_prompt_context
+
+    context = update_prompt_context(
+        workdir,
+        enabled_tools=enabled_tools,
+        memory_index=memory_index,
     )
+    return assemble_system_prompt(context)
 
 
 def load_skill(name: str) -> str:

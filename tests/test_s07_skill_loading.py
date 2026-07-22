@@ -114,7 +114,7 @@ class SkillToolTest(unittest.TestCase):
         messages = [{"role": "user", "content": "load review skill"}]
 
         with patch.dict(TOOL_HANDLERS, {"load_skill": lambda name: "# Code Review"}, clear=True):
-            with patch("mini_claude_code.loop.build_system", return_value="system with catalog"):
+            with patch("mini_claude_code.loop.get_system_prompt", return_value="system with catalog"):
                 with patch.dict(os.environ, {"MODEL_ID": "test-model"}):
                     agent_loop(messages, client=client)
 
