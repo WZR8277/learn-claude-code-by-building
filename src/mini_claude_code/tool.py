@@ -7,6 +7,13 @@ from pathlib import Path
 from .todo import run_todo_write
 from .subagent import spawn_subagent
 from .skills import load_skill
+from .task_system import (
+    run_claim_task,
+    run_complete_task,
+    run_create_task,
+    run_get_task,
+    run_list_tasks,
+)
 
 
 WORKDIR = Path.cwd()
@@ -189,6 +196,51 @@ TOOLS = [
             "properties": {"focus": {"type": "string"}},
         },
     },
+    {
+        "name": "create_task",
+        "description": "Create a persistent task with optional blockedBy dependencies.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "subject": {"type": "string"},
+                "description": {"type": "string"},
+                "blockedBy": {"type": "array", "items": {"type": "string"}},
+            },
+            "required": ["subject"],
+        },
+    },
+    {
+        "name": "list_tasks",
+        "description": "List persistent tasks with status, owner, and dependencies.",
+        "input_schema": {"type": "object", "properties": {}, "required": []},
+    },
+    {
+        "name": "get_task",
+        "description": "Get full JSON details for a persistent task.",
+        "input_schema": {
+            "type": "object",
+            "properties": {"task_id": {"type": "string"}},
+            "required": ["task_id"],
+        },
+    },
+    {
+        "name": "claim_task",
+        "description": "Claim a pending task whose blockedBy dependencies are completed.",
+        "input_schema": {
+            "type": "object",
+            "properties": {"task_id": {"type": "string"}},
+            "required": ["task_id"],
+        },
+    },
+    {
+        "name": "complete_task",
+        "description": "Complete an in-progress task and report newly unblocked tasks.",
+        "input_schema": {
+            "type": "object",
+            "properties": {"task_id": {"type": "string"}},
+            "required": ["task_id"],
+        },
+    },
 ]
 
 
@@ -201,4 +253,9 @@ TOOL_HANDLERS = {
     "todo_write": run_todo_write,
     "task": spawn_subagent,
     "load_skill": load_skill,
+    "create_task": run_create_task,
+    "list_tasks": run_list_tasks,
+    "get_task": run_get_task,
+    "claim_task": run_claim_task,
+    "complete_task": run_complete_task,
 }
