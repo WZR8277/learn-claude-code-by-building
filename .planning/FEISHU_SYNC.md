@@ -74,6 +74,10 @@ The completed home s10 page is:
 
 - `https://jcneiirfaiic.feishu.cn/wiki/XKwWwFH6NiB2D9khWBDclbEnnsb`
 
+The completed home s11 page is:
+
+- `https://jcneiirfaiic.feishu.cn/wiki/C8UGwYOBmiTMc7kO4cMcovf4njd`
+
 ## Parent Update Safety
 
 Use `lark-cli` for Feishu updates when available. Do not assume

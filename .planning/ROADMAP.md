@@ -20,7 +20,7 @@
 - [x] **Phase 8: s08 Context Compact** - 压缩上下文且保留协议对与继续执行状态
 - [x] **Phase 9: s09 Memory** - 筛选、持久化并按相关性恢复可信记忆
 - [x] **Phase 10: s10 System Prompt** - 由运行状态确定性组装并刷新 System Prompt
-- [ ] **Phase 11: s11 Error Recovery** - 对模型边界错误执行有界、可解释的恢复
+- [x] **Phase 11: s11 Error Recovery** - 对模型边界错误执行有界、可解释的恢复
 - [ ] **Phase 12: s12 Task System** - 管理可恢复、带依赖和所有权的持久任务
 - [ ] **Phase 13: s13 Background Tasks** - 异步执行任务并由单一写入者注入完成通知
 - [ ] **Phase 14: s14 Cron Scheduler** - 用可控时钟可靠创建、取消和恢复计划任务
@@ -163,7 +163,7 @@
   2. 暂时性错误使用可注入时钟/抖动进行有限退避，配置允许时可回退模型；不可重试错误立即明确失败。
   3. 离线故障测试证明无无限重试、无真实 sleep、无已执行工具副作用重复，累计回归通过。
   4. s11 的反思、一个 `s11-*` 提交/标签和飞书子文档记录恢复决策及退出结果。
-**Plans**: TBD
+**Plans**: 1/1 complete — chapter evidence is recorded under `learning/s11-error-recovery/`
 
 ### Phase 12: s12 Task System
 **Goal**: 学习者可以创建、依赖、认领、完成和恢复文件持久化任务
@@ -290,7 +290,7 @@
 | 8. s08 Context Compact | 1/1 | Complete | 2026-07-22 |
 | 9. s09 Memory | 1/1 | Complete | 2026-07-22 |
 | 10. s10 System Prompt | 1/1 | Complete | 2026-07-22 |
-| 11. s11 Error Recovery | 0/TBD | Not started | - |
+| 11. s11 Error Recovery | 1/1 | Complete | 2026-07-22 |
 | 12. s12 Task System | 0/TBD | Not started | - |
 | 13. s13 Background Tasks | 0/TBD | Not started | - |
 | 14. s14 Cron Scheduler | 0/TBD | Not started | - |
