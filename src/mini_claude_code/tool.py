@@ -19,7 +19,8 @@ from .task_system import (
 WORKDIR = Path.cwd()
 
 
-def run_bash(command: str) -> str:
+def run_bash(command: str, run_in_background: bool = False) -> str:
+    # run_in_background 是给 loop 判断执行策略的参数；真正执行 bash 时不需要用它。
     try:
         result = subprocess.run(
             command,
@@ -96,7 +97,10 @@ TOOLS = [
         "description": "Run a shell command.",
         "input_schema": {
             "type": "object",
-            "properties": {"command": {"type": "string"}},
+            "properties": {
+                "command": {"type": "string"},
+                "run_in_background": {"type": "boolean"},
+            },
             "required": ["command"],
         },
     },

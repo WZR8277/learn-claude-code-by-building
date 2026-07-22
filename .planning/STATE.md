@@ -4,11 +4,11 @@ milestone: v1.0
 milestone_name: milestone
 current_phase: 13
 current_phase_name: s13 Background Tasks
-status: planning
-stopped_at: s12 Task System archived; ready to start s13 Background Tasks
-last_updated: "2026-07-22T15:30:34Z"
-last_activity: 2026-07-22
-last_activity_desc: Completed s12 Task System with tests, commit/tag/push, and home Feishu archive
+status: finalizing
+stopped_at: s13 Background Tasks reflection recorded and tests passed; ready for commit/tag and Feishu archive
+last_updated: "2026-07-22T16:10:10Z"
+last_activity: 2026-07-23
+last_activity_desc: Recorded learner reflection for s13 Background Tasks and reran final tests; commit/tag/Feishu archive pending
 progress:
   percent: 60
 ---
@@ -26,8 +26,8 @@ See: .planning/PROJECT.md (updated 2026-07-22)
 
 Phase: 13 of 20 (s13 Background Tasks)
 Plan: 1 of 1 in current phase
-Status: s12 Task System archived; ready to compare local upstream `s13_background_tasks` against the completed `s12_task_system` baseline
-Last activity: 2026-07-22 — Learner completed s12 reflection; final test passed with `77 passed in 1.03s`; commit `b539bde`, tag `s12-task-system`, and home Feishu child are complete
+Status: s13 Background Tasks finalizing; learner reflection is recorded and final tests pass
+Last activity: 2026-07-23 — S13 delta implemented from local upstream `s13_background_tasks`; targeted S13 tests passed with `5 passed in 0.94s`; full suite passed with `82 passed in 0.91s`; offline background notification demo recorded under `learning/s13-background-tasks/`
 
 Progress: [██████░░░░] 60%
 
@@ -84,7 +84,7 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- [Phase 13]: Start s13 by running cross-computer sync, then compare local upstream `s13_background_tasks` against the completed `s12_task_system` baseline before implementing any delta.
+- [Phase 13]: Commit and tag s13 Background Tasks, then ask home/company before creating the Feishu child document and updating the parent directory.
 - [Docs]: s12 Task System home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/JlNfwILP9iB7eYkxV1Sciib0nLh`.
 - [Docs]: s11 Error Recovery home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/C8UGwYOBmiTMc7kO4cMcovf4njd`.
 - [Docs]: s10 System Prompt home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/XKwWwFH6NiB2D9khWBDclbEnnsb`.
@@ -114,8 +114,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-07-22T15:30:34Z
-Stopped at: s12 Task System archived; ready to start s13 Background Tasks
+Last session: 2026-07-22T16:10:10Z
+Stopped at: s13 Background Tasks reflection recorded and tests passed; ready for commit/tag and Feishu archive
 Resume file: .planning/STATE.md
 
 ### Cross-Computer Sync

@@ -3,6 +3,12 @@ from copy import deepcopy
 
 from anthropic import Anthropic
 
+from .background import (
+    collect_background_results,
+    execute_tool,
+    should_run_background,
+    start_background_task,
+)
 from .compact import (
     CONTEXT_LIMIT,
     compact_history,
@@ -142,6 +148,7 @@ def agent_loop(messages: list, client=None) -> None:
 
         rounds_since_todo += 1
         # 每个工具调用先经过 PreToolUse Hook，再交给 s02 的分发表执行。
+        # S13 只改变“执行策略”：慢工具可以后台跑，但权限和日志仍在调度前发生。
         result = []
         for block in response.content:
             if block.type != "tool_use":
@@ -174,9 +181,18 @@ def agent_loop(messages: list, client=None) -> None:
                 })
                 continue
 
-            handler = TOOL_HANDLERS.get(block.name)
-            output = handler(**block.input) if handler else f"Unknown: {block.name}"
-            trigger_hooks("PostToolUse", block, output)
+            if should_run_background(block.name, block.input):
+                bg_id = start_background_task(block, TOOL_HANDLERS)
+                output = (
+                    f"[Background task {bg_id} started] "
+                    "Result will be available when complete."
+                )
+                # PostToolUse 在这里表示“工具已经成功派发”；最终输出稍后走 task_notification。
+                trigger_hooks("PostToolUse", block, output)
+            else:
+                output = execute_tool(block, TOOL_HANDLERS)
+                trigger_hooks("PostToolUse", block, output)
+
             if block.name == "todo_write":
                 rounds_since_todo = 0
             print(str(output)[:200])
@@ -187,7 +203,12 @@ def agent_loop(messages: list, client=None) -> None:
             })
 
         if result:
-            messages.append({"role": "user", "content": result})
+            user_content = [
+                {"type": "text", "text": notification}
+                for notification in collect_background_results()
+            ]
+            user_content.extend(result)
+            messages.append({"role": "user", "content": user_content})
             prompt_context = update_prompt_context(
                 os.getcwd(),
                 enabled_tools=tuple(TOOL_HANDLERS.keys()),
