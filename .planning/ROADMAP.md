@@ -23,7 +23,7 @@
 - [x] **Phase 11: s11 Error Recovery** - 对模型边界错误执行有界、可解释的恢复
 - [x] **Phase 12: s12 Task System** - 管理可恢复、带依赖和所有权的持久任务
 - [x] **Phase 13: s13 Background Tasks** - 异步执行任务并由单一写入者注入完成通知
-- [ ] **Phase 14: s14 Cron Scheduler** - 用可控时钟可靠创建、取消和恢复计划任务
+- [x] **Phase 14: s14 Cron Scheduler** - 用可控时钟可靠创建、取消和恢复计划任务
 - [ ] **Phase 15: s15 Agent Teams** - 以稳定身份、受限能力和邮箱组织 Agent Team
 - [ ] **Phase 16: s16 Team Protocols** - 用相关联的结构化协议完成团队请求与关闭
 - [ ] **Phase 17: s17 Autonomous Agents** - 运行自主状态循环并原子认领可执行任务
@@ -199,7 +199,7 @@
   2. 可控时钟证明每个计划时刻只入队一次，重启恢复不会重复触发已记录时刻。
   3. Scheduler 不在锁内调用模型或修改消息，失败/关闭路径和后台任务回归可离线重现。
   4. s14 在反思后以一个 `s14-*` 提交/标签和记录 fake-clock 证据的飞书子文档结束。
-**Plans**: TBD
+**Plans**: 1/1 complete — chapter evidence is recorded under `learning/s14-cron-scheduler/`
 
 ### Phase 15: s15 Agent Teams
 **Goal**: 学习者可以创建具有稳定身份、受限能力、邮箱传输和明确生命周期的 Agent Team
@@ -293,7 +293,7 @@
 | 11. s11 Error Recovery | 1/1 | Complete | 2026-07-22 |
 | 12. s12 Task System | 1/1 | Complete | 2026-07-22 |
 | 13. s13 Background Tasks | 1/1 | Complete | 2026-07-23 |
-| 14. s14 Cron Scheduler | 0/TBD | Not started | - |
+| 14. s14 Cron Scheduler | 1/1 | Complete | 2026-07-23 |
 | 15. s15 Agent Teams | 0/TBD | Not started | - |
 | 16. s16 Team Protocols | 0/TBD | Not started | - |
 | 17. s17 Autonomous Agents | 0/TBD | Not started | - |

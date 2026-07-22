@@ -45,3 +45,8 @@ listed: No cron jobs. Use schedule_cron to add one.
 
 - The runtime demo is offline and does not call the model API.
 - It proves that a one-shot cron job can be scheduled, fired into `cron_queue`, consumed once, and rendered as `[Scheduled] ...`.
+
+## Feishu
+
+- Home Feishu child: `https://jcneiirfaiic.feishu.cn/wiki/CCgYwXtRrifG4HkhGdxcsTqInug`
+- Parent directory updated: S14 is marked complete and S15 is marked as the next chapter.
