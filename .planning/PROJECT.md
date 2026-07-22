@@ -61,7 +61,7 @@
 - 上游学习主线：`shareAI-lab/learn-claude-code` 根目录新版教程 `s01_agent_loop` 至 `s20_comprehensive`。当前电脑已下载本地教程副本：`/Users/loganlee/Desktop/Pyprojs/learn-claude-code-main`；以后比较章节差量时优先读这个本地目录，只有本地缺失、明显过期或用户要求验证远端时才联网。
 - 本地仓库路径因电脑不同而不同；已知检出路径包括 `/Users/loganlee/Desktop/Pyprojs/learn-claude-code-by-building` 和 `/Users/zhaorongwang/agentprojects/learn-claude-code-by-building`。每次以当前仓库根目录为准，不把任一路径当作跨电脑事实，也不根据路径猜测家里/公司环境；涉及环境相关操作时先询问用户当前是在家还是在公司。
 - 飞书父文档按电脑环境选择：在家使用 `https://jcneiirfaiic.feishu.cn/wiki/UDZJwVXukitwJ3kvOlecXYOMnng`；在公司使用 `https://trip.larkenterprise.com/wiki/S8X8wpgTCio65Yk3C76ceTYMnBc`。更新飞书前必须先询问用户当前是在家还是在公司。
-- 当前处于 `s14` 准备：s01 Agent Loop、s02 Tool Use、s03 Permission、s04 Hooks、s05 TodoWrite、s06 Subagent、s07 Skill Loading、s08 Context Compact、s09 Memory、s10 System Prompt、s11 Error Recovery、s12 Task System 与 s13 Background Tasks 已完成并归档。
+- 当前处于 `s14` diff 审查：s14 Cron Scheduler 已实现并通过测试，尚未提交、打标签或归档飞书；s01 Agent Loop、s02 Tool Use、s03 Permission、s04 Hooks、s05 TodoWrite、s06 Subagent、s07 Skill Loading、s08 Context Compact、s09 Memory、s10 System Prompt、s11 Error Recovery、s12 Task System 与 s13 Background Tasks 已完成并归档。
 - 代码库使用一个稳定的 CLI 边界；模块执行、安装后的控制台命令和测试都汇聚到 `mini_claude_code.cli:main`。
 - 学习闭环为：简短导读与 diff 关注点 → 增量实现及测试/演示（保持未提交）→ 学习者审查 PyCharm diff、讨论并输出个人观点 → 调整确认 → 单章提交与标签 → 飞书子文档。
 - 助手在每个新章节开始前负责梳理目标、调用链、关键抽象、相对上一章的变化、阅读路径和常见误区；学习者结合代码阅读并输出个人观点。

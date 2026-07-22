@@ -18,6 +18,7 @@ from .compact import (
     snip_compact,
     tool_result_budget,
 )
+from .cron_scheduler import consume_cron_queue
 from .error_recovery import (
     CONTINUATION_PROMPT,
     DEFAULT_MAX_TOKENS,
@@ -66,6 +67,14 @@ def agent_loop(messages: list, client=None) -> None:
     system = get_system_prompt(prompt_context)
 
     while True:
+        # S14：调度线程只生产 CronJob，并把它放进 cron_queue。
+        # 这里才是真正的消费端：把定时任务变成普通 user message，
+        # 写入的 messages 就是 CLI 里传进来的同一个 history，
+        # 后续模型会把它当成当前会话里的新用户输入处理。
+        for job in consume_cron_queue():
+            messages.append({"role": "user", "content": f"[Scheduled] {job.prompt}"})
+            print(f"\033[35m[inject cron] {job.prompt[:50]}\033[0m")
+
         pre_compress = deepcopy(messages)
         # s05 的 TODO 提醒只影响当前会话上下文，不会持久化为任务系统。
         if rounds_since_todo >= TODO_REMINDER_AFTER and messages:

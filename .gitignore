@@ -10,5 +10,6 @@ build/
 dist/
 .memory/
 .tasks/
+.scheduled_tasks.json
 .transcripts/
 .task_outputs/

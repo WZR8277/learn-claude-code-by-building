@@ -14,6 +14,7 @@ from .task_system import (
     run_get_task,
     run_list_tasks,
 )
+from .cron_scheduler import run_cancel_cron, run_list_crons, run_schedule_cron
 
 
 WORKDIR = Path.cwd()
@@ -245,6 +246,34 @@ TOOLS = [
             "required": ["task_id"],
         },
     },
+    {
+        "name": "schedule_cron",
+        "description": "Schedule a cron job. cron is 5-field: min hour day-of-month month day-of-week.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "cron": {"type": "string"},
+                "prompt": {"type": "string"},
+                "recurring": {"type": "boolean"},
+                "durable": {"type": "boolean"},
+            },
+            "required": ["cron", "prompt"],
+        },
+    },
+    {
+        "name": "list_crons",
+        "description": "List all registered cron jobs.",
+        "input_schema": {"type": "object", "properties": {}, "required": []},
+    },
+    {
+        "name": "cancel_cron",
+        "description": "Cancel a cron job by ID.",
+        "input_schema": {
+            "type": "object",
+            "properties": {"job_id": {"type": "string"}},
+            "required": ["job_id"],
+        },
+    },
 ]
 
 
@@ -262,4 +291,7 @@ TOOL_HANDLERS = {
     "get_task": run_get_task,
     "claim_task": run_claim_task,
     "complete_task": run_complete_task,
+    "schedule_cron": run_schedule_cron,
+    "list_crons": run_list_crons,
+    "cancel_cron": run_cancel_cron,
 }
