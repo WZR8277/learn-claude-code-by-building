@@ -82,6 +82,10 @@ The completed home s12 page is:
 
 - `https://jcneiirfaiic.feishu.cn/wiki/JlNfwILP9iB7eYkxV1Sciib0nLh`
 
+The completed home s13 page is:
+
+- `https://jcneiirfaiic.feishu.cn/wiki/GnbrwjTpEicMVWkSbhsc0oxxnkR`
+
 ## Parent Update Safety
 
 Use `lark-cli` for Feishu updates when available. Do not assume

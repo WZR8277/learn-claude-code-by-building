@@ -22,7 +22,7 @@
 - [x] **Phase 10: s10 System Prompt** - 由运行状态确定性组装并刷新 System Prompt
 - [x] **Phase 11: s11 Error Recovery** - 对模型边界错误执行有界、可解释的恢复
 - [x] **Phase 12: s12 Task System** - 管理可恢复、带依赖和所有权的持久任务
-- [ ] **Phase 13: s13 Background Tasks** - 异步执行任务并由单一写入者注入完成通知
+- [x] **Phase 13: s13 Background Tasks** - 异步执行任务并由单一写入者注入完成通知
 - [ ] **Phase 14: s14 Cron Scheduler** - 用可控时钟可靠创建、取消和恢复计划任务
 - [ ] **Phase 15: s15 Agent Teams** - 以稳定身份、受限能力和邮箱组织 Agent Team
 - [ ] **Phase 16: s16 Team Protocols** - 用相关联的结构化协议完成团队请求与关闭
@@ -187,7 +187,7 @@
   2. Worker 只发布不可变完成记录，单一会话协调者恰好一次注入关联通知并拥有消息修改权。
   3. 使用事件而非真实 sleep 的测试覆盖成功、失败、重复交付和有界关闭，前序协议回归通过。
   4. s13 的反思、一个 `s13-*` 提交/标签和飞书子文档展示异步时序证据。
-**Plans**: TBD
+**Plans**: 1/1 complete — chapter evidence is recorded under `learning/s13-background-tasks/`
 
 ### Phase 14: s14 Cron Scheduler
 **Goal**: 学习者可以用可控时钟创建、取消和恢复恰好触发一次的计划任务
@@ -292,7 +292,7 @@
 | 10. s10 System Prompt | 1/1 | Complete | 2026-07-22 |
 | 11. s11 Error Recovery | 1/1 | Complete | 2026-07-22 |
 | 12. s12 Task System | 1/1 | Complete | 2026-07-22 |
-| 13. s13 Background Tasks | 0/TBD | Not started | - |
+| 13. s13 Background Tasks | 1/1 | Complete | 2026-07-23 |
 | 14. s14 Cron Scheduler | 0/TBD | Not started | - |
 | 15. s15 Agent Teams | 0/TBD | Not started | - |
 | 16. s16 Team Protocols | 0/TBD | Not started | - |

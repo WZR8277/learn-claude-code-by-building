@@ -37,3 +37,8 @@ started: bg_0001
 
 - The runtime demo is offline and does not call the model API.
 - It proves that a background task receives a stable `bg_id` and later becomes a `<task_notification>`.
+
+## Feishu
+
+- Home Feishu child: `https://jcneiirfaiic.feishu.cn/wiki/GnbrwjTpEicMVWkSbhsc0oxxnkR`
+- Parent directory updated: S13 is marked complete and S14 is marked as the next chapter.

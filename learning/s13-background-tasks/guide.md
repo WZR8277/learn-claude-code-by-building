@@ -51,4 +51,4 @@ LLM tool_use: bash(run_in_background=true)
 - [x] 学习者在 PyCharm 中审查 diff 并提出问题或确认。
 - [x] 学习者完成本章个人观点。
 - [x] 最终测试通过。
-- [ ] commit、tag 和飞书归档。
+- [x] commit、tag 和飞书归档。
