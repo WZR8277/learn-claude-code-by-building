@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 10
-current_phase_name: s10 System Prompt
+current_phase: 11
+current_phase_name: s11 Error Recovery
 status: planning
-stopped_at: s09 Memory archived; ready to start s10 System Prompt
-last_updated: "2026-07-21T17:42:03Z"
+stopped_at: s10 System Prompt archived; ready to start s11 Error Recovery
+last_updated: "2026-07-22T13:55:50Z"
 last_activity: 2026-07-22
-last_activity_desc: Completed s09 Memory with tests, commit/tag/push, and home Feishu archive
+last_activity_desc: Completed s10 System Prompt with tests, commit/tag/push, and home Feishu archive
 progress:
-  percent: 45
+  percent: 50
 ---
 
 # Project State
@@ -20,22 +20,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-22)
 
 **Core value:** 通过亲手实现、验证和解释每个章节机制，真正掌握 Claude Code 各部分代码逻辑，并最终得到一个可以运行且演进历史清晰的 Python 编码 Agent。
-**Current focus:** Phase 10 — s10 System Prompt
+**Current focus:** Phase 11 — s11 Error Recovery
 
 ## Current Position
 
-Phase: 10 of 20 (s10 System Prompt)
+Phase: 11 of 20 (s11 Error Recovery)
 Plan: 1 of 1 in current phase
-Status: s09 Memory archived; ready to compare local upstream `s10_system_prompt` against the completed `s09_memory` baseline
-Last activity: 2026-07-22 — Learner completed s09 reflection; final test passed with `57 passed in 0.97s`; commit `a473bf4`, tag `s09-memory`, and home Feishu child are complete
+Status: s10 System Prompt archived; ready to compare local upstream `s11_error_recovery` against the completed `s10_system_prompt` baseline
+Last activity: 2026-07-22 — Learner completed s10 reflection; final test passed with `61 passed in 1.00s`; commit `5980e4a`, tag `s10-system-prompt`, and home Feishu child are complete
 
-Progress: [█████░░░░░] 45%
+Progress: [█████░░░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 9
+- Total plans completed: 10
 - Average duration: -
 - Total execution time: not measured
 
@@ -52,11 +52,12 @@ Progress: [█████░░░░░] 45%
 | s07 Skill Loading | 1 | 1 | not measured |
 | s08 Context Compact | 1 | 1 | not measured |
 | s09 Memory | 1 | 1 | not measured |
+| s10 System Prompt | 1 | 1 | not measured |
 
 **Recent Trend:**
 
-- Last 5 completed plans: s05 TodoWrite, s06 Subagent, s07 Skill Loading, s08 Context Compact, s09 Memory
-- Trend: s01-s09 complete; s10 is next
+- Last 5 completed plans: s06 Subagent, s07 Skill Loading, s08 Context Compact, s09 Memory, s10 System Prompt
+- Trend: s01-s10 complete; s11 is next
 
 *Updated after each plan completion*
 
@@ -81,7 +82,8 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- [Phase 10]: Start s10 by running cross-computer sync, then compare local upstream `s10_system_prompt` against the completed `s09_memory` baseline before implementing any delta.
+- [Phase 11]: Start s11 by running cross-computer sync, then compare local upstream `s11_error_recovery` against the completed `s10_system_prompt` baseline before implementing any delta.
+- [Docs]: s10 System Prompt home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/XKwWwFH6NiB2D9khWBDclbEnnsb`.
 - [Docs]: s09 Memory home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/SidbwRBr8iFc5IkETEZcwZjWnoI`.
 - [Docs]: s08 Context Compact home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/RhG7wRQlqi4wg8k1D1kcicnvn99`.
 - [Docs]: s07 Skill Loading home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/GGe6wFFePiJEkXk48pGcIHbGnrf`.
@@ -91,8 +93,8 @@ Recent decisions affecting current work:
 
 ### Blockers/Concerns
 
-- [Phase 10]: Keep s10 limited to deterministic system prompt assembly; do not promote later error recovery, task-system, background-task, team, worktree, or MCP mechanisms.
-- [Phase 10]: Reuse the s09 memory index as one input to prompt assembly, but keep memory storage and retrieval owned by the memory module.
+- [Phase 11]: Keep s11 limited to bounded model/API error recovery; do not promote task-system, background-task, team, worktree, or MCP mechanisms.
+- [Phase 11]: Preserve S10 prompt assembly boundaries while adding recovery paths; do not turn recovery state into system prompt content unless upstream s11 requires it.
 - [Documentation]: When updating parent directory tables with lark-cli, do not assume `str_replace` is first-match only; fetch the table block id and use `block_replace` when a repeated placeholder appears many times.
 - [Documentation]: Feishu write path works on the home parent, but still ask home/company before every future archive.
 - [Documentation]: Future Feishu updates should use real Feishu `docx` pages, composed as concise review pages before upload; avoid raw Markdown file uploads, raw terminal dumps, and duplicated local notes.
@@ -108,8 +110,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-07-21T17:42:03Z
-Stopped at: s09 Memory archived; ready to start s10 System Prompt
+Last session: 2026-07-22T13:55:50Z
+Stopped at: s10 System Prompt archived; ready to start s11 Error Recovery
 Resume file: .planning/STATE.md
 
 ### Cross-Computer Sync
