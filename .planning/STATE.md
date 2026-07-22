@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 12
-current_phase_name: s12 Task System
+current_phase: 13
+current_phase_name: s13 Background Tasks
 status: planning
-stopped_at: s11 Error Recovery archived; ready to start s12 Task System
-last_updated: "2026-07-22T15:01:24Z"
+stopped_at: s12 Task System archived; ready to start s13 Background Tasks
+last_updated: "2026-07-22T15:30:34Z"
 last_activity: 2026-07-22
-last_activity_desc: Completed s11 Error Recovery with tests, commit/tag/push, and home Feishu archive
+last_activity_desc: Completed s12 Task System with tests, commit/tag/push, and home Feishu archive
 progress:
-  percent: 55
+  percent: 60
 ---
 
 # Project State
@@ -20,22 +20,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-22)
 
 **Core value:** 通过亲手实现、验证和解释每个章节机制，真正掌握 Claude Code 各部分代码逻辑，并最终得到一个可以运行且演进历史清晰的 Python 编码 Agent。
-**Current focus:** Phase 12 — s12 Task System
+**Current focus:** Phase 13 — s13 Background Tasks
 
 ## Current Position
 
-Phase: 12 of 20 (s12 Task System)
+Phase: 13 of 20 (s13 Background Tasks)
 Plan: 1 of 1 in current phase
-Status: s11 Error Recovery archived; ready to compare local upstream `s12_task_system` against the completed `s11_error_recovery` baseline
-Last activity: 2026-07-22 — Learner completed s11 reflection; final test passed with `69 passed in 1.02s`; commit `f9f0e3d`, tag `s11-error-recovery`, and home Feishu child are complete
+Status: s12 Task System archived; ready to compare local upstream `s13_background_tasks` against the completed `s12_task_system` baseline
+Last activity: 2026-07-22 — Learner completed s12 reflection; final test passed with `77 passed in 1.03s`; commit `b539bde`, tag `s12-task-system`, and home Feishu child are complete
 
-Progress: [██████░░░░] 55%
+Progress: [██████░░░░] 60%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 11
+- Total plans completed: 12
 - Average duration: -
 - Total execution time: not measured
 
@@ -54,11 +54,12 @@ Progress: [██████░░░░] 55%
 | s09 Memory | 1 | 1 | not measured |
 | s10 System Prompt | 1 | 1 | not measured |
 | s11 Error Recovery | 1 | 1 | not measured |
+| s12 Task System | 1 | 1 | not measured |
 
 **Recent Trend:**
 
-- Last 5 completed plans: s07 Skill Loading, s08 Context Compact, s09 Memory, s10 System Prompt, s11 Error Recovery
-- Trend: s01-s11 complete; s12 is next
+- Last 5 completed plans: s08 Context Compact, s09 Memory, s10 System Prompt, s11 Error Recovery, s12 Task System
+- Trend: s01-s12 complete; s13 is next
 
 *Updated after each plan completion*
 
@@ -83,7 +84,8 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- [Phase 12]: Start s12 by running cross-computer sync, then compare local upstream `s12_task_system` against the completed `s11_error_recovery` baseline before implementing any delta.
+- [Phase 13]: Start s13 by running cross-computer sync, then compare local upstream `s13_background_tasks` against the completed `s12_task_system` baseline before implementing any delta.
+- [Docs]: s12 Task System home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/JlNfwILP9iB7eYkxV1Sciib0nLh`.
 - [Docs]: s11 Error Recovery home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/C8UGwYOBmiTMc7kO4cMcovf4njd`.
 - [Docs]: s10 System Prompt home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/XKwWwFH6NiB2D9khWBDclbEnnsb`.
 - [Docs]: s09 Memory home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/SidbwRBr8iFc5IkETEZcwZjWnoI`.
@@ -95,8 +97,8 @@ Recent decisions affecting current work:
 
 ### Blockers/Concerns
 
-- [Phase 12]: Keep s12 limited to the tutorial task system; do not promote background-task, cron, agent team, worktree, or MCP mechanisms.
-- [Phase 12]: Preserve S11 recovery boundaries while adding task persistence/state; do not make task execution asynchronous unless upstream s12 requires it.
+- [Phase 13]: Keep s13 limited to the tutorial background task mechanism; do not promote cron, agent team, worktree, or MCP mechanisms.
+- [Phase 13]: Preserve S12 task persistence/state while adding background execution; do not introduce team protocols or autonomous claiming unless upstream s13 requires it.
 - [Documentation]: When updating parent directory tables with lark-cli, do not assume `str_replace` is first-match only; fetch the table block id and use `block_replace` when a repeated placeholder appears many times.
 - [Documentation]: Feishu write path works on the home parent, but still ask home/company before every future archive.
 - [Documentation]: Future Feishu updates should use real Feishu `docx` pages, composed as concise review pages before upload; avoid raw Markdown file uploads, raw terminal dumps, and duplicated local notes.
@@ -112,8 +114,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-07-22T15:01:24Z
-Stopped at: s11 Error Recovery archived; ready to start s12 Task System
+Last session: 2026-07-22T15:30:34Z
+Stopped at: s12 Task System archived; ready to start s13 Background Tasks
 Resume file: .planning/STATE.md
 
 ### Cross-Computer Sync

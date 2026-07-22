@@ -21,7 +21,7 @@
 - [x] **Phase 9: s09 Memory** - 筛选、持久化并按相关性恢复可信记忆
 - [x] **Phase 10: s10 System Prompt** - 由运行状态确定性组装并刷新 System Prompt
 - [x] **Phase 11: s11 Error Recovery** - 对模型边界错误执行有界、可解释的恢复
-- [ ] **Phase 12: s12 Task System** - 管理可恢复、带依赖和所有权的持久任务
+- [x] **Phase 12: s12 Task System** - 管理可恢复、带依赖和所有权的持久任务
 - [ ] **Phase 13: s13 Background Tasks** - 异步执行任务并由单一写入者注入完成通知
 - [ ] **Phase 14: s14 Cron Scheduler** - 用可控时钟可靠创建、取消和恢复计划任务
 - [ ] **Phase 15: s15 Agent Teams** - 以稳定身份、受限能力和邮箱组织 Agent Team
@@ -175,7 +175,7 @@
   2. 缺失依赖、循环、非法状态转换、所有权冲突和损坏记录不会被静默接受。
   3. 测试证明认领转换具备最小原子性，并能解释持久任务与 TodoWrite 的区别。
   4. s12 以反思、一个 `s12-*` 提交/标签和包含恢复/失败证据的飞书子文档结束。
-**Plans**: TBD
+**Plans**: 1/1 complete — chapter evidence is recorded under `learning/s12-task-system/`
 
 ### Phase 13: s13 Background Tasks
 **Goal**: 学习者可以启动后台任务并由单一会话写入者恰好一次注入完成通知
@@ -291,7 +291,7 @@
 | 9. s09 Memory | 1/1 | Complete | 2026-07-22 |
 | 10. s10 System Prompt | 1/1 | Complete | 2026-07-22 |
 | 11. s11 Error Recovery | 1/1 | Complete | 2026-07-22 |
-| 12. s12 Task System | 0/TBD | Not started | - |
+| 12. s12 Task System | 1/1 | Complete | 2026-07-22 |
 | 13. s13 Background Tasks | 0/TBD | Not started | - |
 | 14. s14 Cron Scheduler | 0/TBD | Not started | - |
 | 15. s15 Agent Teams | 0/TBD | Not started | - |
