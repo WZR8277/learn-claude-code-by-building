@@ -110,6 +110,12 @@ def collect_background_results() -> list[str]:
     return notifications
 
 
+def has_completed_background_result() -> bool:
+    """Return True when a background task has finished but has not been collected."""
+    with background_lock:
+        return any(task["status"] == "completed" for task in background_tasks.values())
+
+
 def reset_background_tasks() -> None:
     """Reset module state for isolated tests."""
     global _background_counter

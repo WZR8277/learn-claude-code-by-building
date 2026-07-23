@@ -10,6 +10,7 @@ build/
 dist/
 .memory/
 .tasks/
+.mailboxes/
 .scheduled_tasks.json
 .transcripts/
 .task_outputs/

@@ -1,5 +1,7 @@
 """Command-line entry point for the evolving harness."""
 import os
+import threading
+import time
 
 from dotenv import load_dotenv
 
@@ -10,8 +12,10 @@ if os.getenv("ANTHROPIC_BASE_URL"):
     os.environ.pop("ANTHROPIC_AUTH_TOKEN", None)
 
 from .loop import agent_loop
+from .background import collect_background_results, has_completed_background_result
 from .cron_scheduler import agent_lock, start_cron_scheduler, start_queue_processor
 from .hooks import context_inject_hook, HOOKS, register_hook, trigger_hooks
+from .team import BUS, active_teammates, format_lead_inbox_messages, has_lead_inbox
 from .tool import WORKDIR
 
 
@@ -31,8 +35,9 @@ except ImportError:
 
 
 def main() -> None:
-    print("mini-claude-code s14: Cron Scheduler ready")
+    print("mini-claude-code s15: Agent Teams ready")
     history = []
+    had_teammates = False
 
     def print_latest_assistant_text() -> None:
         if not history:
@@ -59,11 +64,51 @@ def main() -> None:
         print_latest_assistant_text()
         print()
 
+    def build_async_wake_message() -> str:
+        """把队友 inbox 和后台任务结果合并成一次 Lead 唤醒消息。"""
+        parts = []
+        inbox_text = format_lead_inbox_messages(BUS.read_inbox("lead"))
+        if inbox_text:
+            parts.append(inbox_text)
+        parts.extend(collect_background_results())
+        return "\n".join(parts)
+
+    def run_async_turn() -> None:
+        # 队友结果和后台任务结果没有原始用户输入，但仍然需要交给 Lead 一轮。
+        wake_message = build_async_wake_message()
+        if not wake_message:
+            return
+        history.append({"role": "user", "content": wake_message})
+        print("\033[33m[wake: async team/background result]\033[0m")
+        agent_loop(history)
+        print_latest_assistant_text()
+        print()
+
+    def async_wake_processor() -> None:
+        nonlocal had_teammates
+        while True:
+            time.sleep(1)
+            has_async_result = has_lead_inbox() or has_completed_background_result()
+            if has_async_result and agent_lock.acquire(blocking=False):
+                try:
+                    run_async_turn()
+                finally:
+                    agent_lock.release()
+
+            # 只在队友全部结束且结果已被 Lead 消费后提示一次，避免终端刷屏。
+            if active_teammates:
+                had_teammates = True
+            elif had_teammates and not has_lead_inbox() and not has_completed_background_result():
+                print("\033[32m[all teammates done]\033[0m")
+                had_teammates = False
+
     # S14 的两个后台循环：
     # 1. scheduler：按时间把 due job 放进 cron_queue
     # 2. queue processor：发现 cron_queue 非空且 Agent 空闲时，用同一个 history 继续跑一轮 agent_loop
     start_cron_scheduler()
     start_queue_processor(run_scheduled_turn)
+    # S15：队友和后台任务完成时也能唤醒 Lead，不必等用户下一次输入 check_inbox。
+    threading.Thread(target=async_wake_processor, daemon=True).start()
 
     while True:
         try:

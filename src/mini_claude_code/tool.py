@@ -15,6 +15,7 @@ from .task_system import (
     run_list_tasks,
 )
 from .cron_scheduler import run_cancel_cron, run_list_crons, run_schedule_cron
+from .team import run_check_inbox, run_send_message, spawn_teammate_thread
 
 
 WORKDIR = Path.cwd()
@@ -90,6 +91,17 @@ def run_glob(pattern: str) -> str:
         return "\n".join(results) if results else "(no matches)"
     except Exception as exc:
         return f"Error: {exc}"
+
+
+def run_spawn_teammate(name: str, role: str, prompt: str) -> str:
+    # 队友复用主工具里的文件和 shell handler，但不拿 Lead 的完整工具表。
+    # 这样能体现 S15 的“多 Agent 协作”，又不提前引入权限冒泡、任务共享协议等后续机制。
+    teammate_handlers = {
+        "bash": run_bash,
+        "read_file": run_read,
+        "write_file": run_write,
+    }
+    return spawn_teammate_thread(name, role, prompt, teammate_handlers)
 
 
 TOOLS = [
@@ -274,6 +286,36 @@ TOOLS = [
             "required": ["job_id"],
         },
     },
+    {
+        "name": "spawn_teammate",
+        "description": "Spawn a teammate agent in a background thread.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "name": {"type": "string"},
+                "role": {"type": "string"},
+                "prompt": {"type": "string"},
+            },
+            "required": ["name", "role", "prompt"],
+        },
+    },
+    {
+        "name": "send_message",
+        "description": "Send a message to a teammate via MessageBus.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "to": {"type": "string"},
+                "content": {"type": "string"},
+            },
+            "required": ["to", "content"],
+        },
+    },
+    {
+        "name": "check_inbox",
+        "description": "Check Lead's inbox for teammate messages.",
+        "input_schema": {"type": "object", "properties": {}, "required": []},
+    },
 ]
 
 
@@ -294,4 +336,7 @@ TOOL_HANDLERS = {
     "schedule_cron": run_schedule_cron,
     "list_crons": run_list_crons,
     "cancel_cron": run_cancel_cron,
+    "spawn_teammate": run_spawn_teammate,
+    "send_message": run_send_message,
+    "check_inbox": run_check_inbox,
 }
