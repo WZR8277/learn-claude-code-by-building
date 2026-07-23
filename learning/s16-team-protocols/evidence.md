@@ -41,4 +41,7 @@ Spawn alice as a backend dev. Ask her to create a file. Then request her shutdow
 
 ## Commit Evidence
 
-待学习者确认 diff、完成反思后再提交、打标签并补充。
+- Commit: `5dbfa15`
+- Tag: `s16-team-protocols`
+- Home Feishu child: `https://jcneiirfaiic.feishu.cn/wiki/JaUYwV00qitUSikgOlQcLwjBnvd`
+- Parent directory updated: S16 is marked complete and S17 is marked as the next chapter.
