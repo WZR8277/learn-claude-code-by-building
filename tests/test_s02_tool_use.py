@@ -33,6 +33,7 @@ class ToolUseTest(unittest.TestCase):
             "create_task", "list_tasks", "get_task", "claim_task", "complete_task",
             "schedule_cron", "list_crons", "cancel_cron",
             "spawn_teammate", "send_message", "check_inbox",
+            "request_shutdown", "request_plan", "review_plan",
         ]
         handler_names = [
             "bash", "read_file", "write_file", "edit_file", "glob",
@@ -40,6 +41,7 @@ class ToolUseTest(unittest.TestCase):
             "create_task", "list_tasks", "get_task", "claim_task", "complete_task",
             "schedule_cron", "list_crons", "cancel_cron",
             "spawn_teammate", "send_message", "check_inbox",
+            "request_shutdown", "request_plan", "review_plan",
         ]
 
         self.assertEqual([tool["name"] for tool in TOOLS], names)

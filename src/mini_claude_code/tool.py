@@ -15,7 +15,14 @@ from .task_system import (
     run_list_tasks,
 )
 from .cron_scheduler import run_cancel_cron, run_list_crons, run_schedule_cron
-from .team import run_check_inbox, run_send_message, spawn_teammate_thread
+from .team import (
+    run_check_inbox,
+    run_request_plan,
+    run_request_shutdown,
+    run_review_plan,
+    run_send_message,
+    spawn_teammate_thread,
+)
 
 
 WORKDIR = Path.cwd()
@@ -313,8 +320,42 @@ TOOLS = [
     },
     {
         "name": "check_inbox",
-        "description": "Check Lead's inbox for teammate messages.",
+        "description": "Check Lead's inbox and route protocol responses.",
         "input_schema": {"type": "object", "properties": {}, "required": []},
+    },
+    {
+        "name": "request_shutdown",
+        "description": "Request a teammate to shut down gracefully.",
+        "input_schema": {
+            "type": "object",
+            "properties": {"teammate": {"type": "string"}},
+            "required": ["teammate"],
+        },
+    },
+    {
+        "name": "request_plan",
+        "description": "Ask a teammate to submit a plan for review.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "teammate": {"type": "string"},
+                "task": {"type": "string"},
+            },
+            "required": ["teammate", "task"],
+        },
+    },
+    {
+        "name": "review_plan",
+        "description": "Approve or reject a submitted plan by request_id.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "request_id": {"type": "string"},
+                "approve": {"type": "boolean"},
+                "feedback": {"type": "string"},
+            },
+            "required": ["request_id", "approve"],
+        },
     },
 ]
 
@@ -339,4 +380,7 @@ TOOL_HANDLERS = {
     "spawn_teammate": run_spawn_teammate,
     "send_message": run_send_message,
     "check_inbox": run_check_inbox,
+    "request_shutdown": run_request_shutdown,
+    "request_plan": run_request_plan,
+    "review_plan": run_review_plan,
 }

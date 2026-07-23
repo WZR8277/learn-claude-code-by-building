@@ -72,7 +72,7 @@ class TeammateThreadTest(unittest.TestCase):
     def tearDown(self) -> None:
         reset_team_state()
 
-    def test_teammate_runs_own_loop_and_sends_final_result_to_lead(self) -> None:
+    def test_teammate_runs_own_loop_then_waits_until_shutdown(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             reset_team_state(Path(temp_dir))
             client = FakeClient([
@@ -93,9 +93,22 @@ class TeammateThreadTest(unittest.TestCase):
                 },
                 client=client,
                 model="test-model",
+                idle_poll_seconds=0.01,
             )
 
             self.assertEqual(result, "Teammate 'alice' spawned as backend developer")
+            for _ in range(100):
+                if "alice" in active_teammates:
+                    break
+                time.sleep(0.01)
+
+            team_module.BUS.send(
+                "lead",
+                "alice",
+                "Please stop",
+                "shutdown_request",
+                {"request_id": "req_shutdown"},
+            )
             for _ in range(100):
                 inbox = team_module.BUS.read_inbox("lead")
                 if inbox:
@@ -104,11 +117,10 @@ class TeammateThreadTest(unittest.TestCase):
             else:
                 self.fail("teammate did not send a lead result")
 
-            self.assertEqual(inbox[0]["from"], "alice")
-            self.assertEqual(inbox[0]["type"], "result")
-            self.assertIn("schema.sql", inbox[0]["content"])
-            self.assertNotIn("alice", active_teammates)
-            self.assertEqual(client.messages.calls[0]["tools"][-1]["name"], "send_message")
+            message_types = [message["type"] for message in inbox]
+            self.assertIn("shutdown_response", message_types)
+            self.assertIn("result", message_types)
+            self.assertEqual(client.messages.calls[0]["tools"][-1]["name"], "submit_plan")
 
 
 class AgentTeamToolTest(unittest.TestCase):
@@ -128,7 +140,14 @@ class AgentTeamToolTest(unittest.TestCase):
     def test_team_tools_are_registered(self) -> None:
         names = [tool["name"] for tool in TOOLS]
 
-        for name in ["spawn_teammate", "send_message", "check_inbox"]:
+        for name in [
+            "spawn_teammate",
+            "send_message",
+            "check_inbox",
+            "request_shutdown",
+            "request_plan",
+            "review_plan",
+        ]:
             self.assertIn(name, names)
             self.assertIn(name, TOOL_HANDLERS)
 

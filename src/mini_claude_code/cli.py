@@ -15,7 +15,7 @@ from .loop import agent_loop
 from .background import collect_background_results, has_completed_background_result
 from .cron_scheduler import agent_lock, start_cron_scheduler, start_queue_processor
 from .hooks import context_inject_hook, HOOKS, register_hook, trigger_hooks
-from .team import BUS, active_teammates, format_lead_inbox_messages, has_lead_inbox
+from .team import active_teammates, consume_lead_inbox, format_lead_inbox_messages, has_lead_inbox
 from .tool import WORKDIR
 
 
@@ -35,7 +35,7 @@ except ImportError:
 
 
 def main() -> None:
-    print("mini-claude-code s15: Agent Teams ready")
+    print("mini-claude-code s16: Team Protocols ready")
     history = []
     had_teammates = False
 
@@ -67,7 +67,8 @@ def main() -> None:
     def build_async_wake_message() -> str:
         """把队友 inbox 和后台任务结果合并成一次 Lead 唤醒消息。"""
         parts = []
-        inbox_text = format_lead_inbox_messages(BUS.read_inbox("lead"))
+        # S16：统一入口会先路由 shutdown/plan 等协议回复，再返回可注入给 Lead 的消息。
+        inbox_text = format_lead_inbox_messages(consume_lead_inbox(route_protocol=True))
         if inbox_text:
             parts.append(inbox_text)
         parts.extend(collect_background_results())
