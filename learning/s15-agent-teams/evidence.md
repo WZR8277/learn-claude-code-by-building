@@ -42,4 +42,7 @@ Spawn alice as a backend developer. Ask her to create a file called schema.sql w
 
 学习者已完成 PyCharm diff 审查和本章反思。
 
-待提交、打标签、推送和 Feishu 归档后补充最终证据。
+- Commit: `8727517`
+- Tag: `s15-agent-teams`
+- Home Feishu child: `https://jcneiirfaiic.feishu.cn/wiki/IantwDzayifprNk0xaVc4e2wnwc`
+- Parent directory updated: S15 is marked complete and S16 is marked as the next chapter.

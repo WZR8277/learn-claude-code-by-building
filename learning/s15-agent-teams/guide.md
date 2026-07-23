@@ -58,7 +58,7 @@ CLI async poller
 - [x] 已确认最新章节标签为 `s14-cron-scheduler`，当前应继续 `s15 Agent Teams`。
 - [x] 已用本地上游副本读取 `s15_agent_teams`。
 - [x] 已按 diff-first 流程实现未提交代码和测试。
-- [ ] 学习者在 PyCharm 中审查 diff 并提出问题或确认。
-- [ ] 学习者完成本章个人观点。
-- [ ] 最终测试通过。
-- [ ] commit、tag 和飞书归档。
+- [x] 学习者在 PyCharm 中审查 diff 并提出问题或确认。
+- [x] 学习者完成本章个人观点。
+- [x] 最终测试通过。
+- [x] commit、tag 和飞书归档。

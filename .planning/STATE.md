@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 15
-current_phase_name: s15 Agent Teams
-status: closing
-stopped_at: s15 Agent Teams tests passed; preparing commit, tag, push, and home Feishu archive
-last_updated: "2026-07-24T00:42:00Z"
+current_phase: 16
+current_phase_name: s16 Team Protocols
+status: ready
+stopped_at: s15 Agent Teams archived; ready to start s16 Team Protocols
+last_updated: "2026-07-24T00:58:00Z"
 last_activity: 2026-07-24
-last_activity_desc: Completed S15 Agent Teams implementation, learner reflection, and tests; preparing final chapter commit/tag/archive
+last_activity_desc: Completed S15 Agent Teams with tests, commit/tag/push, and home Feishu archive
 progress:
-  percent: 70
+  percent: 75
 ---
 
 # Project State
@@ -20,22 +20,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-22)
 
 **Core value:** 通过亲手实现、验证和解释每个章节机制，真正掌握 Claude Code 各部分代码逻辑，并最终得到一个可以运行且演进历史清晰的 Python 编码 Agent。
-**Current focus:** Phase 15 — s15 Agent Teams
+**Current focus:** Phase 16 — s16 Team Protocols
 
 ## Current Position
 
-Phase: 15 of 20 (s15 Agent Teams)
-Plan: diff-first implementation
-Status: s15 Agent Teams local delta, guide, evidence, learner reflection, and automated tests are complete; preparing final commit/tag/Feishu archive
-Last activity: 2026-07-24 — Learner completed S15 reflection. `git fetch --all --tags` succeeded. `PYTHONPATH=src .venv/bin/python -m pytest -q` passed with `96 passed in 0.53s`.
+Phase: 16 of 20 (s16 Team Protocols)
+Plan: pending
+Status: s15 Agent Teams archived; ready to compare local upstream `s16_team_protocols` against the completed `s15_agent_teams` baseline
+Last activity: 2026-07-24 — Learner completed S15 reflection; final test passed with `96 passed in 0.53s`; commit `8727517`, tag `s15-agent-teams`, and home Feishu child are complete
 
-Progress: [███████░░░] 70%
+Progress: [████████░░] 75%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 14
+- Total plans completed: 15
 - Average duration: -
 - Total execution time: not measured
 
@@ -57,11 +57,12 @@ Progress: [███████░░░] 70%
 | s12 Task System | 1 | 1 | not measured |
 | s13 Background Tasks | 1 | 1 | not measured |
 | s14 Cron Scheduler | 1 | 1 | not measured |
+| s15 Agent Teams | 1 | 1 | not measured |
 
 **Recent Trend:**
 
-- Last 5 completed plans: s10 System Prompt, s11 Error Recovery, s12 Task System, s13 Background Tasks, s14 Cron Scheduler
-- Trend: s01-s14 complete; s15 is next
+- Last 5 completed plans: s11 Error Recovery, s12 Task System, s13 Background Tasks, s14 Cron Scheduler, s15 Agent Teams
+- Trend: s01-s15 complete; s16 is next
 
 *Updated after each plan completion*
 
@@ -86,7 +87,8 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- [Phase 15]: Commit S15, tag `s15-agent-teams`, push, and archive to the home Feishu parent.
+- [Phase 16]: Start s16 by running cross-computer sync, then compare local upstream `s16_team_protocols` against the completed `s15_agent_teams` baseline before implementing any delta.
+- [Docs]: s15 Agent Teams home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/IantwDzayifprNk0xaVc4e2wnwc`.
 - [Docs]: s14 Cron Scheduler home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/CCgYwXtRrifG4HkhGdxcsTqInug`.
 - [Docs]: s13 Background Tasks home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/GnbrwjTpEicMVWkSbhsc0oxxnkR`.
 - [Docs]: s12 Task System home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/JlNfwILP9iB7eYkxV1Sciib0nLh`.
@@ -118,8 +120,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-07-24T00:15:00Z
-Stopped at: s15 Agent Teams learned and reflected; blocked from final commit by local test/sync permissions
+Last session: 2026-07-24T00:58:00Z
+Stopped at: s15 Agent Teams archived; ready to start s16 Team Protocols
 Resume file: .planning/STATE.md
 
 ### Cross-Computer Sync

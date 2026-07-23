@@ -90,6 +90,10 @@ The completed home s14 page is:
 
 - `https://jcneiirfaiic.feishu.cn/wiki/CCgYwXtRrifG4HkhGdxcsTqInug`
 
+The completed home s15 page is:
+
+- `https://jcneiirfaiic.feishu.cn/wiki/IantwDzayifprNk0xaVc4e2wnwc`
+
 ## Parent Update Safety
 
 Use `lark-cli` for Feishu updates when available. Do not assume
