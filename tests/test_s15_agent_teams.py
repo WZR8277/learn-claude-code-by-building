@@ -94,9 +94,10 @@ class TeammateThreadTest(unittest.TestCase):
                 client=client,
                 model="test-model",
                 idle_poll_seconds=0.01,
+                idle_timeout_seconds=1,
             )
 
-            self.assertEqual(result, "Teammate 'alice' spawned as backend developer")
+            self.assertEqual(result, "Teammate 'alice' spawned as backend developer (autonomous)")
             for _ in range(100):
                 if "alice" in active_teammates:
                     break
@@ -120,7 +121,10 @@ class TeammateThreadTest(unittest.TestCase):
             message_types = [message["type"] for message in inbox]
             self.assertIn("shutdown_response", message_types)
             self.assertIn("result", message_types)
-            self.assertEqual(client.messages.calls[0]["tools"][-1]["name"], "submit_plan")
+            tool_names = [tool["name"] for tool in client.messages.calls[0]["tools"]]
+            self.assertIn("submit_plan", tool_names)
+            for task_tool in ["list_tasks", "claim_task", "complete_task"]:
+                self.assertIn(task_tool, tool_names)
 
 
 class AgentTeamToolTest(unittest.TestCase):

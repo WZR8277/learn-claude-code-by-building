@@ -20,6 +20,7 @@ from mini_claude_code.task_system import (
     run_create_task,
     run_get_task,
     run_list_tasks,
+    scan_unclaimed_tasks,
 )
 from mini_claude_code.tool import TOOL_HANDLERS, TOOLS
 
@@ -97,6 +98,27 @@ class TaskPersistenceTest(TaskSystemTestCase):
 
         self.assertFalse(can_start(task.id))
         self.assertEqual(claim_task(task.id), "Blocked by: ['missing']")
+
+    def test_claim_rejects_task_already_owned_by_another_agent(self) -> None:
+        task = create_task("schema")
+        task.owner = "alice"
+        task_module.save_task(task)
+
+        self.assertEqual(claim_task(task.id, owner="bob"), f"Task {task.id} already owned by alice")
+
+    def test_scan_unclaimed_tasks_returns_only_pending_unowned_unblocked_tasks(self) -> None:
+        ready = create_task("ready")
+        owned = create_task("owned")
+        owned.owner = "alice"
+        task_module.save_task(owned)
+        blocked_root = create_task("blocked root")
+        blocked = create_task("blocked child", blockedBy=[blocked_root.id])
+
+        self.assertEqual([task.id for task in scan_unclaimed_tasks()], [ready.id, blocked_root.id])
+
+        claim_task(blocked_root.id)
+        complete_task(blocked_root.id)
+        self.assertIn(blocked.id, [task.id for task in scan_unclaimed_tasks()])
 
     def test_complete_requires_in_progress_status(self) -> None:
         task = create_task("schema")

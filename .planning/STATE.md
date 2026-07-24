@@ -4,9 +4,9 @@ milestone: v1.0
 milestone_name: milestone
 current_phase: 17
 current_phase_name: s17 Autonomous Agents
-status: ready
-stopped_at: s16 Team Protocols archived; ready to start s17 Autonomous Agents
-last_updated: "2026-07-24T01:48:00Z"
+status: in_progress
+stopped_at: s17 Autonomous Agents learned; local code/tests/reflection complete; awaiting commit/tag/Feishu archive
+last_updated: "2026-07-24T02:35:00Z"
 last_activity: 2026-07-24
 last_activity_desc: Completed S16 Team Protocols with tests, commit/tag/push, and home Feishu archive
 progress:
@@ -26,8 +26,8 @@ See: .planning/PROJECT.md (updated 2026-07-22)
 
 Phase: 17 of 20 (s17 Autonomous Agents)
 Plan: pending
-Status: s16 Team Protocols archived; ready to compare local upstream `s17_autonomous_agents` against the completed `s16_team_protocols` baseline
-Last activity: 2026-07-24 — Learner completed S16 reflection; final test passed with `104 passed in 0.51s`; commit `5dbfa15`, tag `s16-team-protocols`, and home Feishu child are complete
+Status: s17 Autonomous Agents learned; local code/tests/reflection complete; awaiting commit/tag/Feishu archive
+Last activity: 2026-07-24 — Learner completed S17 reflection; local tests passed with `110 passed in 0.58s`; commit/tag/Feishu archive still pending
 
 Progress: [████████░] 80%
 
@@ -88,7 +88,7 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- [Phase 17]: Start s17 by running cross-computer sync, then compare local upstream `s17_autonomous_agents` against the completed `s16_team_protocols` baseline before implementing any delta.
+- [Phase 17]: Commit and tag S17, then archive a polished Feishu child under the selected home/company parent.
 - [Docs]: s16 Team Protocols home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/JaUYwV00qitUSikgOlQcLwjBnvd`.
 - [Docs]: s15 Agent Teams home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/IantwDzayifprNk0xaVc4e2wnwc`.
 - [Docs]: s14 Cron Scheduler home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/CCgYwXtRrifG4HkhGdxcsTqInug`.
@@ -122,8 +122,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-07-24T01:48:00Z
-Stopped at: s16 Team Protocols archived; ready to start s17 Autonomous Agents
+Last session: 2026-07-24T02:35:00Z
+Stopped at: s17 Autonomous Agents learned; local code/tests/reflection complete; awaiting commit/tag/Feishu archive
 Resume file: .planning/STATE.md
 
 ### Cross-Computer Sync

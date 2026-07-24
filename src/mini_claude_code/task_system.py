@@ -127,11 +127,14 @@ def blocked_dependencies(task: Task) -> list[str]:
 def claim_task(task_id: str, owner: str = "agent") -> str:
     """pending -> in_progress，并写入 owner。
 
-    owner 在本章只是字段记录；真正的并发锁、Agent 身份和 release 回收会在后续章节展开。
+    S17 开始 owner 不只是展示字段：自治队友会靠它判断任务是否已经被别人拿走。
+    教学版仍没有文件锁，所以这里先做最小的“读到已有 owner 就拒绝”。
     """
     task = load_task(task_id)
     if task.status != "pending":
         return f"Task {task_id} is {task.status}, cannot claim"
+    if task.owner:
+        return f"Task {task_id} already owned by {task.owner}"
 
     blocked = blocked_dependencies(task)
     if blocked:
@@ -141,6 +144,21 @@ def claim_task(task_id: str, owner: str = "agent") -> str:
     task.status = "in_progress"
     save_task(task)
     return f"Claimed {task.id} ({task.subject})"
+
+
+def scan_unclaimed_tasks() -> list[Task]:
+    """扫描可由自治队友认领的任务。
+
+    S17 的“自己看板，自己认领”只看三个条件：
+    1. 状态仍是 pending；
+    2. 没有 owner；
+    3. blockedBy 指向的上游任务都已经 completed。
+    """
+    return [
+        task
+        for task in list_tasks()
+        if task.status == "pending" and not task.owner and can_start(task.id)
+    ]
 
 
 def complete_task(task_id: str) -> str:

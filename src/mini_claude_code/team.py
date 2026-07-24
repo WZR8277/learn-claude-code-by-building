@@ -13,13 +13,16 @@ from typing import Any, Callable
 
 from anthropic import Anthropic
 
+from .task_system import claim_task, complete_task, list_tasks, scan_unclaimed_tasks
+
 
 ToolHandler = Callable[..., str]
 
 WORKDIR = Path.cwd()
 MAILBOX_DIR = WORKDIR / ".mailboxes"
 TEAMMATE_MAX_ROUNDS = 10
-DEFAULT_IDLE_POLL_SECONDS = 1.0
+DEFAULT_IDLE_POLL_SECONDS = 5.0
+DEFAULT_IDLE_TIMEOUT_SECONDS = 60.0
 PROTOCOL_RESPONSE_TYPES = {
     "shutdown_response",
     "plan_approval_response",
@@ -181,7 +184,11 @@ def consume_lead_inbox(route_protocol: bool = True) -> list[dict[str, Any]]:
 
 
 def _teammate_tools() -> list[dict[str, Any]]:
-    """队友只拿最小工具集；S16 额外允许队友提交计划请求。"""
+    """队友只拿最小工具集。
+
+    S17 新增 list/claim/complete task，让队友可以在空闲时自己看任务板、
+    认领任务、完成任务，而不是所有分配都依赖 Lead 手动 send_message。
+    """
     return [
         {
             "name": "bash",
@@ -232,6 +239,29 @@ def _teammate_tools() -> list[dict[str, Any]]:
                 "type": "object",
                 "properties": {"plan": {"type": "string"}},
                 "required": ["plan"],
+            },
+        },
+        {
+            "name": "list_tasks",
+            "description": "List all tasks on the shared task board.",
+            "input_schema": {"type": "object", "properties": {}, "required": []},
+        },
+        {
+            "name": "claim_task",
+            "description": "Claim a pending task whose dependencies are completed.",
+            "input_schema": {
+                "type": "object",
+                "properties": {"task_id": {"type": "string"}},
+                "required": ["task_id"],
+            },
+        },
+        {
+            "name": "complete_task",
+            "description": "Mark an in-progress task as completed.",
+            "input_schema": {
+                "type": "object",
+                "properties": {"task_id": {"type": "string"}},
+                "required": ["task_id"],
             },
         },
     ]
@@ -291,22 +321,59 @@ def _drain_teammate_inbox(name: str, messages: list[dict[str, Any]]) -> bool:
     return False
 
 
-def _wait_for_teammate_inbox(
+def _run_teammate_list_tasks() -> str:
+    tasks = list_tasks()
+    if not tasks:
+        return "No tasks."
+    return "\n".join(
+        f"{task.id}: {task.subject} [{task.status}]"
+        for task in tasks
+    )
+
+
+def _idle_poll(
     name: str,
     messages: list[dict[str, Any]],
     idle_poll_seconds: float,
-) -> bool:
-    """队友进入 idle 后等待新消息。
+    idle_timeout_seconds: float,
+) -> str:
+    """S17 的自治 idle 阶段。
 
-    返回 True 表示收到关机请求；返回 False 表示收到了普通消息或审批回复，
-    调用方应继续下一轮模型调用。
+    返回值：
+    - "work"：收到了普通消息，或自动认领到任务，需要回到 WORK 阶段；
+    - "shutdown"：idle 期间收到 shutdown_request，完成握手后退出；
+    - "timeout"：一段时间内既无消息也无可认领任务，队友自然退出。
     """
-    while True:
+    deadline = time.monotonic() + idle_timeout_seconds
+    while time.monotonic() < deadline:
         time.sleep(idle_poll_seconds)
-        if BUS.peek(name) and _drain_teammate_inbox(name, messages):
-            return True
+
+        # inbox 优先级高于任务板，因为里面可能是 shutdown 或审批回执。
+        if BUS.peek(name):
+            if _drain_teammate_inbox(name, messages):
+                return "shutdown"
+            return "work"
+
+        # 没有新消息时，队友才去看共享任务板，找可开始且无人认领的任务。
+        for task in scan_unclaimed_tasks():
+            result = claim_task(task.id, owner=name)
+            if result.startswith("Claimed "):
+                messages.append({
+                    "role": "user",
+                    "content": (
+                        f"<auto-claimed>Task {task.id}: "
+                        f"{task.subject}</auto-claimed>"
+                    ),
+                })
+                return "work"
+
+            # 竞争认领失败时继续看下一个任务；教学版没有文件锁，所以这里要容忍失败。
+            if "already owned" in result or "cannot claim" in result:
+                continue
+
         if messages and messages[-1].get("role") == "user":
-            return False
+            return "work"
+    return "timeout"
 
 
 def _teammate_submit_plan(from_name: str, plan: str) -> str:
@@ -359,16 +426,19 @@ def _run_teammate_loop(
     client: Any | None = None,
     model: str | None = None,
     idle_poll_seconds: float = DEFAULT_IDLE_POLL_SECONDS,
+    idle_timeout_seconds: float = DEFAULT_IDLE_TIMEOUT_SECONDS,
 ) -> None:
     """队友自己的迷你 Agent Loop。
 
     它和 Lead 使用不同 messages；只有通过 MessageBus 才能共享信息。
-    S16 进一步加上 idle loop：模型一轮结束后不立即退出，而是继续等协议消息。
+    S17 把生命周期改成 WORK -> IDLE -> WORK/SHUTDOWN：
+    WORK 负责调用模型和执行工具，IDLE 负责等 inbox 或自动认领任务。
     """
     client = client or Anthropic(base_url=os.getenv("ANTHROPIC_BASE_URL"))
     model = model or os.environ["MODEL_ID"]
     system = (
         f"You are '{name}', a {role}. Use tools to complete tasks. "
+        "You can list and claim tasks from the board. "
         "Use submit_plan before risky work. Check inbox for protocol messages."
     )
     messages: list[dict[str, Any]] = [{"role": "user", "content": prompt}]
@@ -382,11 +452,22 @@ def _run_teammate_loop(
             "Sent",
         )[1],
         "submit_plan": lambda plan: _teammate_submit_plan(name, plan),
+        "list_tasks": _run_teammate_list_tasks,
+        "claim_task": lambda task_id: claim_task(task_id, owner=name),
+        "complete_task": complete_task,
     }
 
     round_count = 0
     should_stop = False
     while not should_stop and round_count < TEAMMATE_MAX_ROUNDS:
+        # 压缩后 messages 可能只剩摘要；教学版没有真实 system prompt 保留机制，
+        # 所以每个 WORK 周期开始时做一次轻量身份重注入。
+        if len(messages) <= 3:
+            messages.insert(0, {
+                "role": "user",
+                "content": f"<identity>You are '{name}', role: {role}. Continue your work.</identity>",
+            })
+
         # 队友每轮先读取自己的邮箱；协议消息会被 handler 消费，普通消息注入上下文。
         should_stop = _drain_teammate_inbox(name, messages)
         if should_stop:
@@ -410,9 +491,13 @@ def _run_teammate_loop(
         round_count += 1
         messages.append({"role": "assistant", "content": response.content})
         if response.stop_reason != "tool_use":
-            # S16：没有工具调用时进入 idle，不把队友线程自然销毁。
-            should_stop = _wait_for_teammate_inbox(name, messages, idle_poll_seconds)
-            continue
+            # S17：一轮 WORK 自然结束后进入 IDLE。IDLE 可能收到消息、自动认领任务，
+            # 也可能超时并让队友进入 SHUTDOWN。
+            idle_result = _idle_poll(name, messages, idle_poll_seconds, idle_timeout_seconds)
+            if idle_result == "work":
+                continue
+            should_stop = True
+            break
 
         tool_results = []
         for block in response.content:
@@ -440,8 +525,9 @@ def spawn_teammate_thread(
     client: Any | None = None,
     model: str | None = None,
     idle_poll_seconds: float = DEFAULT_IDLE_POLL_SECONDS,
+    idle_timeout_seconds: float = DEFAULT_IDLE_TIMEOUT_SECONDS,
 ) -> str:
-    """启动一个队友线程，并立即把控制权还给 Lead。"""
+    """启动一个自治队友线程，并立即把控制权还给 Lead。"""
     with _teammate_lock:
         if name in active_teammates:
             return f"Teammate '{name}' already exists"
@@ -449,11 +535,20 @@ def spawn_teammate_thread(
 
     thread = threading.Thread(
         target=_run_teammate_loop,
-        args=(name, role, prompt, handlers, client, model, idle_poll_seconds),
+        args=(
+            name,
+            role,
+            prompt,
+            handlers,
+            client,
+            model,
+            idle_poll_seconds,
+            idle_timeout_seconds,
+        ),
         daemon=True,
     )
     thread.start()
-    return f"Teammate '{name}' spawned as {role}"
+    return f"Teammate '{name}' spawned as {role} (autonomous)"
 
 
 def run_send_message(to: str, content: str) -> str:

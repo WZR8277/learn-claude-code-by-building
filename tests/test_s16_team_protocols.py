@@ -158,6 +158,7 @@ class TeamProtocolTest(unittest.TestCase):
                 client=client,
                 model="test-model",
                 idle_poll_seconds=0.01,
+                idle_timeout_seconds=1,
             )
             team_module.BUS.send(
                 "lead",

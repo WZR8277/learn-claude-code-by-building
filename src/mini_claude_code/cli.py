@@ -35,7 +35,7 @@ except ImportError:
 
 
 def main() -> None:
-    print("mini-claude-code s16: Team Protocols ready")
+    print("mini-claude-code s17: Autonomous Agents ready")
     history = []
     had_teammates = False
 
