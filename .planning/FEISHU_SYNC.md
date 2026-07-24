@@ -98,6 +98,10 @@ The completed home s16 page is:
 
 - `https://jcneiirfaiic.feishu.cn/wiki/JaUYwV00qitUSikgOlQcLwjBnvd`
 
+The completed home s17 page is:
+
+- `https://jcneiirfaiic.feishu.cn/wiki/InQLwxkwSiNJU8kvSxZc8CTPnbm`
+
 ## Parent Update Safety
 
 Use `lark-cli` for Feishu updates when available. Do not assume

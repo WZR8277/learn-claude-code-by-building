@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 17
-current_phase_name: s17 Autonomous Agents
-status: in_progress
-stopped_at: s17 Autonomous Agents learned; local code/tests/reflection complete; awaiting commit/tag/Feishu archive
-last_updated: "2026-07-24T02:35:00Z"
+current_phase: 18
+current_phase_name: s18 Worktree Isolation
+status: ready
+stopped_at: s17 Autonomous Agents archived; ready to start s18 Worktree Isolation
+last_updated: "2026-07-24T03:55:00Z"
 last_activity: 2026-07-24
-last_activity_desc: Completed S16 Team Protocols with tests, commit/tag/push, and home Feishu archive
+last_activity_desc: Completed S17 Autonomous Agents with tests, commit/tag/push, and home Feishu archive
 progress:
-  percent: 80
+  percent: 85
 ---
 
 # Project State
@@ -20,22 +20,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-22)
 
 **Core value:** 通过亲手实现、验证和解释每个章节机制，真正掌握 Claude Code 各部分代码逻辑，并最终得到一个可以运行且演进历史清晰的 Python 编码 Agent。
-**Current focus:** Phase 17 — s17 Autonomous Agents
+**Current focus:** Phase 18 — s18 Worktree Isolation
 
 ## Current Position
 
-Phase: 17 of 20 (s17 Autonomous Agents)
+Phase: 18 of 20 (s18 Worktree Isolation)
 Plan: pending
-Status: s17 Autonomous Agents learned; local code/tests/reflection complete; awaiting commit/tag/Feishu archive
-Last activity: 2026-07-24 — Learner completed S17 reflection; local tests passed with `110 passed in 0.58s`; commit/tag/Feishu archive still pending
+Status: s17 Autonomous Agents archived; ready to compare local upstream `s18_worktree_isolation` against the completed `s17_autonomous_agents` baseline
+Last activity: 2026-07-24 — Learner completed S17 reflection; final test passed with `110 passed in 0.80s`; commit `d93c1d2`, tag `s17-autonomous-agents`, and home Feishu child are complete
 
-Progress: [████████░] 80%
+Progress: [████████▌] 85%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 16
+- Total plans completed: 17
 - Average duration: -
 - Total execution time: not measured
 
@@ -59,11 +59,12 @@ Progress: [████████░] 80%
 | s14 Cron Scheduler | 1 | 1 | not measured |
 | s15 Agent Teams | 1 | 1 | not measured |
 | s16 Team Protocols | 1 | 1 | not measured |
+| s17 Autonomous Agents | 1 | 1 | not measured |
 
 **Recent Trend:**
 
-- Last 5 completed plans: s12 Task System, s13 Background Tasks, s14 Cron Scheduler, s15 Agent Teams, s16 Team Protocols
-- Trend: s01-s16 complete; s17 is next
+- Last 5 completed plans: s13 Background Tasks, s14 Cron Scheduler, s15 Agent Teams, s16 Team Protocols, s17 Autonomous Agents
+- Trend: s01-s17 complete; s18 is next
 
 *Updated after each plan completion*
 
@@ -88,7 +89,8 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- [Phase 17]: Commit and tag S17, then archive a polished Feishu child under the selected home/company parent.
+- [Phase 18]: Start s18 by running cross-computer sync, then compare local upstream `s18_worktree_isolation` against the completed `s17_autonomous_agents` baseline before implementing any delta.
+- [Docs]: s17 Autonomous Agents home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/InQLwxkwSiNJU8kvSxZc8CTPnbm`.
 - [Docs]: s16 Team Protocols home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/JaUYwV00qitUSikgOlQcLwjBnvd`.
 - [Docs]: s15 Agent Teams home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/IantwDzayifprNk0xaVc4e2wnwc`.
 - [Docs]: s14 Cron Scheduler home Feishu child is `https://jcneiirfaiic.feishu.cn/wiki/CCgYwXtRrifG4HkhGdxcsTqInug`.
@@ -122,8 +124,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-07-24T02:35:00Z
-Stopped at: s17 Autonomous Agents learned; local code/tests/reflection complete; awaiting commit/tag/Feishu archive
+Last session: 2026-07-24T03:55:00Z
+Stopped at: s17 Autonomous Agents archived; ready to start s18 Worktree Isolation
 Resume file: .planning/STATE.md
 
 ### Cross-Computer Sync

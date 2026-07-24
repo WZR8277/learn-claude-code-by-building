@@ -44,6 +44,7 @@ Create 3 tasks on the board, then spawn alice and bob. Let them auto-claim and c
 
 ## Commit Evidence
 
-- Commit: pending
-- Tag: pending
-- Feishu child: pending
+- Commit: `d93c1d2`
+- Tag: `s17-autonomous-agents`
+- Home Feishu child: `https://jcneiirfaiic.feishu.cn/wiki/InQLwxkwSiNJU8kvSxZc8CTPnbm`
+- Parent directory updated: S17 is marked complete and S18 is marked as the next chapter.
